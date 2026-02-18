@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam Memorization App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="top-menu">
+      <div class="menu-pill" role="button" aria-expanded="true" aria-controls="mindset-panel" tabindex="0">
+        <span class="bulb">💡</span>
+        <span class="title">마음가짐 태도</span>
+        <span class="plus">+</span>
+      </div>
+    </header>
+
+    <main>
+      <section id="mindset-panel" class="mindset-panel" aria-live="polite">
+        <p id="mindset-text" class="mindset-text"></p>
+        <p class="timer-hint">5분마다 다음 문구로 전환됩니다.</p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

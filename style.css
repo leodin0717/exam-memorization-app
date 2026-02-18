@@ -1,10 +1,13 @@
 :root {
   color-scheme: dark;
-  --bg: #040507;
-  --pill-bg: #12141a;
-  --text: #f2f3f5;
-  --muted: #a0a4ad;
-  --accent: #39d353;
+  --bg: #040714;
+  --surface: #0d1429;
+  --surface-2: #121c34;
+  --text: #f4f7ff;
+  --muted: #9faaca;
+  --accent: #4da3ff;
+  --ok: #1fce8d;
+  --bad: #ff6a6a;
 }
 
 * {
@@ -14,81 +17,171 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Pretendard", "Noto Sans KR", sans-serif;
-  background: radial-gradient(circle at top, #0e1118, var(--bg) 45%);
+  background: radial-gradient(circle at top left, #17264d, var(--bg) 45%);
   color: var(--text);
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
 }
 
 .top-menu {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 16px;
-  backdrop-filter: blur(8px);
-  background: rgba(4, 5, 7, 0.82);
+  padding: 14px 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(5, 8, 18, 0.94);
 }
 
 .menu-pill {
-  width: fit-content;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background: var(--pill-bg);
+  gap: 10px;
+  background: #111a31;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
-  padding: 12px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.bulb {
-  font-size: 1.15rem;
+  padding: 10px 14px;
 }
 
 .title {
-  color: var(--accent);
-  font-size: 1.65rem;
+  color: #5fe18e;
   font-weight: 800;
+  font-size: 1.35rem;
 }
 
 .plus {
-  font-size: 1.55rem;
-  color: #d5d7dc;
-  line-height: 1;
-}
-
-main {
-  padding: 20px 16px 40px;
+  font-size: 1.3rem;
 }
 
 .mindset-panel {
-  max-width: 980px;
+  margin-top: 10px;
 }
 
 .mindset-text {
-  margin: 8px 0;
-  font-size: clamp(1.55rem, 2.65vw, 2.2rem);
+  margin: 0;
+  color: #d6def5;
+  font-size: 1.02rem;
+}
+
+main {
+  padding: 20px;
+}
+
+.quiz-card {
+  max-width: 980px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, var(--surface), #0b1325);
+  border: 1px solid rgba(94, 126, 200, 0.35);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  font-size: 0.87rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #1a2f5e;
+  color: #9cc5ff;
+}
+
+.progress {
+  color: #a7b9e8;
+  font-weight: 700;
+}
+
+.source-title {
+  color: #bcc9ea;
+  margin: 14px 0;
+}
+
+.statement-box {
+  background: var(--surface-2);
+  border: 1px solid rgba(151, 181, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.statement-label {
+  margin: 0;
+  color: #89b8ff;
+  font-weight: 700;
+}
+
+.statement-text {
+  margin: 8px 0 0;
+  font-size: 1.15rem;
   line-height: 1.5;
-  font-weight: 550;
-  letter-spacing: -0.02em;
-  transition: opacity 0.35s ease;
 }
 
-.mindset-text.fade {
-  opacity: 0.15;
+.button-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 160px));
+  gap: 14px;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.timer-hint {
-  margin-top: 22px;
-  color: var(--muted);
-  font-size: 0.98rem;
+.ox-btn {
+  font-size: 2rem;
+  font-weight: 800;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #1a233e;
+  color: #ff2e2e;
+  padding: 14px;
+  cursor: pointer;
+}
+
+.feedback {
+  margin-top: 18px;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.feedback.correct {
+  background: rgba(20, 116, 78, 0.24);
+  border: 1px solid rgba(29, 199, 136, 0.58);
+}
+
+.feedback.wrong {
+  background: rgba(133, 25, 37, 0.24);
+  border: 1px solid rgba(255, 106, 106, 0.55);
+}
+
+.nav-row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-btn {
+  min-width: 110px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #17223e;
+  color: #e7edff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
-  .title {
-    font-size: 1.35rem;
+  .statement-text {
+    font-size: 1.02rem;
   }
 
-  .mindset-text {
-    font-size: clamp(1.3rem, 4.6vw, 1.55rem);
+  .button-row {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
   }
 }

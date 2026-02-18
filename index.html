@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exam Memorization App</title>
+    <title>행정법 OX 훈련</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -13,12 +13,36 @@
         <span class="title">마음가짐 태도</span>
         <span class="plus">+</span>
       </div>
+      <section id="mindset-panel" class="mindset-panel" aria-live="polite">
+        <p id="mindset-text" class="mindset-text"></p>
+      </section>
     </header>
 
     <main>
-      <section id="mindset-panel" class="mindset-panel" aria-live="polite">
-        <p id="mindset-text" class="mindset-text"></p>
-        <p class="timer-hint">5분마다 다음 문구로 전환됩니다.</p>
+      <section class="quiz-card" aria-live="polite">
+        <div class="quiz-header">
+          <span class="badge">통합형 자동 분해</span>
+          <span id="progress-text" class="progress"></span>
+        </div>
+
+        <p id="source-title" class="source-title"></p>
+
+        <div id="statement-box" class="statement-box">
+          <p id="statement-label" class="statement-label"></p>
+          <p id="statement-text" class="statement-text"></p>
+        </div>
+
+        <div class="button-row">
+          <button id="btn-o" class="ox-btn" type="button">O</button>
+          <button id="btn-x" class="ox-btn" type="button">X</button>
+        </div>
+
+        <div id="feedback" class="feedback" hidden></div>
+
+        <div class="nav-row">
+          <button id="prev-btn" class="nav-btn" type="button">← 이전</button>
+          <button id="next-btn" class="nav-btn" type="button">다음 →</button>
+        </div>
       </section>
     </main>
 

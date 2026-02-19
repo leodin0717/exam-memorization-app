@@ -1131,11 +1131,9 @@
     };
 
     function renderAnswerPanel(q, isCorrect, responseSec) {
-        const keywordProfile = q.keywordProfile && q.keywordProfile.length > 0
-            ? q.keywordProfile
-            : (q.keywords || []).map(kw => ({ keyword: kw, grade: getTermGrade(kw), stamp: guessStampFromTerm(kw) }));
-        const memoryTip = buildMemoryTip(q, { historyKey: `q${q.id}`, responseSec });
-        const kwEmojis = buildKeywordMemoryLine(q.keywords || [], q);
+        const correctChoice = (q.choices || []).find(c => c.no === q.answer);
+        const memorySourceText = (correctChoice && correctChoice.text ? correctChoice.text : q.question) || '';
+        const kwEmojis = buildKeywordMemoryLine(memorySourceText, q.keywords || []);
         const metacogKey = `metacog_q${q.id}`;
         let html = `<div class="answer-panel ${isCorrect ? 'correct-panel' : 'incorrect-panel'}">
     <div class="answer-result ${isCorrect ? 'correct' : 'incorrect'}">
@@ -1145,58 +1143,115 @@
     <div class="answer-explain">
       <strong>📌 키워드:</strong> ${(q.keywords || []).join(', ')}
     </div>
-    <div class="memory-scenario">
-      <div class="scenario-label">${escapeHtml(memoryTip.label)}</div>
-      <div class="scenario-text">${escapeHtml(memoryTip.text)}</div>
-      ${memoryTip.slogan ? `<div class="scenario-slogan">🗣️ ${escapeHtml(memoryTip.slogan)}</div>` : ''}
-    </div>
     ${kwEmojis ? `<div class="keyword-memory-line">
       <div class="kml-title">💡 한 줄 기억</div>
-      <div class="kml-chips">${kwEmojis}</div>
+      <div class="kml-summary">${kwEmojis}</div>
     </div>` : ''}
-    <div class="keyword-grade-list">
-      ${renderKeywordGradeChips(keywordProfile)}
-    </div>
     ${renderMetacogPanel(metacogKey, responseSec)}
     </div>`;
         return html;
     }
 
-    // 키워드별 이모지 매핑으로 한 줄 기억 생성
-    function buildKeywordMemoryLine(keywords, q) {
-        if (!keywords || keywords.length === 0) return '';
+    // 선지 문장에서 주체/기간/요건/효과/수식어 키워드만 뽑아 한 줄 기억 생성
+    function buildKeywordMemoryLine(sourceText, fallbackKeywords) {
+        const text = String(sourceText || '').replace(/\s+/g, ' ').trim();
+        const words = Array.isArray(fallbackKeywords) ? fallbackKeywords.filter(Boolean) : [];
+        if (!text && words.length === 0) return '';
+
+        // 키워드별 이모지 매핑 (복구)
         const KEYWORD_EMOJI_MAP = {
-            '행정청': '🏛️', '법원': '⚖️', '대법원': '🏛️', '헌법재판소': '📜',
-            '처분': '📋', '처분성': '🚪', '허가': '✅', '인가': '🔑',
+            '행정청': '🏛️', '처분청': '🏛️', '법원': '⚖️', '대법원': '🏛️', '헌법재판소': '📜',
+            '원고': '🧑‍💼', '피고': '🛡️', '당사자': '👥', '국가': '🇰🇷', '지방자치단체': '🏢',
+            '처분': '📋', '처분성': '🚪', '허가': '✅', '인가': '🔑', '신고': '📝',
             '취소': '🧹', '철회': '✂️', '무효': '💀', '유효': '💚',
             '재량': '🎯', '기속': '🔒', '일탈': '💥', '남용': '🐍',
-            '신뢰보호': '🛡️', '소급': '⏪', '제소기간': '⏰', '제척기간': '⏳',
+            '신뢰보호': '🛡️', '소급': '⏪', '제소기간': '⏰', '제척기간': '⏳', '불변기간': '⌛',
             '고시': '📰', '공고': '📢', '통지': '📩', '송달': '📬',
-            '기간': '📅', '기한': '⌛', '효력': '⚡', '발생': '🌟',
+            '기간': '📅', '기한': '⌛', '효력': '⚡', '발생': '🌟', '소멸': '💨', '상실': '⚡',
             '소멸시효': '💨', '집행정지': '🛑', '가처분': '✋',
             '손실보상': '💰', '손해배상': '🩸', '부관': '🐍', '조건': '⚠️',
             '부담': '⛓️', '행정입법': '📚', '법규명령': '📕', '행정규칙': '📘',
             '행정계획': '🗺️', '계획재량': '🧭', '변경': '🔄',
-            '항고소송': '⚔️', '당사자소송': '🤝', '취소소송': '🧹⚖️',
-            '사정판결': '⚖️🛡️', '하자의승계': '🔗', '대집행': '🏗️',
-            '행정대집행': '🚜', '토지인도': '🏠', '건물철거': '🏚️', '퇴거': '🚪💨',
+            '항고소송': '⚔️', '당사자소송': '🤝', '취소소송': '🧹⚖️', '무효확인소송': '⚖️💀',
+            '사정판결': '⚖️🛡️', '석명권': '🗣️', '직권': '🧭', '증거조사': '🔍',
+            '하자의승계': '🔗', '대집행': '🏗️', '행정대집행': '🚜',
             '원고적격': '🎫', '소의이익': '🎟️', '위법': '🚨', '적법': '✅',
-            '잘못통지': '📩❌', '소변경': '🔄📋',
             '제기': '📤', '청구': '🙏', '인정': '👍', '부정': '👎',
             '확대': '📈', '축소': '📉', '제한': '🚧', '금지': '🚫'
         };
-        const chips = keywords.map(kw => {
-            // 키워드에서 가장 가까운 매핑 찾기
-            let emoji = '🔑';
-            for (const [key, val] of Object.entries(KEYWORD_EMOJI_MAP)) {
-                if (kw.includes(key) || key.includes(kw)) {
-                    emoji = val;
-                    break;
+
+        const emojiFor = (phrase, fallbackEmoji) => {
+            for (const [key, emoji] of Object.entries(KEYWORD_EMOJI_MAP)) {
+                if (phrase.includes(key)) return emoji;
+            }
+            return fallbackEmoji;
+        };
+
+        const pickFromPatterns = (patterns) => {
+            for (const re of patterns) {
+                const m = text.match(re);
+                if (m && m[0]) return m[0].trim();
+            }
+            return '';
+        };
+
+        const pickFromKeywords = (patterns) => {
+            for (const kw of words) {
+                for (const re of patterns) {
+                    const m = String(kw).match(re);
+                    if (m && m[0]) return m[0].trim();
                 }
             }
-            return `<span class="kml-chip">${emoji} <strong>${escapeHtml(kw)}</strong></span>`;
-        });
-        return chips.join('<span class="kml-arrow">→</span>');
+            return '';
+        };
+
+        const subject = pickFromPatterns([
+            /주장\s*·?\s*입증책임은\s*[^,.;]+/,
+            /[^,.;]{0,16}처분청[에은는이가]?/,
+            /법원이\s*직권으로/,
+            /[가-힣A-Za-z0-9·]+(?:청|기관|위원회|법원|법인|국가|지방자치단체)/
+        ]) || pickFromKeywords([/(?:원고|피고|행정청|처분청|법원|국가|지방자치단체)/]);
+
+        const period = pickFromPatterns([
+            /\d+\s*년\s*(?:이내|내)?/,
+            /\d+\s*개월\s*(?:이내|내)?/,
+            /\d+\s*일\s*(?:이내|내)?/,
+            /(?:제소|제척|불변|효력)기간/
+        ]) || pickFromKeywords([/(?:제소기간|제척기간|불변기간|효력기간|기간|기한)/]);
+
+        const requirement = pickFromPatterns([
+            /사정판결을\s*할\s*사정/,
+            /[가-힣A-Za-z0-9·]+(?:신청|청구|허가|인가|신고)(?:\s*(?:미|누락|흠결))?/,
+            /[가-힣A-Za-z0-9·]+(?:요건|사유|절차|의무|기준|적격)/
+        ]) || pickFromKeywords([/(?:신청|청구|허가|인가|신고|요건|사유|절차|의무|기준|적격)/]);
+
+        const effect = pickFromPatterns([
+            /사정판결을\s*할\s*수도\s*있다/,
+            /효력을\s*상실한다/,
+            /효력을\s*잃는다/,
+            /효력이\s*없다/,
+            /(?:성립|발생|소멸|취소|무효|위법|적법)(?:한다|된다|이다|다)/
+        ]) || pickFromKeywords([/(?:효력|상실|소멸|취소|무효|위법|적법)/]);
+
+        const modifier = pickFromPatterns([
+            /명백한\s*주장(?:이)?\s*없는\s*경우(?:에도)?/,
+            /직권으로/,
+            /직접|간접|원칙|예외|중대한|명백한|재량|기속|현저히/
+        ]) || pickFromKeywords([/(?:직접|간접|원칙|예외|중대한|명백한|재량|기속|현저히)/]);
+
+        const pieces = [];
+        if (requirement) pieces.push(`${emojiFor(requirement, '📌')}${highlightStamp(requirement, [], [requirement])}`);
+        if (subject && !pieces.some(p => p.includes(subject))) pieces.push(`${emojiFor(subject, '👤')}${highlightStamp(subject, [], [subject])}`);
+        if (modifier) pieces.push(`${emojiFor(modifier, '✨')}${highlightStamp(modifier, [], [modifier])}`);
+        if (period) pieces.push(`${emojiFor(period, '📅')}${highlightStamp(period, [], [period])}`);
+        if (effect) pieces.push(`${emojiFor(effect, '⚡')}${highlightStamp(effect, [], [effect])}`);
+
+        if (pieces.length === 0 && words.length > 0) {
+            const fallback = words.slice(0, 4).map(kw => `${emojiFor(kw, '🔑')}${highlightStamp(kw, [], [kw])}`);
+            return fallback.join(' → ') + ' 기억.';
+        }
+
+        return pieces.join(' → ') + ' 기억.';
     }
 
     // 핵심 키워드 자동 하이라이트 시스템 (키워드+조사 자연스러운 연결)
@@ -1416,27 +1471,17 @@
     </div>`;
         if (answered !== undefined) {
             const isCorrect = answered === item.answer;
-            const keywordProfile = item.keywordProfile && item.keywordProfile.length > 0
-                ? item.keywordProfile
-                : (item.keywords || []).map(kw => ({ keyword: kw, grade: getTermGrade(kw), stamp: guessStampFromTerm(kw) }));
-            const memoryTip = buildMemoryTip(item, { historyKey: `ox_${item.questionId}_${STATE.oxIndex}`, responseSec: STATE.oxResponseSec[key] || 0 });
-            const kwEmojis = buildKeywordMemoryLine(item.keywords || [], item);
+            const kwEmojis = buildKeywordMemoryLine(item.text || '', item.keywords || []);
             html += `<div class="answer-panel ${isCorrect ? 'correct-panel' : 'incorrect-panel'}" style="margin-top:16px;">
       <div class="answer-result ${isCorrect ? 'correct' : 'incorrect'}">
         ${isCorrect ? '✅ 정답!' : '❌ 오답'} 이 선지는 ${item.answer ? '⭕ O (맞는 내용)' : '❌ X (틀린 내용)'}
       </div>
       <div class="answer-explain"><strong>⏱ 선택시간:</strong> ${(STATE.oxResponseSec[key] || 0).toFixed(1)}초 (${speedLabel(STATE.oxResponseSec[key] || 0)})</div>
       <div class="answer-explain"><strong>📌 키워드:</strong> ${(item.keywords || []).join(', ')}</div>
-      <div class="memory-scenario">
-        <div class="scenario-label">${escapeHtml(memoryTip.label)}</div>
-        <div class="scenario-text">${escapeHtml(memoryTip.text)}</div>
-        ${memoryTip.slogan ? `<div class="scenario-slogan">🗣️ ${escapeHtml(memoryTip.slogan)}</div>` : ''}
-      </div>
       ${kwEmojis ? `<div class="keyword-memory-line">
         <div class="kml-title">💡 한 줄 기억</div>
-        <div class="kml-chips">${kwEmojis}</div>
+        <div class="kml-summary">${kwEmojis}</div>
       </div>` : ''}
-      <div class="keyword-grade-list">${renderKeywordGradeChips(keywordProfile)}</div>
       ${renderMetacogPanel('metacog_ox_' + item.questionId + '_' + STATE.oxIndex, STATE.oxResponseSec[key] || 0)}
     </div>`;
         }

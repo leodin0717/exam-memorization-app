@@ -1136,6 +1136,7 @@
             : (q.keywords || []).map(kw => ({ keyword: kw, grade: getTermGrade(kw), stamp: guessStampFromTerm(kw) }));
         const memoryTip = buildMemoryTip(q, { historyKey: `q${q.id}`, responseSec });
         const kwEmojis = buildKeywordMemoryLine(q.keywords || [], q);
+        const metacogKey = `metacog_q${q.id}`;
         let html = `<div class="answer-panel ${isCorrect ? 'correct-panel' : 'incorrect-panel'}">
     <div class="answer-result ${isCorrect ? 'correct' : 'incorrect'}">
       ${isCorrect ? '✅ 정답!' : '❌ 오답'} 정답: ${q.answer}번
@@ -1156,6 +1157,7 @@
     <div class="keyword-grade-list">
       ${renderKeywordGradeChips(keywordProfile)}
     </div>
+    ${renderMetacogPanel(metacogKey, responseSec)}
     </div>`;
         return html;
     }
@@ -1217,6 +1219,90 @@
         }
 
         return result;
+    }
+
+    // ===== 메타인지 태깅 시스템 =====
+    const METACOG_TAGS = [
+        { id: 'unknown', emoji: '❓', label: '몰랐던 것' },
+        { id: 'confused', emoji: '🔀', label: '헷갈린 개념' },
+        { id: 'slow', emoji: '⏳', label: '시간 부족' },
+        { id: 'trap', emoji: '🪤', label: '함정에 걸림' },
+        { id: 'lucky', emoji: '🍀', label: '찍어서 맞춤' },
+        { id: 'review', emoji: '🔁', label: '반복 필요' }
+    ];
+
+    function getMetacogStorage() {
+        try {
+            return JSON.parse(localStorage.getItem('stamp_metacog') || '{}');
+        } catch { return {}; }
+    }
+
+    function saveMetacogData(key, data) {
+        const store = getMetacogStorage();
+        store[key] = { ...data, updatedAt: Date.now() };
+        localStorage.setItem('stamp_metacog', JSON.stringify(store));
+    }
+
+    function renderMetacogPanel(key, responseSec) {
+        const saved = getMetacogStorage()[key] || {};
+        const activeTags = saved.tags || [];
+        const note = saved.note || '';
+        const slowBadge = responseSec > SLOW_THRESHOLD_SEC
+            ? `<span class="metacog-time-badge">⚠️ ${responseSec.toFixed(1)}초 소요</span>`
+            : '';
+
+        let tagsHtml = METACOG_TAGS.map(tag => {
+            const isActive = activeTags.includes(tag.id);
+            return `<label class="metacog-tag ${isActive ? 'active' : ''}" data-metacog-key="${key}" data-tag-id="${tag.id}" onclick="toggleMetacogTag(this)">
+                <span class="tag-check">${isActive ? '✓' : ''}</span>
+                <span>${tag.emoji} ${tag.label}</span>
+            </label>`;
+        }).join('');
+
+        return `<div class="metacog-panel">
+            <div class="metacog-title">🧠 메타인지 태깅 ${slowBadge}</div>
+            <div class="metacog-tags">${tagsHtml}</div>
+            <textarea class="metacog-note" placeholder="왜 틀렸는지, 다음에 주의할 점을 메모하세요…" data-metacog-key="${key}" oninput="saveMetacogNote(this)">${escapeHtml(note)}</textarea>
+            <div class="metacog-saved" id="metacog-saved-${key.replace(/[^a-zA-Z0-9_]/g, '_')}"></div>
+        </div>`;
+    }
+
+    window.toggleMetacogTag = function (el) {
+        const key = el.dataset.metacogKey;
+        const tagId = el.dataset.tagId;
+        const store = getMetacogStorage();
+        const data = store[key] || { tags: [], note: '' };
+        const idx = data.tags.indexOf(tagId);
+        if (idx >= 0) {
+            data.tags.splice(idx, 1);
+            el.classList.remove('active');
+            el.querySelector('.tag-check').textContent = '';
+        } else {
+            data.tags.push(tagId);
+            el.classList.add('active');
+            el.querySelector('.tag-check').textContent = '✓';
+        }
+        saveMetacogData(key, data);
+        showMetacogSaved(key);
+    };
+
+    window.saveMetacogNote = function (textarea) {
+        const key = textarea.dataset.metacogKey;
+        const store = getMetacogStorage();
+        const data = store[key] || { tags: [] };
+        data.note = textarea.value;
+        saveMetacogData(key, data);
+        showMetacogSaved(key);
+    };
+
+    function showMetacogSaved(key) {
+        const id = 'metacog-saved-' + key.replace(/[^a-zA-Z0-9_]/g, '_');
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = '✓ 저장됨';
+        el.classList.add('show');
+        clearTimeout(el._timeout);
+        el._timeout = setTimeout(() => { el.classList.remove('show'); }, 1500);
     }
 
     function navStudy(dir) {
@@ -1351,6 +1437,7 @@
         <div class="kml-chips">${kwEmojis}</div>
       </div>` : ''}
       <div class="keyword-grade-list">${renderKeywordGradeChips(keywordProfile)}</div>
+      ${renderMetacogPanel('metacog_ox_' + item.questionId + '_' + STATE.oxIndex, STATE.oxResponseSec[key] || 0)}
     </div>`;
         }
         html += `</div>`;

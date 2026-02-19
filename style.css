@@ -978,15 +978,163 @@ body {
     box-shadow: 0 0 8px rgba(16, 185, 129, 0.2);
 }
 
-/* 문제별 키워드 하이라이트 (형광펜 스타일) */
+/* 문제별 키워드 하이라이트 (부드러운 언더라인 그라데이션) */
 .keyword-highlight {
-    background: linear-gradient(180deg, transparent 50%, rgba(245, 158, 11, 0.35) 50%);
-    color: #fde68a;
-    border-bottom: 2px solid rgba(245, 158, 11, 0.6);
-    padding: 0 1px;
-    border-radius: 2px;
+    background: linear-gradient(180deg, transparent 65%, rgba(99, 220, 190, 0.22) 65%);
+    color: #a7f3d0;
+    border-bottom: 1.5px solid rgba(99, 220, 190, 0.45);
+    padding: 0 2px;
+    margin: 0 -1px;
+    border-radius: 3px;
+    font-weight: 600;
+    text-shadow: none;
+    transition: background 0.2s, border-color 0.2s;
+    display: inline;
+    line-height: inherit;
+}
+
+.keyword-highlight:hover {
+    background: linear-gradient(180deg, transparent 50%, rgba(99, 220, 190, 0.35) 50%);
+    border-bottom-color: rgba(99, 220, 190, 0.7);
+}
+
+/* O선지 하이라이트 (정답인 내용) */
+.choice-ox-true .keyword-highlight {
+    background: linear-gradient(180deg, transparent 65%, rgba(52, 211, 153, 0.18) 65%);
+    color: #6ee7b7;
+    border-bottom-color: rgba(52, 211, 153, 0.4);
+}
+
+/* X선지 하이라이트 (틀린 내용) */
+.choice-ox-false .keyword-highlight {
+    background: linear-gradient(180deg, transparent 65%, rgba(251, 113, 133, 0.18) 65%);
+    color: #fda4af;
+    border-bottom-color: rgba(251, 113, 133, 0.4);
+}
+
+/* ===== 메타인지 태깅 시스템 ===== */
+.metacog-panel {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: rgba(30, 30, 50, 0.5);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+}
+
+.metacog-title {
+    font-size: 13px;
     font-weight: 700;
-    text-shadow: 0 0 8px rgba(245, 158, 11, 0.2);
+    color: #a5b4fc;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.metacog-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.metacog-tag {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    background: rgba(55, 55, 80, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 12px;
+    color: var(--text-muted);
+    user-select: none;
+}
+
+.metacog-tag:hover {
+    border-color: rgba(129, 140, 248, 0.5);
+    background: rgba(67, 56, 202, 0.2);
+}
+
+.metacog-tag.active {
+    border-color: rgba(129, 140, 248, 0.7);
+    background: rgba(67, 56, 202, 0.35);
+    color: #c7d2fe;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.15);
+}
+
+.metacog-tag input[type="checkbox"] {
+    display: none;
+}
+
+.metacog-tag .tag-check {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1.5px solid rgba(148, 163, 184, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    transition: all 0.2s;
+}
+
+.metacog-tag.active .tag-check {
+    background: rgba(99, 102, 241, 0.7);
+    border-color: rgba(129, 140, 248, 0.8);
+}
+
+.metacog-note {
+    width: 100%;
+    background: rgba(30, 30, 50, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    padding: 8px 12px;
+    resize: vertical;
+    min-height: 36px;
+    max-height: 80px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.metacog-note::placeholder {
+    color: rgba(148, 163, 184, 0.4);
+}
+
+.metacog-note:focus {
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+.metacog-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 6px;
+    font-size: 11px;
+    color: #fbbf24;
+    margin-left: 8px;
+}
+
+.metacog-saved {
+    font-size: 11px;
+    color: rgba(52, 211, 153, 0.7);
+    margin-top: 6px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.metacog-saved.show {
+    opacity: 1;
 }
 
 /* === ANSWER PANEL === */

@@ -360,6 +360,406 @@ const ADMIN_QUESTIONS_SUPPLEMENT = [
         answer: 3,
         subject: '행정학',
         sourceCategory: '핵심누락 보충(국가직9급형)'
+    },
+    {
+        id: 9120,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH04',
+        topic: '예산제도(품목별·성과주의·PPBS·ZBB)',
+        importance: 'S',
+        question: '예산제도에 대한 설명으로 옳지 않은 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '영기준 예산제도는 점증주의를 극복하기 위한 경제적 합리성에 초점을 둔 제도이다.', ox: true, what: ['H'], keywords: ['영기준 예산', '점증주의 극복'], stamp: ['H'] },
+            { num: 2, text: '품목별 예산제도는 지출대상을 품목별로 분류해서 지출대상과 한계를 규정하는 제도이다.', ox: true, what: ['H'], keywords: ['품목별 예산'], stamp: ['H'] },
+            { num: 3, text: '성과주의 예산제도는 투입 요소 중심이 아니라 성과를 중심으로 예산을 운용하는 제도이다.', ox: true, what: ['H'], keywords: ['성과주의 예산'], stamp: ['H'] },
+            { num: 4, text: '계획 예산제도는 계획에 기반한 상향식 접근을 선택하여 재원 배분 권한의 분권화를 강조하는 제도이다.', ox: false, what: ['A', 'T'], keywords: ['계획 예산', '상향식', '분권화', 'PPBS'], stamp: ['A', 'T'] }
+        ],
+        answer: 4,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['영기준 예산', 'ZBB', '품목별 예산', '성과주의 예산', '계획 예산', 'PPBS']
+    },
+    {
+        id: 9121,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH01',
+        topic: '정부실패(X-비효율성)',
+        importance: 'S',
+        question: '정부실패 원인 중 X-비효율성에 해당하는 것은?',
+        type: 'positive',
+        choices: [
+            { num: 1, text: '조직의 비공식적 목표가 공식적 목표를 대체하는 현상', ox: false, what: ['A'], keywords: ['목표대치'], stamp: ['A'] },
+            { num: 2, text: '공공서비스의 편익 향유와 비용 부담 주체의 분리', ox: false, what: ['A'], keywords: ['비용편익 분리'], stamp: ['A'] },
+            { num: 3, text: '조직이 내부 특성으로 인해 최소비용에 의한 이윤극대화라는 효율성을 달성하지 못하는 상태', ox: true, what: ['H'], keywords: ['X-비효율성', '최소비용', '이윤극대화'], stamp: ['H'] },
+            { num: 4, text: '정부개입에 의해 발생하는 인위적 지대를 획득하기 위해 자원을 낭비하는 현상', ox: false, what: ['A'], keywords: ['지대추구'], stamp: ['A'] }
+        ],
+        answer: 3,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['X-비효율성', '목표대치', '비용편익 분리', '지대추구']
+    },
+    {
+        id: 9122,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH04',
+        topic: '특별회계',
+        importance: 'A',
+        question: '특별회계에 대한 설명으로 옳은 것은?',
+        type: 'positive',
+        choices: [
+            { num: 1, text: '예산총계주의 원칙의 예외에 해당한다.', ox: true, what: ['H'], keywords: ['특별회계', '예산총계주의 예외'], stamp: ['H'] },
+            { num: 2, text: '양곡관리특별회계, 조달특별회계 등이 있다.', ox: false, what: ['T'], keywords: ['양곡관리', '조달'], stamp: ['T'] },
+            { num: 3, text: '재정에 대한 외부통제가 용이하나 재정운영의 자율성을 침해한다는 단점이 있다.', ox: false, what: ['A'], keywords: ['외부통제 용이'], stamp: ['A'] },
+            { num: 4, text: '법령에 따라 국가가 지급하여야 하는 지출이 발생하거나 증가하는 경우 설치할 수 있다.', ox: false, what: ['T'], keywords: ['의무지출'], stamp: ['T'] }
+        ],
+        answer: 1,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['특별회계', '예산총계주의', '양곡관리', '조달특별회계']
+    },
+    {
+        id: 9123,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH01',
+        topic: '행태론적 접근방법',
+        importance: 'A',
+        question: '행태론적 접근방법에 대한 설명으로 옳지 않은 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '사회현상에 대한 분석도 자연과학과 마찬가지로 엄밀한 과학적 연구가 가능하다고 본다.', ox: true, what: ['H'], keywords: ['과학적 연구', '자연과학'], stamp: ['H'] },
+            { num: 2, text: '자료의 계량적 분석을 특징으로 한다.', ox: true, what: ['H'], keywords: ['계량적 분석'], stamp: ['H'] },
+            { num: 3, text: '행태의 규칙성, 상관성 및 인과성을 경험적으로 입증하고 설명할 수 있다고 본다.', ox: true, what: ['H'], keywords: ['규칙성', '인과성', '경험적 입증'], stamp: ['H'] },
+            { num: 4, text: '가치와 사실의 분리를 통해 급박한 정책문제 해결을 위한 역할을 하고 학문의 실천적 성격을 회복하였다.', ox: false, what: ['A', 'T'], keywords: ['행태론', '가치 사실 분리', '실천적 성격'], stamp: ['A', 'T'] }
+        ],
+        answer: 4,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['행태론', '계량적 분석', '가치 사실 분리', '경험적 입증']
+    },
+    {
+        id: 9124,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH07',
+        topic: '행정통제',
+        importance: 'A',
+        question: '행정통제에 대한 설명으로 옳지 않은 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '정당은 공식적 통제 기능을 수행한다.', ox: false, what: ['A', 'T'], keywords: ['정당', '공식적 통제'], stamp: ['A', 'T'] },
+            { num: 2, text: '감사원의 회계 검사는 내부통제 방식이다.', ox: true, what: ['H'], keywords: ['감사원', '내부통제'], stamp: ['H'] },
+            { num: 3, text: '통제상황에 맞는 통제과정의 신축성이 필요하다.', ox: true, what: ['H'], keywords: ['통제과정', '신축성'], stamp: ['H'] },
+            { num: 4, text: '통제는 책임 이행을 보장하려는 활동이다.', ox: true, what: ['H'], keywords: ['책임 이행'], stamp: ['H'] }
+        ],
+        answer: 1,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['행정통제', '정당', '감사원', '내부통제', '외부통제']
+    },
+    {
+        id: 9125,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH05',
+        topic: '정책학(라스웰 특성)',
+        importance: 'A',
+        question: '라스웰(Lasswell)이 주장한 정책학의 특성에 해당하지 않는 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '합법성(legitimacy)', ox: false, what: ['T'], keywords: ['합법성'], stamp: ['T'] },
+            { num: 2, text: '맥락성(contextuality)', ox: true, what: ['W'], keywords: ['맥락성', '라스웰'], stamp: ['W'] },
+            { num: 3, text: '방법의 다양성(diversity)', ox: true, what: ['W'], keywords: ['방법의 다양성'], stamp: ['W'] },
+            { num: 4, text: '문제지향성(problem-orientation)', ox: true, what: ['W'], keywords: ['문제지향성'], stamp: ['W'] }
+        ],
+        answer: 1,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['라스웰', '정책학', '맥락성', '방법의 다양성', '문제지향성', '합법성']
+    },
+    {
+        id: 9126,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH02',
+        topic: '애드호크라시(adhocracy)',
+        importance: 'A',
+        question: '애드호크라시(adhocracy)의 특성으로 옳지 않은 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '형식주의나 공식성에 얽매이지 않는다.', ox: true, what: ['H'], keywords: ['비형식적', '비공식성'], stamp: ['H'] },
+            { num: 2, text: '수평적 분화가 낮고 수직적 분화가 높다.', ox: false, what: ['A', 'T'], keywords: ['수평적 분화', '수직적 분화', '애드호크라시'], stamp: ['A', 'T'] },
+            { num: 3, text: '업무 수행 상황에 대한 탄력적 대응을 강조하기 때문에 규칙을 최소화한다.', ox: true, what: ['H'], keywords: ['탄력적 대응', '규칙 최소화'], stamp: ['H'] },
+            { num: 4, text: '상황에 대한 신속한 대응을 강조하기 때문에 문제해결의 전문성을 가진 사람이 참여한다.', ox: true, what: ['H'], keywords: ['신속한 대응', '전문성'], stamp: ['H'] }
+        ],
+        answer: 2,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['애드호크라시', '수평적 분화', '수직적 분화', '탄력적 대응']
+    },
+    {
+        id: 9127,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH05',
+        topic: '정책결정모형 짝짓기',
+        importance: 'S',
+        question: '정책결정 모형과 그 특징이 바르게 짝지어진 것은?',
+        type: 'positive',
+        choices: [
+            { num: 1, text: '최적모형: 각 대안의 비용과 편익 계산 + 근본적·세부적 결정 구분', ox: false, what: ['T'], keywords: ['최적모형'], stamp: ['T'] },
+            { num: 2, text: '합리모형: 모든 비용과 편익 계산 + 가치·목적의 서열화', ox: true, what: ['H'], keywords: ['합리모형', '비용편익', '서열화'], stamp: ['H'] },
+            { num: 3, text: '만족모형: 근본적·세부적 결정 구분 + 제한된 합리성', ox: false, what: ['A'], keywords: ['만족모형'], stamp: ['A'] },
+            { num: 4, text: '회사모형: 제한된 합리성 + 가치·목적의 서열화', ox: false, what: ['A'], keywords: ['회사모형'], stamp: ['A'] }
+        ],
+        answer: 2,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['합리모형', '최적모형', '만족모형', '회사모형']
+    },
+    {
+        id: 9128,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH09',
+        topic: '규제관리제도',
+        importance: 'A',
+        question: '규제관리제도에 대한 설명으로 옳지 않은 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '규제등록제는 정부가 관리대상 규제를 등록하는 방법이다.', ox: true, what: ['H'], keywords: ['규제등록제'], stamp: ['H'] },
+            { num: 2, text: '규제유예제는 규제의 효력을 한시적으로 중지해 규제 적용을 유예하는 방법이다.', ox: true, what: ['H'], keywords: ['규제유예제'], stamp: ['H'] },
+            { num: 3, text: '규제일몰제는 규제의 존속기간을 정해 기존 규제의 타당성을 주기적으로 관리하는 방법이다.', ox: true, what: ['H'], keywords: ['규제일몰제'], stamp: ['H'] },
+            { num: 4, text: '규제비용관리제는 규제의 총량을 정하고 규제의 건수가 그 이하로 감소하지 않도록 관리하는 방법이다.', ox: false, what: ['A', 'T'], keywords: ['규제비용관리제', '규제총량'], stamp: ['A', 'T'] }
+        ],
+        answer: 4,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['규제등록제', '규제유예제', '규제일몰제', '규제비용관리제']
+    },
+    {
+        id: 9129,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH04',
+        topic: '기금제도',
+        importance: 'A',
+        question: '기금제도에 대한 설명으로 옳지 않은 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '국가가 특정한 목적을 위하여 특정한 자금을 신축적으로 운용할 필요가 있을 때 설치한다.', ox: true, what: ['H'], keywords: ['기금', '신축적 운용'], stamp: ['H'] },
+            { num: 2, text: '예산과 마찬가지로 국회의 심의·의결을 받는다.', ox: true, what: ['H'], keywords: ['국회 심의·의결'], stamp: ['H'] },
+            { num: 3, text: '국가재정법상 세입세출예산에 의하지 아니하고 운용할 수 없도록 하고 있다.', ox: false, what: ['A', 'T'], keywords: ['세입세출예산', '기금 운용'], stamp: ['A', 'T'] },
+            { num: 4, text: '기금운용계획안을 제출할 때 기금의 성과계획서 및 성과보고서를 함께 제출하여야 한다.', ox: true, what: ['H'], keywords: ['성과계획서', '기금운용계획안'], stamp: ['H'] }
+        ],
+        answer: 3,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['기금', '신축적 운용', '세입세출예산', '국회 심의·의결']
+    },
+    {
+        id: 9130,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH01',
+        topic: '학자 매칭(마리니·굿노·덴하르트)',
+        importance: 'S',
+        question: '학자에 대한 설명으로 옳은 것만을 모두 고른 것은?',
+        type: 'positive',
+        choices: [
+            { num: 1, text: '마리니(Marini): 사회적 형평성 강조 / 굿노(Goodnow): 정치와 행정의 유사성 강조', ox: false, what: ['W'], keywords: ['마리니', '굿노'], stamp: ['W'] },
+            { num: 2, text: '마리니(Marini): 사회적 형평성 강조 / 덴하르트(Denhardt): 봉사하기 강조', ox: false, what: ['W'], keywords: ['마리니', '덴하르트'], stamp: ['W'] },
+            { num: 3, text: '덴하르트(Denhardt): 봉사하기 강조 / 코헨·올슨: 쓰레기통 모형', ox: true, what: ['W'], keywords: ['덴하르트', '봉사', '코헨', '올슨', '쓰레기통'], stamp: ['W'] },
+            { num: 4, text: '굿노(Goodnow): 정치행정이원론 / 코헨·올슨: 합리모형', ox: false, what: ['W', 'T'], keywords: ['굿노', '정치행정이원론', '합리모형'], stamp: ['W', 'T'] }
+        ],
+        answer: 3,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['마리니', '굿노', '덴하르트', '코헨', '올슨', '정치행정이원론']
+    },
+    {
+        id: 9131,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH05',
+        topic: '정책집행(순응과 불응)',
+        importance: 'A',
+        question: '정책집행과정에서 순응과 불응에 대한 설명으로 옳지 않은 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '정책집행을 담당하는 일선 관료도 순응의 대상이다.', ox: true, what: ['H'], keywords: ['일선 관료', '순응'], stamp: ['H'] },
+            { num: 2, text: '정책대상집단의 경제적 부담은 불응을 초래하기 쉽다.', ox: true, what: ['H'], keywords: ['경제적 부담', '불응'], stamp: ['H'] },
+            { num: 3, text: '정책의 내용에 대한 긍정적 판단은 순응을 유도하는 요인이다.', ox: true, what: ['H'], keywords: ['긍정적 판단', '순응 유도'], stamp: ['H'] },
+            { num: 4, text: '던칸(Duncan)은 정책대상집단의 내면적 가치관의 변화를 순응에 포함한다.', ox: false, what: ['W', 'T'], keywords: ['던칸', '내면적 가치관', '순응'], stamp: ['W', 'T'] }
+        ],
+        answer: 4,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['순응', '불응', '일선 관료', '던칸', '정책대상집단']
+    },
+    {
+        id: 9132,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH02',
+        topic: '파킨슨 법칙',
+        importance: 'A',
+        question: '파킨슨(C. Parkinson) 법칙에 해당하는 것은?',
+        type: 'positive',
+        choices: [
+            { num: 1, text: '본질적인 업무는 그대로인데, 파생적인 업무가 늘어난다.', ox: true, what: ['H'], keywords: ['파생적 업무'], stamp: ['H'] },
+            { num: 2, text: '공무원은 금전적 효용보다는 직무에 관련한 개인적 효용을 추구한다.', ox: false, what: ['A'], keywords: ['개인적 효용', '다운스'], stamp: ['A'] },
+            { num: 3, text: '자신의 무능력 수준에 이를 때까지 승진하게 된다.', ox: false, what: ['A'], keywords: ['피터 원리'], stamp: ['A'] },
+            { num: 4, text: '공무원의 수는 업무량과 관계없이 증가한다.', ox: true, what: ['H'], keywords: ['파킨슨 법칙', '업무량 무관', '공무원 수 증가'], stamp: ['H'] }
+        ],
+        answer: 4,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['파킨슨 법칙', '피터 원리', '파생적 업무', '업무량 무관']
+    },
+    {
+        id: 9133,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH01',
+        topic: '보몰효과(Baumol effect)',
+        importance: 'A',
+        question: '정부지출 증가를 설명하는 이론 중 보몰효과(Baumol effect)에 해당하는 것은?',
+        type: 'positive',
+        choices: [
+            { num: 1, text: '정부 부문은 저자본 노동집약적 서비스 산업이어서 민간 부문에 비해 생산성이 낮고, 임금 인상이 정부지출을 증가시킨다.', ox: true, what: ['H'], keywords: ['보몰효과', '노동집약적', '생산성', '임금상승'], stamp: ['H'] },
+            { num: 2, text: '위기 시 정부지출이 급증한 후 이전 수준으로 완전히 돌아가지 않는다.', ox: false, what: ['A'], keywords: ['전위효과'], stamp: ['A'] },
+            { num: 3, text: '산업화가 진행될수록 국가활동과 재정규모가 확대된다.', ox: false, what: ['A'], keywords: ['바그너 법칙'], stamp: ['A'] },
+            { num: 4, text: '나쁜 화폐가 좋은 화폐를 시장에서 구축한다.', ox: false, what: ['A'], keywords: ['그레셤 법칙'], stamp: ['A'] }
+        ],
+        answer: 1,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['보몰효과', '전위효과', '바그너 법칙', '그레셤 법칙']
+    },
+    {
+        id: 9134,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH08',
+        topic: '데이터 3법',
+        importance: 'S',
+        question: '데이터 3법에 속하지 않는 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '개인정보 보호법', ox: true, what: ['H'], keywords: ['개인정보 보호법'], stamp: ['H'] },
+            { num: 2, text: '신용정보의 이용 및 보호에 관한 법률', ox: true, what: ['H'], keywords: ['신용정보법'], stamp: ['H'] },
+            { num: 3, text: '데이터 산업진흥 및 이용촉진에 관한 기본법', ox: false, what: ['T'], keywords: ['데이터산업진흥법'], stamp: ['T'] },
+            { num: 4, text: '정보통신망 이용촉진 및 정보보호 등에 관한 법률', ox: true, what: ['H'], keywords: ['정보통신망법'], stamp: ['H'] }
+        ],
+        answer: 3,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['데이터 3법', '개인정보 보호법', '신용정보법', '정보통신망법']
+    },
+    {
+        id: 9135,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH03',
+        topic: '순환보직',
+        importance: 'A',
+        question: '순환보직에 대한 설명으로 옳지 않은 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '배치전환이라고도 하며 외부임용 중 하나이다.', ox: false, what: ['A', 'T'], keywords: ['순환보직', '외부임용', '내부임용'], stamp: ['A', 'T'] },
+            { num: 2, text: '기관이 수행하는 다양한 업무에 대한 이해를 가능하게 한다.', ox: true, what: ['H'], keywords: ['다양한 업무', '이해'], stamp: ['H'] },
+            { num: 3, text: '특정 분야에서 전문성 축적을 어렵게 한다.', ox: true, what: ['H'], keywords: ['전문성 축적', '어려움'], stamp: ['H'] },
+            { num: 4, text: '조직단위에서 새로운 아이디어의 유입을 기대할 수 있다.', ox: true, what: ['H'], keywords: ['새로운 아이디어'], stamp: ['H'] }
+        ],
+        answer: 1,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['순환보직', '배치전환', '내부임용', '전문성']
+    },
+    {
+        id: 9136,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH03',
+        topic: '시보임용',
+        importance: 'S',
+        question: '시보임용에 대한 설명으로 옳은 것은?',
+        type: 'positive',
+        choices: [
+            { num: 1, text: '5급 이상 모든 공무원은 1년의 시보임용 기간을 거친다.', ox: false, what: ['T'], keywords: ['5급 이상', '1년'], stamp: ['T'] },
+            { num: 2, text: '시보임용 기간 중에 있는 공무원은 훈련을 받는 기간 동안 봉급이 지급되지 않는다.', ox: false, what: ['A'], keywords: ['봉급 미지급'], stamp: ['A'] },
+            { num: 3, text: '임용권자는 시보임용 기간 중에 품위를 크게 손상하는 행위를 한 경우 시보 공무원을 면직시킬 수 있다.', ox: true, what: ['H'], keywords: ['시보', '면직', '품위 손상'], stamp: ['H'] },
+            { num: 4, text: '6급 이하 임기제 공무원의 시보임용 기간은 6개월이다.', ox: false, what: ['T'], keywords: ['임기제', '시보', '6개월'], stamp: ['T'] }
+        ],
+        answer: 3,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['시보임용', '5급', '6급', '면직', '임기제']
+    },
+    {
+        id: 9137,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH05',
+        topic: '정책델파이 기법',
+        importance: 'B',
+        question: '정책델파이(policy delphi) 기법에 대한 설명으로 옳은 것은?',
+        type: 'positive',
+        choices: [
+            { num: 1, text: '참여자의 주관적 판단에 의존하기 때문에 통계 수치를 활용하지 않는다.', ox: false, what: ['A'], keywords: ['통계 미활용'], stamp: ['A'] },
+            { num: 2, text: '참여자들의 익명성을 철저히 보장하여 의견의 자유로운 표현을 유도한다.', ox: false, what: ['A'], keywords: ['익명성', '정책델파이'], stamp: ['A'] },
+            { num: 3, text: '참여자들은 전문성 자체보다 다양한 이해관계와 식견을 가진 인물 중심으로 구성된다.', ox: true, what: ['H'], keywords: ['다양한 이해관계', '식견'], stamp: ['H'] },
+            { num: 4, text: '참여자 간 갈등을 최대한 억제하며 합의된 의견의 도출을 지향한다.', ox: false, what: ['A'], keywords: ['갈등 억제', '합의'], stamp: ['A'] }
+        ],
+        answer: 3,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['정책델파이', '익명성', '다양한 이해관계', '갈등']
+    },
+    {
+        id: 9138,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH04',
+        topic: '조세지출(tax expenditure)',
+        importance: 'A',
+        question: '조세지출에 대한 설명으로 옳지 않은 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '우리나라에서는 지출 항목별 평가 등을 통해 국회의 심의와 의결을 받고 있다.', ox: false, what: ['A', 'T'], keywords: ['조세지출', '국회 심의'], stamp: ['A', 'T'] },
+            { num: 2, text: '세법상의 비과세, 감면, 공제 등 다양한 형태로 이루어진다.', ox: true, what: ['H'], keywords: ['비과세', '감면', '공제'], stamp: ['H'] },
+            { num: 3, text: '정부가 실제로 지출하지 않고도 지출과 유사한 효과를 얻을 수 있다.', ox: true, what: ['H'], keywords: ['간접 지출', '유사 효과'], stamp: ['H'] },
+            { num: 4, text: '감추어진 보조금(hidden subsidies)이라고도 한다.', ox: true, what: ['H'], keywords: ['감추어진 보조금'], stamp: ['H'] }
+        ],
+        answer: 1,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['조세지출', '비과세', '감면', '감추어진 보조금']
+    },
+    {
+        id: 9139,
+        year: 2025,
+        exam: '국가직',
+        chapter: 'CH01',
+        topic: '준정부기관',
+        importance: 'A',
+        question: '준정부기관에 대한 설명으로 옳지 않은 것은?',
+        type: 'negative',
+        choices: [
+            { num: 1, text: '시장성과 기업성이 강한 업무를 수행함으로써 정부에 재정적으로 의존하지 않는다.', ox: false, what: ['A', 'T'], keywords: ['준정부기관', '시장성', '재정적 불의존'], stamp: ['A', 'T'] },
+            { num: 2, text: '공무원연금공단, 한국연구재단, 국립생태원 등이 있다.', ox: true, what: ['H'], keywords: ['공무원연금공단', '한국연구재단'], stamp: ['H'] },
+            { num: 3, text: '준정부기관의 장은 임원추천위원회가 복수로 추천한 사람 중에서 주무기관의 장이 임명한다.', ox: true, what: ['H'], keywords: ['임원추천위원회'], stamp: ['H'] },
+            { num: 4, text: '정부조직이 아니면서 정부로부터 권한을 위임받아 공공서비스를 전달한다.', ox: true, what: ['H'], keywords: ['권한 위임', '공공서비스'], stamp: ['H'] }
+        ],
+        answer: 1,
+        subject: '행정학',
+        sourceCategory: '25년 7급 기출 선별(9급 빈출)',
+        keywords: ['준정부기관', '공무원연금공단', '임원추천위원회', '공공서비스']
     }
 ];
 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>학습기록 리포트</title>
+  <meta name="description" content="과목별 일일 학습량·정확도·속도·메타인지 기록 리포트">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-orbs"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-logo"><span class="logo-icon">📒</span>학습기록 리포트</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <label for="subjectSwitch" style="font-size:12px;color:var(--text-muted);font-weight:700;">이동</label>
+        <select id="subjectSwitch" class="filter-select" style="padding:6px 10px;border-radius:10px;font-size:12px;font-weight:700;width:auto;">
+          <option value="journal" selected>학습기록</option>
+          <option value="law">행정법</option>
+          <option value="admin">행정학</option>
+          <option value="kor">국어</option>
+          <option value="eng">영어</option>
+          <option value="his">한국사</option>
+        </select>
+      </div>
+      <div class="dday-badge" id="recordDateBadge">기록</div>
+      <nav class="nav-tabs" id="navTabs">
+        <button class="nav-tab active" data-page="daily">📅 일일기록</button>
+        <button class="nav-tab" data-page="range">📈 최근7일</button>
+        <button class="nav-tab" data-page="guide">📘 운용가이드</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="page active" id="page-daily">
+      <div class="q-card">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">날짜 선택</h3>
+        <div class="journal-date-row">
+          <button class="btn btn-secondary" id="goTodayBtn">오늘로 이동</button>
+          <span class="scope-note" id="focusSubjectNote"></span>
+        </div>
+        <div id="dateChips" class="journal-date-chips"></div>
+      </div>
+
+      <div class="dash-grid" style="margin-top:12px;">
+        <div class="stat-card">
+          <div class="stat-label">총 풀이</div>
+          <div class="stat-value" id="dailyAttempts">0</div>
+          <div class="stat-sub">선택/판단 횟수</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">정확도</div>
+          <div class="stat-value" id="dailyAccuracy">--%</div>
+          <div class="stat-sub">채점가능 문항 기준</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">총 학습시간</div>
+          <div class="stat-value" id="dailyTime">0m</div>
+          <div class="stat-sub">선택까지 소요</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">지연 문항</div>
+          <div class="stat-value" id="dailySlow">0</div>
+          <div class="stat-sub">속도개선 필요</div>
+        </div>
+      </div>
+
+      <div class="q-card" style="margin-top:12px;">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">과목별 학습 리포트</h3>
+        <div id="subjectReport" class="journal-subject-grid"></div>
+      </div>
+
+      <div class="q-card" style="margin-top:12px;">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">메타인지 신호</h3>
+        <div id="metaInsightBoard"></div>
+      </div>
+
+      <div class="q-card" style="margin-top:12px;">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">연속 인출 플랜</h3>
+        <div id="retrievalPlan"></div>
+      </div>
+
+      <div class="q-card" style="margin-top:12px;">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">최근 학습 로그</h3>
+        <div id="eventTimeline" class="journal-timeline"></div>
+      </div>
+    </div>
+
+    <div class="page" id="page-range">
+      <div class="q-card">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">최근 7일 압축 추이</h3>
+        <div id="rangeSummary"></div>
+      </div>
+      <div class="q-card" style="margin-top:12px;">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">일자별 기록</h3>
+        <div id="rangeRows"></div>
+      </div>
+    </div>
+
+    <div class="page" id="page-guide">
+      <div class="q-card">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">완벽 반응이 안 되는 문제 처리 규칙</h3>
+        <div class="guide-list">
+          <div>1. 틀림 또는 지연(기준초과) 즉시 <strong>복습 큐</strong>로 보냅니다.</div>
+          <div>2. 느린 이유를 1개 이상 태그합니다: 개념, 함정문구, 비교축, 순서혼동, 어휘부족.</div>
+          <div>3. 같은 문항을 24시간 내 1회, 72시간 내 1회 재인출해 반응시간을 줄입니다.</div>
+          <div>4. 2회 이상 동일 오류면 유사문항 3개를 연속 풀이해 패턴을 끊습니다.</div>
+          <div>5. 시험 직전엔 과목별 상위 지연·오답만 압축 반복합니다.</div>
+        </div>
+      </div>
+      <div class="q-card" style="margin-top:12px;">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:10px;">시간 부족 상황 권장 루틴</h3>
+        <div class="guide-list">
+          <div>1. 오전 25분: 전과목 복습 큐 우선 20문.</div>
+          <div>2. 오후 25분: 당일 틀림/지연 과목만 집중 20문.</div>
+          <div>3. 밤 20분: OX 속도훈련으로 인출 고정.</div>
+          <div>4. 종료 5분: 오늘 최다 오류 태그 1개만 암기노트로 압축.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="study-journal.js"></script>
+  <script src="journal-app.js"></script>
+</body>
+</html>

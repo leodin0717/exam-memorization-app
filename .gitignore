@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+*.tmp
+*.swp
+*.swo
+node_modules/
+
+# local artifacts
+reports/.icloud_sync_check.txt
+
+# optional: large generated analysis outputs (keep if needed)
+# analysis/*.json
+# analysis/*.md

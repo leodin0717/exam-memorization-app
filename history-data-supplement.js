@@ -1,0 +1,6044 @@
+// 한국사 PDF 기반 시드 데이터
+const HISTORY_SOURCE_SEEDS = {
+  "generatedAt": "2026-02-19",
+  "sources": [
+    {
+      "file": "250405 국가 9급 한국사-나.pdf",
+      "exists": true,
+      "year": 2025,
+      "exam": "국가직",
+      "weight": 1.0,
+      "detected_questions": 20,
+      "stems": [
+        {
+          "no": 1,
+          "text": "다음 설명에 해당하는 문화유산은? 고래 잡는 사람, 호랑이, 사슴, 물을 뿜고 있는 고래, 작살이 꽂혀 있는 고래 등이 바위에 묘사되어 있다. 당시 이 지역 사람들의 생활 모습과 신앙, 예술 세계를 이해하는 데 중요한 자료이며 국보로 지정되어 있다.",
+          "type": "factual"
+        },
+        {
+          "no": 2,
+          "text": "(가)에 해당하는 기구는? (가) 은/는 원래 여진족과 왜구의 침입에 대비하기 위해 만든 임시회의 기구였다. 임진왜란을 거치면서 전ㆍ현직 정승을 비롯한 주요 관원이 참여하였고, 군사 문제뿐 아니라 외교, 재정, 인사 등 국정 전반을 다루었다. 이로 인해 의정부와 6조의 기능이 축소되었다.",
+          "type": "factual"
+        },
+        {
+          "no": 3,
+          "text": "밑줄 친 ‘이 나라’에 대한 설명으로 옳은 것은? 이 나라는 고구려의 옛 땅이다. … (중략) … 곳곳에 촌락이 있는데 모두 말갈의 부락이다. 그 백성은 말갈이 많고 토인 (土人)이 적은데, 모두 토인을 촌장으로 삼는다. － 유취국사 －",
+          "type": "factual"
+        },
+        {
+          "no": 4,
+          "text": "다음 업적이 있는 왕의 재위 기간에 볼 수 있는 모습은? ○ 우리 풍토에 맞는 농서인 농사직설을 편찬하였다. ○ 최윤덕과 김종서를 파견하여 4군 6진을 개척하였다.",
+          "type": "sameEra"
+        },
+        {
+          "no": 5,
+          "text": "밑줄 친 ‘왕’의 재위 기간에 있었던 사실로 옳은 것은? 왕이 신돈에게 국정을 맡겼다. 신돈은 힘있는 자들이 나라의 토지와 약한 자들의 토지를 모두 빼앗고 양민을 자신들의 노비로 삼고 있는 현실을 지적하였다. 그리고 관청을 만들어 그 문제를 개혁하려고 했다.",
+          "type": "sameEra"
+        },
+        {
+          "no": 6,
+          "text": "밑줄 친 ‘이곳’에 대한 설명으로 옳은 것은? ○ 이곳의 고인돌 유적은 유네스코 세계문화유산에 등재되었다. ○ 고려 정부는 이곳으로 천도하여 몽골의 침략에 대항하였다.",
+          "type": "factual"
+        },
+        {
+          "no": 7,
+          "text": "다음 설명에 해당하는 기구는? 개항 이후 정세 변화에 대응하여 개혁을 추진하기 위해 설립된 기구로 외교, 군사 등 개화와 관련된 정책을 총괄하였다. 또한 그 아래 12사를 두어 실무를 담당하게 하였다.",
+          "type": "after"
+        },
+        {
+          "no": 8,
+          "text": "다음 사건 발생 이후에 있었던 사실로 옳은 것은? 노비 만적 등 6인이 개경의 북산에서 나무하다가 공노비와 사노비들을 불러 모의하기를, “정중부의 반란과 김보당의 반란 이후로 고관이 천민과 노비에서 많이 나왔다. 장상(將相)의 씨가 따로 있으랴!”라고 하였다.",
+          "type": "after"
+        },
+        {
+          "no": 9,
+          "text": "밑줄 친 ‘그’에 대한 설명으로 옳은 것은? 그는 양반전을 지어 양반 사회의 허위의식을 고발하였다. 그는 상공업 진흥에도 관심을 기울여 수레와 선박의 이용 등에 대해서도 주목하였다.",
+          "type": "factual"
+        },
+        {
+          "no": 10,
+          "text": "다음 사실이 있었던 왕대의 설명으로 옳은 것은? ○ 김흠돌의 난을 계기로 진골 귀족 세력 등을 숙청하였다. ○ 녹읍을 폐지하여 귀족의 경제적 기반을 약화하고자 하였다.",
+          "type": "factual"
+        },
+        {
+          "no": 11,
+          "text": "(가), (나) 사이 시기에 있었던 사실로 옳은 것은? (가) 왕이 보병과 기병 5만 명을 보내 신라를 구원하게 하였고, 이에 왜군이 퇴각하였다. (나) 백제 왕이 가야와 함께 관산성을 공격하였다. 신주군주 김무력이 나아가 교전을 벌였고, 비장인 도도가 백제 왕을 죽였다.",
+          "type": "between"
+        },
+        {
+          "no": 12,
+          "text": "다음 자료를 통해 알 수 있는 단체에 대한 설명으로 옳은 것은? 남만주로 집단 이주하려고 기도하고, 조선에서 상당한 재력이 있는 사람들을 그곳에 이주시켜 토지를 사들이고 촌락을 세워, … (중략) … 학교를 세워 민족 교육을 실시하고, 무관학교를 설립하여 문무를 겸하는 교육을 실시하면서, 기회를 엿보아 독립 전쟁을 일으켜 구한국의 국권을 회복하려고 하였다. － 105인 사건 판결문 －",
+          "type": "factual"
+        },
+        {
+          "no": 13,
+          "text": "밑줄 친 ‘왕’의 재위 기간에 있었던 사실로 옳은 것은? 영의정 이원익은 공물 제도가 방납인에 의한 폐단이 크며, 경기도가 특히 심하다고 생각하였다. 그래서 별도의 관청을 만들어 경기 지역 백성들에게 봄과 가을에 토지 1결마다 8두씩 쌀로 거두고, 이것을 방납인에게 주어 수시로 물품을 구입하여 납부하게 하자고 왕에게 건의하였다. 왕은 그 의견을 받아들였다.",
+          "type": "sameEra"
+        },
+        {
+          "no": 14,
+          "text": "밑줄 친 ‘이 개혁’의 내용으로 옳은 것은? 이 개혁에 따라 의정부를 내각으로, 8아문을 7부로 고쳤다. 또한 지방 8도는 23부로 개편하였다.",
+          "type": "factual"
+        },
+        {
+          "no": 15,
+          "text": "밑줄 친 ‘이 지역’에 있는 문화유산은? 백제는 5세기 고구려의 공격으로 한강 유역을 상실하면서 수도가 함락되어 이 지역으로 도읍을 옮겼다.",
+          "type": "factual"
+        },
+        {
+          "no": 16,
+          "text": "밑줄 친 ‘이 지역’에 대한 설명으로 옳은 것은? 이 지역에서 권업회라는 독립운동 단체가 조직되었고, 권업회는 국외 무장 독립 단체들을 모아 대한 광복군 정부라는 독립군 조직을 만들었다.",
+          "type": "factual"
+        },
+        {
+          "no": 17,
+          "text": "밑줄 친 ‘그’에 대한 설명으로 옳은 것은? 그는 문종의 넷째 아들인데, 출가하여 승려가 되었다. 송나라로 유학을 가서 화엄학과 천태학을 공부하였다. 이후 천태학을 부흥시켜 천태종을 창립하였다.",
+          "type": "after"
+        },
+        {
+          "no": 18,
+          "text": "다음 글을 쓴 인물에 대한 설명으로 옳은 것은? 대저 우리나라가 아시아의 중립국이 된다면 러시아를 방어하는 큰 기틀이 될 것이고, 또 아시아의 여러 대국이 서로 보전하는 정략도 될 것이다. … (중략) … 이는 비단 우리나라만을 위한 것이 아니라 중국의 이익도 될 것이고, 여러 나라가 서로 보전 하는 계책도 될 것이니 무엇이 괴로워서 하지 않겠는가.",
+          "type": "factual"
+        },
+        {
+          "no": 19,
+          "text": "다음 강령을 발표한 단체에 대한 설명으로 옳은 것은? 1. 부호의 의연금 및 일본인이 불법 징수하는 세금을 압수하여 무장을 준비한다. 6. 일본인 고관 및 한국인 반역자를 수시 수처에서 처단하는 행형부를 둔다. 7. 무력이 완비되는 대로 일본인 섬멸전을 단행하여 최후 목적의 달성을 기한다.",
+          "type": "factual"
+        },
+        {
+          "no": 20,
+          "text": "밑줄 친 ‘이 헌법’ 공포 이후에 있었던 사실로 옳은 것은? 제헌 국회는 “유구한 역사와 전통에 빛나는 우리들 대한국민은 기미 삼일운동으로 대한민국을 건립하여 세계에 선포한 위대한 독립정신을 계승하여 이제 민주독립국가를 재건함에 있어서” 라고 명시한 이 헌법을 공포하였다.",
+          "type": "after"
+        }
+      ]
+    },
+    {
+      "file": "250621 지방 9급 한국사-B.pdf",
+      "exists": true,
+      "year": 2025,
+      "exam": "지방직",
+      "weight": 0.88,
+      "detected_questions": 20,
+      "stems": [
+        {
+          "no": 1,
+          "text": "신석기시대에 대한 설명으로 옳은 것만을 모두 고르면? ㄱ. 갈돌과 갈판을 사용하여 곡물이나 열매를 갈았다. ㄴ. 반달돌칼을 사용하여 농작물을 수확하였다. ㄷ. 뼈바늘을 사용하여 옷이나 그물을 만들었다. ㄹ. 벼농사를 널리 짓게 되었다.",
+          "type": "factual"
+        },
+        {
+          "no": 2,
+          "text": "(가) 나라에 대한 설명으로 옳은 것은? 옛 (가) 의 풍속에는 비가 오는 것이 고르지 않아 곡식이 익지 않으면, 문득 왕에게 그 잘못을 돌려 “마땅히 바꾸어야 한다.” 또는 “마땅히 죽여야 한다.”라고 말하였다. － 삼국지 위서 동이전 －",
+          "type": "factual"
+        },
+        {
+          "no": 3,
+          "text": "다음 외교문서를 작성한 나라에 대한 설명으로 옳지 않은 것은? 무예가 알립니다. “고(구)려의 옛 터전을 회복하고, 부여의 유속(遺俗)을 가지게 되었습니다.”",
+          "type": "factual"
+        },
+        {
+          "no": 4,
+          "text": "밑줄 친 ‘국왕’의 업적으로 옳지 않은 것은? 이차돈이 국왕에게 아뢰기를 “신이 거짓으로 왕명을 전하였다고 문책하여 신의 머리를 베시면 만민이 모두 굴복하고 감히 왕명을 어기지 못할 것입니다.”라고 하였다. … (중략) … 옥리(獄吏)가 이차돈의 머리를 베니 하얀 젖이 한 길이나 솟았다.",
+          "type": "factual"
+        },
+        {
+          "no": 5,
+          "text": "(가) 시기에 일어난 고구려 관련 사건은?",
+          "type": "sameEra"
+        },
+        {
+          "no": 6,
+          "text": "(가) 국왕의 업적으로 옳지 않은 것은? (가) 은/는 김부(金傅)를 경주의 사심관으로 임명하여 부호장 (副戶長) 이하의 관직 등에 관한 일을 맡게 하였다. 이에 여러 공신들 역시 이를 본받아 자기 주(州)의 사심이 되었으니, 사심관이 이로부터 비롯되었다.",
+          "type": "factual"
+        },
+        {
+          "no": 7,
+          "text": "다음 대화가 오고 간 시기는? 소손녕: 그대 나라는 신라 땅에서 일어났고, 고구려 땅은 우리 땅인데 너희들이 쳐들어와 차지하였다. 서 희: 우리는 고구려를 계승하여 나라 이름을 고려라 하였다. 땅의 경계를 논한다면 그대 나라의 동경도 모두 우리 땅이다.",
+          "type": "sameEra"
+        },
+        {
+          "no": 8,
+          "text": "밑줄 친 ‘국왕’에 대한 설명으로 옳은 것은? 이달에 국왕이 친히 언문 28자를 지었는데, 그 글자는 옛 글자를 모방하였고, 초성ㆍ중성ㆍ종성으로 조합해야 한 음절이 이루어졌다. 무릇 문자로 기록한 것과 말로만 전해지는 것을 모두 쓸 수 있으며, 글자는 비록 쉽고 간단하지만 무궁무진한 표현이 가능하니, 이를 ‘훈민정음’이라고 한다.",
+          "type": "factual"
+        },
+        {
+          "no": 9,
+          "text": "(가) 인물에 대한 설명으로 옳은 것은? (가) 은/는 무신집권기 불교의 세속화를 비판하면서 불교 본연의 정신을 확립하자는 결사 운동을 주도하여 수선사를 결성하였다. 그는 깨달음을 얻은 뒤에도 수행을 게을리하지 않아야 한다는 돈오점수를 내세웠다.",
+          "type": "after"
+        },
+        {
+          "no": 10,
+          "text": "밑줄 친 ‘국왕’의 정책으로 옳은 것은? 국왕은 성균관 앞에 “두루 사귀되 편당을 짓지 않는 것이 군자의 공정한 마음이요, 편당을 짓고 두루 사귀지 않는 것은 소인의 사사로운 마음이다.”라는 내용을 새긴 탕평비를 세웠다.",
+          "type": "factual"
+        },
+        {
+          "no": 11,
+          "text": "(가) 인물에 대한 설명으로 옳은 것은? (가) 은/는 삼가 두 번 절하고 아뢰옵니다. … (중략) … 성학 (聖學)에는 강령이 있고, 심법(心法)에는 지극히 요긴한 것이 있습니다. … (중략) … 이것을 합하여 성학십도를 만들어서 각 그림 아래에 또한 외람되게 신의 의견을 덧붙여서 조심스럽게 꾸며 올립니다.",
+          "type": "factual"
+        },
+        {
+          "no": 12,
+          "text": "다음 조약이 체결된 이후에 있었던 사실이 아닌 것은? 제1조 한국 정부는 시정개선(施政改善)에 관하여 통감의 지도를 받을 것. 제4조 한국 고등관리의 임면(任免)은 통감의 동의를 받아 이를 집행할 것. 제5조 한국 정부는 통감이 추천한 일본인을 한국 관리로 임명할 것.",
+          "type": "after"
+        },
+        {
+          "no": 13,
+          "text": "다음 조약에 대한 설명으로 옳은 것은? 제9관 수입 또는 수출되는 각 화물이 해관을 통과할 때는 응당 본 조약에 첨부된 세칙에 따라 관세를 납부해야 한다. 제37관 조선국에서 가뭄과 홍수, 전쟁 등으로 인하여 국내에 양식이 결핍할 것을 우려하여 일시 쌀 수출을 금지 하려고 할 때에는 1개월 전에 지방관이 일본 영사관에게 통지하여 미리 그 기간을 항구에 있는 일본 상인들에게 전달하여 일률적으로 준수하는 데 편리하게 한다.",
+          "type": "factual"
+        },
+        {
+          "no": 14,
+          "text": "밑줄 친 ‘내’에 대한 설명으로 옳은 것만을 모두 고르면? 내가 원하는 우리 민족의 사업은 결코 세계를 무력으로 정복 하거나 경제력으로 지배하려는 것이 아니다. 오직 사랑의 문화, 평화의 문화로 우리 스스로 잘 살고 인류 전체가 의좋게 즐겁게 살도록 하는 일을 하자는 것이다. 어느 민족도 일찍이 그러한 일을 한 이가 없었으니 그것은 공상이라고 하지 말라. ㄱ. 대한민국 임시정부 주석을 지냈다. ㄴ. 상하이에서 한인 애국단을 조직하였다. ㄷ. 조선 의용대를 창설하여 항일 무장 투쟁을 전개하였다. ㄹ. 조선 혁명군을 지휘하여 영릉가 전투를 승리로 이끌었다.",
+          "type": "factual"
+        },
+        {
+          "no": 15,
+          "text": "다음 선언으로 시작된 운동에 대한 설명으로 옳은 것은? 우리는 지금 우리 조선이 독립국이고 조선인이 자주민임을 선언하노라. 이를 세계 여러 나라에 알려 인류 평등의 대의를 분명히 밝히고, 이를 후손에게 대대로 전하여 민족 자존의 정당한 권리를 영원히 누릴 수 있도록 하노라.",
+          "type": "factual"
+        },
+        {
+          "no": 16,
+          "text": "유네스코 세계문화유산으로 등재된 것만을 모두 고르면? ㄱ. 경복궁 ㄴ. 남한산성 ㄷ. 석촌동 고분군 ㄹ. 가야 고분군",
+          "type": "factual"
+        },
+        {
+          "no": 17,
+          "text": "(가)에 대한 설명으로 옳지 않은 것은? 대한민국 임시 정부는 대한민국 원년에 정부가 공포한 군사 조직법에 의거하여 …(중략) … (가) 을/를 조직하고 …(중략) … 공동의 적인 일본 제국주의자들을 타도하기 위해 연합군의 일원으로 항전을 계속한다.",
+          "type": "factual"
+        },
+        {
+          "no": 18,
+          "text": "다음 조약이 체결되고 난 이후에 일어난 일은? 제2조 당사국 중 어느 한 나라의 정치적 독립 또는 안전이 외부로부터의 무력 공격에 의하여 위협을 받고 있다고 어느 당사국이든지 인정할 때에는 언제든지 당사국은 서로 협의한다. 제4조 상호적 합의에 의하여 미합중국의 육군, 해군, 공군을 대한민국의 영토 내와 그 부근에 배치하는 권리를 대한민국은 이를 허가하고 미합중국은 이를 수락한다.",
+          "type": "after"
+        },
+        {
+          "no": 19,
+          "text": "(가) 국가에 대한 설명으로 옳지 않은 것은? 제1조 지계아문은 한성부와 13도 각 부ㆍ군의 산림, 토지, 전답, 가옥의 계권(契券)을 바로잡기 위해 임시로 설치할 것. 제10조 산림, 토지, 전답, 가옥은 (가) 인(人) 이외에는 소유주가 될 수 없을 것임. 단, 각 개항장 내에서는 이러한 제한이 없을 것임.",
+          "type": "factual"
+        },
+        {
+          "no": 20,
+          "text": "(가) ～ (라)를 시기가 이른 것부터 바르게 나열한 것은? (가) 어재연의 부대가 광성보에서 미국군에게 패하였다. (나) 양헌수의 부대가 정족산성에서 프랑스군을 물리쳤다. (다) 독일인 오페르트가 남연군의 묘를 도굴하려다 실패하였다. (라) 미국 상선 제너럴셔먼호가 평양 부근까지 들어와 통상을 요구하였다.",
+          "type": "sameEra"
+        }
+      ]
+    }
+  ],
+  "typeFreq": {
+    "after": 6.64,
+    "between": 1.0,
+    "factual": 24.32,
+    "sameEra": 5.64
+  },
+  "keywordFreq": [
+    {
+      "keyword": "설명으로",
+      "count": 18.68,
+      "grade": "S",
+      "rank": 1
+    },
+    {
+      "keyword": "모두",
+      "count": 7.28,
+      "grade": "S",
+      "rank": 2
+    },
+    {
+      "keyword": "있었던",
+      "count": 6.88,
+      "grade": "S",
+      "rank": 3
+    },
+    {
+      "keyword": "하였다",
+      "count": 6.64,
+      "grade": "S",
+      "rank": 4
+    },
+    {
+      "keyword": "있는",
+      "count": 5.88,
+      "grade": "S",
+      "rank": 5
+    },
+    {
+      "keyword": "중략",
+      "count": 5.64,
+      "grade": "S",
+      "rank": 6
+    },
+    {
+      "keyword": "사실로",
+      "count": 5.0,
+      "grade": "S",
+      "rank": 7
+    },
+    {
+      "keyword": "것이",
+      "count": 4.52,
+      "grade": "S",
+      "rank": 8
+    },
+    {
+      "keyword": "않은",
+      "count": 4.4,
+      "grade": "S",
+      "rank": 9
+    },
+    {
+      "keyword": "이를",
+      "count": 4.4,
+      "grade": "S",
+      "rank": 10
+    },
+    {
+      "keyword": "지역",
+      "count": 4.0,
+      "grade": "S",
+      "rank": 11
+    },
+    {
+      "keyword": "위해",
+      "count": 3.76,
+      "grade": "S",
+      "rank": 12
+    },
+    {
+      "keyword": "이후에",
+      "count": 3.76,
+      "grade": "S",
+      "rank": 13
+    },
+    {
+      "keyword": "라고",
+      "count": 3.76,
+      "grade": "S",
+      "rank": 14
+    },
+    {
+      "keyword": "해당하는",
+      "count": 3.0,
+      "grade": "S",
+      "rank": 15
+    },
+    {
+      "keyword": "재위",
+      "count": 3.0,
+      "grade": "S",
+      "rank": 16
+    },
+    {
+      "keyword": "기간에",
+      "count": 3.0,
+      "grade": "S",
+      "rank": 17
+    },
+    {
+      "keyword": "군사",
+      "count": 2.88,
+      "grade": "S",
+      "rank": 18
+    },
+    {
+      "keyword": "또한",
+      "count": 2.88,
+      "grade": "S",
+      "rank": 19
+    },
+    {
+      "keyword": "그는",
+      "count": 2.88,
+      "grade": "S",
+      "rank": 20
+    },
+    {
+      "keyword": "독립",
+      "count": 2.88,
+      "grade": "S",
+      "rank": 21
+    },
+    {
+      "keyword": "나라의",
+      "count": 2.76,
+      "grade": "S",
+      "rank": 22
+    },
+    {
+      "keyword": "정부는",
+      "count": 2.76,
+      "grade": "S",
+      "rank": 23
+    },
+    {
+      "keyword": "인물에",
+      "count": 2.76,
+      "grade": "S",
+      "rank": 24
+    },
+    {
+      "keyword": "여러",
+      "count": 2.76,
+      "grade": "S",
+      "rank": 25
+    },
+    {
+      "keyword": "것만을",
+      "count": 2.64,
+      "grade": "S",
+      "rank": 26
+    },
+    {
+      "keyword": "고르면",
+      "count": 2.64,
+      "grade": "S",
+      "rank": 27
+    },
+    {
+      "keyword": "나라에",
+      "count": 2.64,
+      "grade": "S",
+      "rank": 28
+    },
+    {
+      "keyword": "한다",
+      "count": 2.64,
+      "grade": "S",
+      "rank": 29
+    },
+    {
+      "keyword": "또는",
+      "count": 2.64,
+      "grade": "S",
+      "rank": 30
+    },
+    {
+      "keyword": "설명에",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 31
+    },
+    {
+      "keyword": "문화유산은",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 32
+    },
+    {
+      "keyword": "기구는",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 33
+    },
+    {
+      "keyword": "아니라",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 34
+    },
+    {
+      "keyword": "외교",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 35
+    },
+    {
+      "keyword": "고구려의",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 36
+    },
+    {
+      "keyword": "왕이",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 37
+    },
+    {
+      "keyword": "토지를",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 38
+    },
+    {
+      "keyword": "관청을",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 39
+    },
+    {
+      "keyword": "만들어",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 40
+    },
+    {
+      "keyword": "이후",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 41
+    },
+    {
+      "keyword": "사건",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 42
+    },
+    {
+      "keyword": "단체에",
+      "count": 2.0,
+      "grade": "S",
+      "rank": 43
+    },
+    {
+      "keyword": "세계를",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 44
+    },
+    {
+      "keyword": "나라는",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 45
+    },
+    {
+      "keyword": "땅이다",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 46
+    },
+    {
+      "keyword": "유네스코",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 47
+    },
+    {
+      "keyword": "등에",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 48
+    },
+    {
+      "keyword": "사실이",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 49
+    },
+    {
+      "keyword": "시기에",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 50
+    },
+    {
+      "keyword": "이에",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 51
+    },
+    {
+      "keyword": "민족",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 52
+    },
+    {
+      "keyword": "토지",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 53
+    },
+    {
+      "keyword": "이것을",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 54
+    },
+    {
+      "keyword": "왕에게",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 55
+    },
+    {
+      "keyword": "의견을",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 56
+    },
+    {
+      "keyword": "따라",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 57
+    },
+    {
+      "keyword": "무장",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 58
+    },
+    {
+      "keyword": "만들었다",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 59
+    },
+    {
+      "keyword": "되었다",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 60
+    },
+    {
+      "keyword": "서로",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 61
+    },
+    {
+      "keyword": "것이다",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 62
+    },
+    {
+      "keyword": "하는",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 63
+    },
+    {
+      "keyword": "하지",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 64
+    },
+    {
+      "keyword": "계승하여",
+      "count": 1.88,
+      "grade": "S",
+      "rank": 65
+    },
+    {
+      "keyword": "업적으로",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 66
+    },
+    {
+      "keyword": "신의",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 67
+    },
+    {
+      "keyword": "일어난",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 68
+    },
+    {
+      "keyword": "고구려",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 69
+    },
+    {
+      "keyword": "일을",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 70
+    },
+    {
+      "keyword": "우리는",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 71
+    },
+    {
+      "keyword": "것을",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 72
+    },
+    {
+      "keyword": "조약이",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 73
+    },
+    {
+      "keyword": "때에는",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 74
+    },
+    {
+      "keyword": "일본",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 75
+    },
+    {
+      "keyword": "인류",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 76
+    },
+    {
+      "keyword": "어느",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 77
+    },
+    {
+      "keyword": "대한민국",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 78
+    },
+    {
+      "keyword": "권리를",
+      "count": 1.76,
+      "grade": "S",
+      "rank": 79
+    },
+    {
+      "keyword": "고래",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 80
+    },
+    {
+      "keyword": "잡는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 81
+    },
+    {
+      "keyword": "사람",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 82
+    },
+    {
+      "keyword": "호랑이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 83
+    },
+    {
+      "keyword": "사슴",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 84
+    },
+    {
+      "keyword": "물을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 85
+    },
+    {
+      "keyword": "뿜고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 86
+    },
+    {
+      "keyword": "작살이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 87
+    },
+    {
+      "keyword": "꽂혀",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 88
+    },
+    {
+      "keyword": "등이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 89
+    },
+    {
+      "keyword": "바위에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 90
+    },
+    {
+      "keyword": "묘사되어",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 91
+    },
+    {
+      "keyword": "있다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 92
+    },
+    {
+      "keyword": "당시",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 93
+    },
+    {
+      "keyword": "사람들의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 94
+    },
+    {
+      "keyword": "생활",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 95
+    },
+    {
+      "keyword": "모습과",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 96
+    },
+    {
+      "keyword": "신앙",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 97
+    },
+    {
+      "keyword": "예술",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 98
+    },
+    {
+      "keyword": "이해하는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 99
+    },
+    {
+      "keyword": "중요한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 100
+    },
+    {
+      "keyword": "자료이며",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 101
+    },
+    {
+      "keyword": "국보로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 102
+    },
+    {
+      "keyword": "지정되어",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 103
+    },
+    {
+      "keyword": "원래",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 104
+    },
+    {
+      "keyword": "여진족과",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 105
+    },
+    {
+      "keyword": "왜구의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 106
+    },
+    {
+      "keyword": "침입에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 107
+    },
+    {
+      "keyword": "대비하기",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 108
+    },
+    {
+      "keyword": "만든",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 109
+    },
+    {
+      "keyword": "임시회의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 110
+    },
+    {
+      "keyword": "기구였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 111
+    },
+    {
+      "keyword": "임진왜란을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 112
+    },
+    {
+      "keyword": "거치면서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 113
+    },
+    {
+      "keyword": "현직",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 114
+    },
+    {
+      "keyword": "정승을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 115
+    },
+    {
+      "keyword": "비롯한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 116
+    },
+    {
+      "keyword": "주요",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 117
+    },
+    {
+      "keyword": "관원이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 118
+    },
+    {
+      "keyword": "참여하였고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 119
+    },
+    {
+      "keyword": "문제뿐",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 120
+    },
+    {
+      "keyword": "재정",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 121
+    },
+    {
+      "keyword": "인사",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 122
+    },
+    {
+      "keyword": "국정",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 123
+    },
+    {
+      "keyword": "전반을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 124
+    },
+    {
+      "keyword": "다루었다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 125
+    },
+    {
+      "keyword": "이로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 126
+    },
+    {
+      "keyword": "인해",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 127
+    },
+    {
+      "keyword": "의정부와",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 128
+    },
+    {
+      "keyword": "조의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 129
+    },
+    {
+      "keyword": "기능이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 130
+    },
+    {
+      "keyword": "축소되었다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 131
+    },
+    {
+      "keyword": "곳곳에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 132
+    },
+    {
+      "keyword": "촌락이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 133
+    },
+    {
+      "keyword": "있는데",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 134
+    },
+    {
+      "keyword": "말갈의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 135
+    },
+    {
+      "keyword": "부락이다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 136
+    },
+    {
+      "keyword": "백성은",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 137
+    },
+    {
+      "keyword": "말갈이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 138
+    },
+    {
+      "keyword": "많고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 139
+    },
+    {
+      "keyword": "토인",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 140
+    },
+    {
+      "keyword": "적은데",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 141
+    },
+    {
+      "keyword": "토인을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 142
+    },
+    {
+      "keyword": "촌장으로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 143
+    },
+    {
+      "keyword": "삼는다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 144
+    },
+    {
+      "keyword": "유취국사",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 145
+    },
+    {
+      "keyword": "업적이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 146
+    },
+    {
+      "keyword": "왕의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 147
+    },
+    {
+      "keyword": "모습은",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 148
+    },
+    {
+      "keyword": "풍토에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 149
+    },
+    {
+      "keyword": "맞는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 150
+    },
+    {
+      "keyword": "농서인",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 151
+    },
+    {
+      "keyword": "농사직설",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 152
+    },
+    {
+      "keyword": "편찬하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 153
+    },
+    {
+      "keyword": "최윤덕과",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 154
+    },
+    {
+      "keyword": "김종서를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 155
+    },
+    {
+      "keyword": "파견하여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 156
+    },
+    {
+      "keyword": "진을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 157
+    },
+    {
+      "keyword": "개척하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 158
+    },
+    {
+      "keyword": "신돈에게",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 159
+    },
+    {
+      "keyword": "국정을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 160
+    },
+    {
+      "keyword": "맡겼다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 161
+    },
+    {
+      "keyword": "신돈은",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 162
+    },
+    {
+      "keyword": "힘있는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 163
+    },
+    {
+      "keyword": "자들이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 164
+    },
+    {
+      "keyword": "토지와",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 165
+    },
+    {
+      "keyword": "약한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 166
+    },
+    {
+      "keyword": "자들의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 167
+    },
+    {
+      "keyword": "빼앗고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 168
+    },
+    {
+      "keyword": "양민을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 169
+    },
+    {
+      "keyword": "자신들의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 170
+    },
+    {
+      "keyword": "노비로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 171
+    },
+    {
+      "keyword": "삼고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 172
+    },
+    {
+      "keyword": "현실을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 173
+    },
+    {
+      "keyword": "지적하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 174
+    },
+    {
+      "keyword": "그리고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 175
+    },
+    {
+      "keyword": "문제를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 176
+    },
+    {
+      "keyword": "개혁하려고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 177
+    },
+    {
+      "keyword": "했다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 178
+    },
+    {
+      "keyword": "이곳",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 179
+    },
+    {
+      "keyword": "이곳의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 180
+    },
+    {
+      "keyword": "고인돌",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 181
+    },
+    {
+      "keyword": "유적은",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 182
+    },
+    {
+      "keyword": "세계문화유산에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 183
+    },
+    {
+      "keyword": "등재되었다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 184
+    },
+    {
+      "keyword": "고려",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 185
+    },
+    {
+      "keyword": "이곳으로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 186
+    },
+    {
+      "keyword": "천도하여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 187
+    },
+    {
+      "keyword": "몽골의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 188
+    },
+    {
+      "keyword": "침략에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 189
+    },
+    {
+      "keyword": "대항하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 190
+    },
+    {
+      "keyword": "개항",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 191
+    },
+    {
+      "keyword": "정세",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 192
+    },
+    {
+      "keyword": "변화에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 193
+    },
+    {
+      "keyword": "대응하여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 194
+    },
+    {
+      "keyword": "개혁을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 195
+    },
+    {
+      "keyword": "추진하기",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 196
+    },
+    {
+      "keyword": "설립된",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 197
+    },
+    {
+      "keyword": "기구로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 198
+    },
+    {
+      "keyword": "개화와",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 199
+    },
+    {
+      "keyword": "관련된",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 200
+    },
+    {
+      "keyword": "정책을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 201
+    },
+    {
+      "keyword": "총괄하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 202
+    },
+    {
+      "keyword": "아래",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 203
+    },
+    {
+      "keyword": "사를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 204
+    },
+    {
+      "keyword": "두어",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 205
+    },
+    {
+      "keyword": "실무를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 206
+    },
+    {
+      "keyword": "담당하게",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 207
+    },
+    {
+      "keyword": "발생",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 208
+    },
+    {
+      "keyword": "노비",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 209
+    },
+    {
+      "keyword": "만적",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 210
+    },
+    {
+      "keyword": "인이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 211
+    },
+    {
+      "keyword": "개경의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 212
+    },
+    {
+      "keyword": "북산에서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 213
+    },
+    {
+      "keyword": "나무하다가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 214
+    },
+    {
+      "keyword": "공노비와",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 215
+    },
+    {
+      "keyword": "사노비들을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 216
+    },
+    {
+      "keyword": "불러",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 217
+    },
+    {
+      "keyword": "모의하기를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 218
+    },
+    {
+      "keyword": "정중부의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 219
+    },
+    {
+      "keyword": "반란과",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 220
+    },
+    {
+      "keyword": "김보당의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 221
+    },
+    {
+      "keyword": "반란",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 222
+    },
+    {
+      "keyword": "이후로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 223
+    },
+    {
+      "keyword": "고관이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 224
+    },
+    {
+      "keyword": "천민과",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 225
+    },
+    {
+      "keyword": "노비에서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 226
+    },
+    {
+      "keyword": "많이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 227
+    },
+    {
+      "keyword": "나왔다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 228
+    },
+    {
+      "keyword": "장상",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 229
+    },
+    {
+      "keyword": "씨가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 230
+    },
+    {
+      "keyword": "따로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 231
+    },
+    {
+      "keyword": "있으랴",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 232
+    },
+    {
+      "keyword": "양반전",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 233
+    },
+    {
+      "keyword": "지어",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 234
+    },
+    {
+      "keyword": "양반",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 235
+    },
+    {
+      "keyword": "사회의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 236
+    },
+    {
+      "keyword": "허위의식을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 237
+    },
+    {
+      "keyword": "고발하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 238
+    },
+    {
+      "keyword": "상공업",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 239
+    },
+    {
+      "keyword": "진흥에도",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 240
+    },
+    {
+      "keyword": "관심을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 241
+    },
+    {
+      "keyword": "기울여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 242
+    },
+    {
+      "keyword": "수레와",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 243
+    },
+    {
+      "keyword": "선박의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 244
+    },
+    {
+      "keyword": "이용",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 245
+    },
+    {
+      "keyword": "대해서도",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 246
+    },
+    {
+      "keyword": "주목하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 247
+    },
+    {
+      "keyword": "왕대의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 248
+    },
+    {
+      "keyword": "김흠돌의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 249
+    },
+    {
+      "keyword": "난을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 250
+    },
+    {
+      "keyword": "계기로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 251
+    },
+    {
+      "keyword": "진골",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 252
+    },
+    {
+      "keyword": "귀족",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 253
+    },
+    {
+      "keyword": "세력",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 254
+    },
+    {
+      "keyword": "등을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 255
+    },
+    {
+      "keyword": "숙청하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 256
+    },
+    {
+      "keyword": "녹읍을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 257
+    },
+    {
+      "keyword": "폐지하여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 258
+    },
+    {
+      "keyword": "귀족의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 259
+    },
+    {
+      "keyword": "경제적",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 260
+    },
+    {
+      "keyword": "기반을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 261
+    },
+    {
+      "keyword": "약화하고자",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 262
+    },
+    {
+      "keyword": "사이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 263
+    },
+    {
+      "keyword": "보병과",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 264
+    },
+    {
+      "keyword": "기병",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 265
+    },
+    {
+      "keyword": "명을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 266
+    },
+    {
+      "keyword": "보내",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 267
+    },
+    {
+      "keyword": "신라를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 268
+    },
+    {
+      "keyword": "구원하게",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 269
+    },
+    {
+      "keyword": "하였고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 270
+    },
+    {
+      "keyword": "왜군이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 271
+    },
+    {
+      "keyword": "퇴각하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 272
+    },
+    {
+      "keyword": "백제",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 273
+    },
+    {
+      "keyword": "가야와",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 274
+    },
+    {
+      "keyword": "함께",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 275
+    },
+    {
+      "keyword": "관산성을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 276
+    },
+    {
+      "keyword": "공격하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 277
+    },
+    {
+      "keyword": "신주군주",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 278
+    },
+    {
+      "keyword": "김무력이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 279
+    },
+    {
+      "keyword": "나아가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 280
+    },
+    {
+      "keyword": "교전을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 281
+    },
+    {
+      "keyword": "벌였고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 282
+    },
+    {
+      "keyword": "비장인",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 283
+    },
+    {
+      "keyword": "도도가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 284
+    },
+    {
+      "keyword": "왕을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 285
+    },
+    {
+      "keyword": "죽였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 286
+    },
+    {
+      "keyword": "자료를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 287
+    },
+    {
+      "keyword": "통해",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 288
+    },
+    {
+      "keyword": "남만주로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 289
+    },
+    {
+      "keyword": "집단",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 290
+    },
+    {
+      "keyword": "이주하려고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 291
+    },
+    {
+      "keyword": "기도하고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 292
+    },
+    {
+      "keyword": "조선에서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 293
+    },
+    {
+      "keyword": "상당한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 294
+    },
+    {
+      "keyword": "재력이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 295
+    },
+    {
+      "keyword": "사람들을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 296
+    },
+    {
+      "keyword": "그곳에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 297
+    },
+    {
+      "keyword": "이주시켜",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 298
+    },
+    {
+      "keyword": "사들이고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 299
+    },
+    {
+      "keyword": "촌락을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 300
+    },
+    {
+      "keyword": "세워",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 301
+    },
+    {
+      "keyword": "학교를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 302
+    },
+    {
+      "keyword": "교육을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 303
+    },
+    {
+      "keyword": "실시하고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 304
+    },
+    {
+      "keyword": "무관학교를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 305
+    },
+    {
+      "keyword": "설립하여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 306
+    },
+    {
+      "keyword": "문무를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 307
+    },
+    {
+      "keyword": "겸하는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 308
+    },
+    {
+      "keyword": "실시하면서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 309
+    },
+    {
+      "keyword": "기회를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 310
+    },
+    {
+      "keyword": "엿보아",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 311
+    },
+    {
+      "keyword": "전쟁을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 312
+    },
+    {
+      "keyword": "일으켜",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 313
+    },
+    {
+      "keyword": "구한국의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 314
+    },
+    {
+      "keyword": "국권을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 315
+    },
+    {
+      "keyword": "회복하려고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 316
+    },
+    {
+      "keyword": "판결문",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 317
+    },
+    {
+      "keyword": "영의정",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 318
+    },
+    {
+      "keyword": "이원익은",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 319
+    },
+    {
+      "keyword": "공물",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 320
+    },
+    {
+      "keyword": "제도가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 321
+    },
+    {
+      "keyword": "방납인에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 322
+    },
+    {
+      "keyword": "의한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 323
+    },
+    {
+      "keyword": "폐단이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 324
+    },
+    {
+      "keyword": "크며",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 325
+    },
+    {
+      "keyword": "경기도가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 326
+    },
+    {
+      "keyword": "특히",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 327
+    },
+    {
+      "keyword": "심하다고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 328
+    },
+    {
+      "keyword": "생각하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 329
+    },
+    {
+      "keyword": "그래서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 330
+    },
+    {
+      "keyword": "별도의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 331
+    },
+    {
+      "keyword": "경기",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 332
+    },
+    {
+      "keyword": "백성들에게",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 333
+    },
+    {
+      "keyword": "봄과",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 334
+    },
+    {
+      "keyword": "가을에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 335
+    },
+    {
+      "keyword": "결마다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 336
+    },
+    {
+      "keyword": "두씩",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 337
+    },
+    {
+      "keyword": "쌀로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 338
+    },
+    {
+      "keyword": "거두고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 339
+    },
+    {
+      "keyword": "방납인에게",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 340
+    },
+    {
+      "keyword": "주어",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 341
+    },
+    {
+      "keyword": "수시로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 342
+    },
+    {
+      "keyword": "물품을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 343
+    },
+    {
+      "keyword": "구입하여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 344
+    },
+    {
+      "keyword": "납부하게",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 345
+    },
+    {
+      "keyword": "하자고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 346
+    },
+    {
+      "keyword": "건의하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 347
+    },
+    {
+      "keyword": "왕은",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 348
+    },
+    {
+      "keyword": "받아들였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 349
+    },
+    {
+      "keyword": "개혁",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 350
+    },
+    {
+      "keyword": "내용으로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 351
+    },
+    {
+      "keyword": "개혁에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 352
+    },
+    {
+      "keyword": "의정부를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 353
+    },
+    {
+      "keyword": "내각으로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 354
+    },
+    {
+      "keyword": "아문을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 355
+    },
+    {
+      "keyword": "부로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 356
+    },
+    {
+      "keyword": "고쳤다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 357
+    },
+    {
+      "keyword": "지방",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 358
+    },
+    {
+      "keyword": "도는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 359
+    },
+    {
+      "keyword": "개편하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 360
+    },
+    {
+      "keyword": "백제는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 361
+    },
+    {
+      "keyword": "세기",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 362
+    },
+    {
+      "keyword": "공격으로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 363
+    },
+    {
+      "keyword": "한강",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 364
+    },
+    {
+      "keyword": "유역을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 365
+    },
+    {
+      "keyword": "상실하면서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 366
+    },
+    {
+      "keyword": "수도가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 367
+    },
+    {
+      "keyword": "함락되어",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 368
+    },
+    {
+      "keyword": "지역으로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 369
+    },
+    {
+      "keyword": "도읍을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 370
+    },
+    {
+      "keyword": "옮겼다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 371
+    },
+    {
+      "keyword": "지역에서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 372
+    },
+    {
+      "keyword": "권업회라는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 373
+    },
+    {
+      "keyword": "독립운동",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 374
+    },
+    {
+      "keyword": "단체가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 375
+    },
+    {
+      "keyword": "조직되었고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 376
+    },
+    {
+      "keyword": "권업회는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 377
+    },
+    {
+      "keyword": "국외",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 378
+    },
+    {
+      "keyword": "단체들을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 379
+    },
+    {
+      "keyword": "모아",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 380
+    },
+    {
+      "keyword": "광복군",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 381
+    },
+    {
+      "keyword": "정부라는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 382
+    },
+    {
+      "keyword": "독립군",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 383
+    },
+    {
+      "keyword": "조직을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 384
+    },
+    {
+      "keyword": "문종의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 385
+    },
+    {
+      "keyword": "넷째",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 386
+    },
+    {
+      "keyword": "아들인데",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 387
+    },
+    {
+      "keyword": "출가하여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 388
+    },
+    {
+      "keyword": "승려가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 389
+    },
+    {
+      "keyword": "송나라로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 390
+    },
+    {
+      "keyword": "유학을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 391
+    },
+    {
+      "keyword": "가서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 392
+    },
+    {
+      "keyword": "화엄학과",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 393
+    },
+    {
+      "keyword": "천태학을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 394
+    },
+    {
+      "keyword": "공부하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 395
+    },
+    {
+      "keyword": "부흥시켜",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 396
+    },
+    {
+      "keyword": "천태종을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 397
+    },
+    {
+      "keyword": "창립하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 398
+    },
+    {
+      "keyword": "글을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 399
+    },
+    {
+      "keyword": "대저",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 400
+    },
+    {
+      "keyword": "우리나라가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 401
+    },
+    {
+      "keyword": "아시아의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 402
+    },
+    {
+      "keyword": "중립국이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 403
+    },
+    {
+      "keyword": "된다면",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 404
+    },
+    {
+      "keyword": "러시아를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 405
+    },
+    {
+      "keyword": "방어하는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 406
+    },
+    {
+      "keyword": "기틀이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 407
+    },
+    {
+      "keyword": "것이고",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 408
+    },
+    {
+      "keyword": "대국이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 409
+    },
+    {
+      "keyword": "보전하는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 410
+    },
+    {
+      "keyword": "정략도",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 411
+    },
+    {
+      "keyword": "이는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 412
+    },
+    {
+      "keyword": "비단",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 413
+    },
+    {
+      "keyword": "우리나라만을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 414
+    },
+    {
+      "keyword": "위한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 415
+    },
+    {
+      "keyword": "중국의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 416
+    },
+    {
+      "keyword": "이익도",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 417
+    },
+    {
+      "keyword": "나라가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 418
+    },
+    {
+      "keyword": "보전",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 419
+    },
+    {
+      "keyword": "계책도",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 420
+    },
+    {
+      "keyword": "것이니",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 421
+    },
+    {
+      "keyword": "무엇이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 422
+    },
+    {
+      "keyword": "괴로워서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 423
+    },
+    {
+      "keyword": "않겠는가",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 424
+    },
+    {
+      "keyword": "강령을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 425
+    },
+    {
+      "keyword": "발표한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 426
+    },
+    {
+      "keyword": "부호의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 427
+    },
+    {
+      "keyword": "의연금",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 428
+    },
+    {
+      "keyword": "일본인이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 429
+    },
+    {
+      "keyword": "불법",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 430
+    },
+    {
+      "keyword": "징수하는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 431
+    },
+    {
+      "keyword": "세금을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 432
+    },
+    {
+      "keyword": "압수하여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 433
+    },
+    {
+      "keyword": "무장을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 434
+    },
+    {
+      "keyword": "준비한다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 435
+    },
+    {
+      "keyword": "일본인",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 436
+    },
+    {
+      "keyword": "고관",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 437
+    },
+    {
+      "keyword": "한국인",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 438
+    },
+    {
+      "keyword": "반역자를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 439
+    },
+    {
+      "keyword": "수시",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 440
+    },
+    {
+      "keyword": "수처에서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 441
+    },
+    {
+      "keyword": "처단하는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 442
+    },
+    {
+      "keyword": "행형부를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 443
+    },
+    {
+      "keyword": "둔다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 444
+    },
+    {
+      "keyword": "무력이",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 445
+    },
+    {
+      "keyword": "완비되는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 446
+    },
+    {
+      "keyword": "대로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 447
+    },
+    {
+      "keyword": "섬멸전을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 448
+    },
+    {
+      "keyword": "단행하여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 449
+    },
+    {
+      "keyword": "최후",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 450
+    },
+    {
+      "keyword": "목적의",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 451
+    },
+    {
+      "keyword": "달성을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 452
+    },
+    {
+      "keyword": "기한다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 453
+    },
+    {
+      "keyword": "헌법",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 454
+    },
+    {
+      "keyword": "공포",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 455
+    },
+    {
+      "keyword": "제헌",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 456
+    },
+    {
+      "keyword": "국회는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 457
+    },
+    {
+      "keyword": "유구한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 458
+    },
+    {
+      "keyword": "역사와",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 459
+    },
+    {
+      "keyword": "전통에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 460
+    },
+    {
+      "keyword": "빛나는",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 461
+    },
+    {
+      "keyword": "우리들",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 462
+    },
+    {
+      "keyword": "대한국민은",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 463
+    },
+    {
+      "keyword": "기미",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 464
+    },
+    {
+      "keyword": "삼일운동으로",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 465
+    },
+    {
+      "keyword": "대한민국을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 466
+    },
+    {
+      "keyword": "건립하여",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 467
+    },
+    {
+      "keyword": "세계에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 468
+    },
+    {
+      "keyword": "선포한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 469
+    },
+    {
+      "keyword": "위대한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 470
+    },
+    {
+      "keyword": "독립정신을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 471
+    },
+    {
+      "keyword": "이제",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 472
+    },
+    {
+      "keyword": "민주독립국가를",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 473
+    },
+    {
+      "keyword": "재건함에",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 474
+    },
+    {
+      "keyword": "있어서",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 475
+    },
+    {
+      "keyword": "명시한",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 476
+    },
+    {
+      "keyword": "헌법을",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 477
+    },
+    {
+      "keyword": "공포하였다",
+      "count": 1.0,
+      "grade": "S",
+      "rank": 478
+    },
+    {
+      "keyword": "신석기시대에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 479
+    },
+    {
+      "keyword": "갈돌과",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 480
+    },
+    {
+      "keyword": "갈판을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 481
+    },
+    {
+      "keyword": "사용하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 482
+    },
+    {
+      "keyword": "곡물이나",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 483
+    },
+    {
+      "keyword": "열매를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 484
+    },
+    {
+      "keyword": "갈았다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 485
+    },
+    {
+      "keyword": "반달돌칼을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 486
+    },
+    {
+      "keyword": "농작물을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 487
+    },
+    {
+      "keyword": "수확하였다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 488
+    },
+    {
+      "keyword": "뼈바늘을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 489
+    },
+    {
+      "keyword": "옷이나",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 490
+    },
+    {
+      "keyword": "그물을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 491
+    },
+    {
+      "keyword": "벼농사를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 492
+    },
+    {
+      "keyword": "널리",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 493
+    },
+    {
+      "keyword": "짓게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 494
+    },
+    {
+      "keyword": "풍속에는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 495
+    },
+    {
+      "keyword": "비가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 496
+    },
+    {
+      "keyword": "오는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 497
+    },
+    {
+      "keyword": "고르지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 498
+    },
+    {
+      "keyword": "않아",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 499
+    },
+    {
+      "keyword": "곡식이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 500
+    },
+    {
+      "keyword": "익지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 501
+    },
+    {
+      "keyword": "않으면",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 502
+    },
+    {
+      "keyword": "문득",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 503
+    },
+    {
+      "keyword": "잘못을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 504
+    },
+    {
+      "keyword": "돌려",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 505
+    },
+    {
+      "keyword": "마땅히",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 506
+    },
+    {
+      "keyword": "바꾸어야",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 507
+    },
+    {
+      "keyword": "죽여야",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 508
+    },
+    {
+      "keyword": "말하였다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 509
+    },
+    {
+      "keyword": "삼국지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 510
+    },
+    {
+      "keyword": "위서",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 511
+    },
+    {
+      "keyword": "동이전",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 512
+    },
+    {
+      "keyword": "외교문서를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 513
+    },
+    {
+      "keyword": "작성한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 514
+    },
+    {
+      "keyword": "무예가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 515
+    },
+    {
+      "keyword": "알립니다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 516
+    },
+    {
+      "keyword": "려의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 517
+    },
+    {
+      "keyword": "터전을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 518
+    },
+    {
+      "keyword": "회복하고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 519
+    },
+    {
+      "keyword": "부여의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 520
+    },
+    {
+      "keyword": "유속",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 521
+    },
+    {
+      "keyword": "가지게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 522
+    },
+    {
+      "keyword": "되었습니다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 523
+    },
+    {
+      "keyword": "이차돈이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 524
+    },
+    {
+      "keyword": "국왕에게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 525
+    },
+    {
+      "keyword": "아뢰기를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 526
+    },
+    {
+      "keyword": "신이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 527
+    },
+    {
+      "keyword": "거짓으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 528
+    },
+    {
+      "keyword": "왕명을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 529
+    },
+    {
+      "keyword": "전하였다고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 530
+    },
+    {
+      "keyword": "문책하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 531
+    },
+    {
+      "keyword": "머리를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 532
+    },
+    {
+      "keyword": "베시면",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 533
+    },
+    {
+      "keyword": "만민이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 534
+    },
+    {
+      "keyword": "굴복하고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 535
+    },
+    {
+      "keyword": "감히",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 536
+    },
+    {
+      "keyword": "어기지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 537
+    },
+    {
+      "keyword": "못할",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 538
+    },
+    {
+      "keyword": "것입니다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 539
+    },
+    {
+      "keyword": "옥리",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 540
+    },
+    {
+      "keyword": "이차돈의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 541
+    },
+    {
+      "keyword": "베니",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 542
+    },
+    {
+      "keyword": "하얀",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 543
+    },
+    {
+      "keyword": "젖이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 544
+    },
+    {
+      "keyword": "길이나",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 545
+    },
+    {
+      "keyword": "솟았다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 546
+    },
+    {
+      "keyword": "사건은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 547
+    },
+    {
+      "keyword": "국왕의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 548
+    },
+    {
+      "keyword": "김부",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 549
+    },
+    {
+      "keyword": "경주의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 550
+    },
+    {
+      "keyword": "사심관으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 551
+    },
+    {
+      "keyword": "임명하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 552
+    },
+    {
+      "keyword": "부호장",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 553
+    },
+    {
+      "keyword": "이하의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 554
+    },
+    {
+      "keyword": "관직",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 555
+    },
+    {
+      "keyword": "관한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 556
+    },
+    {
+      "keyword": "맡게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 557
+    },
+    {
+      "keyword": "공신들",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 558
+    },
+    {
+      "keyword": "역시",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 559
+    },
+    {
+      "keyword": "본받아",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 560
+    },
+    {
+      "keyword": "자기",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 561
+    },
+    {
+      "keyword": "사심이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 562
+    },
+    {
+      "keyword": "되었으니",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 563
+    },
+    {
+      "keyword": "사심관이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 564
+    },
+    {
+      "keyword": "이로부터",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 565
+    },
+    {
+      "keyword": "비롯되었다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 566
+    },
+    {
+      "keyword": "대화가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 567
+    },
+    {
+      "keyword": "오고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 568
+    },
+    {
+      "keyword": "시기는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 569
+    },
+    {
+      "keyword": "소손녕",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 570
+    },
+    {
+      "keyword": "그대",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 571
+    },
+    {
+      "keyword": "신라",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 572
+    },
+    {
+      "keyword": "땅에서",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 573
+    },
+    {
+      "keyword": "일어났고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 574
+    },
+    {
+      "keyword": "땅은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 575
+    },
+    {
+      "keyword": "땅인데",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 576
+    },
+    {
+      "keyword": "너희들이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 577
+    },
+    {
+      "keyword": "쳐들어와",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 578
+    },
+    {
+      "keyword": "차지하였다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 579
+    },
+    {
+      "keyword": "고구려를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 580
+    },
+    {
+      "keyword": "이름을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 581
+    },
+    {
+      "keyword": "고려라",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 582
+    },
+    {
+      "keyword": "땅의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 583
+    },
+    {
+      "keyword": "경계를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 584
+    },
+    {
+      "keyword": "논한다면",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 585
+    },
+    {
+      "keyword": "동경도",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 586
+    },
+    {
+      "keyword": "이달에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 587
+    },
+    {
+      "keyword": "국왕이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 588
+    },
+    {
+      "keyword": "친히",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 589
+    },
+    {
+      "keyword": "언문",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 590
+    },
+    {
+      "keyword": "자를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 591
+    },
+    {
+      "keyword": "지었는데",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 592
+    },
+    {
+      "keyword": "글자는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 593
+    },
+    {
+      "keyword": "글자를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 594
+    },
+    {
+      "keyword": "모방하였고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 595
+    },
+    {
+      "keyword": "초성",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 596
+    },
+    {
+      "keyword": "중성",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 597
+    },
+    {
+      "keyword": "종성으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 598
+    },
+    {
+      "keyword": "조합해야",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 599
+    },
+    {
+      "keyword": "음절이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 600
+    },
+    {
+      "keyword": "이루어졌다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 601
+    },
+    {
+      "keyword": "무릇",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 602
+    },
+    {
+      "keyword": "문자로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 603
+    },
+    {
+      "keyword": "기록한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 604
+    },
+    {
+      "keyword": "것과",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 605
+    },
+    {
+      "keyword": "말로만",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 606
+    },
+    {
+      "keyword": "전해지는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 607
+    },
+    {
+      "keyword": "있으며",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 608
+    },
+    {
+      "keyword": "비록",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 609
+    },
+    {
+      "keyword": "쉽고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 610
+    },
+    {
+      "keyword": "간단하지만",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 611
+    },
+    {
+      "keyword": "무궁무진한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 612
+    },
+    {
+      "keyword": "표현이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 613
+    },
+    {
+      "keyword": "가능하니",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 614
+    },
+    {
+      "keyword": "훈민정음",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 615
+    },
+    {
+      "keyword": "이라고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 616
+    },
+    {
+      "keyword": "무신집권기",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 617
+    },
+    {
+      "keyword": "불교의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 618
+    },
+    {
+      "keyword": "세속화를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 619
+    },
+    {
+      "keyword": "비판하면서",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 620
+    },
+    {
+      "keyword": "불교",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 621
+    },
+    {
+      "keyword": "본연의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 622
+    },
+    {
+      "keyword": "정신을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 623
+    },
+    {
+      "keyword": "확립하자는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 624
+    },
+    {
+      "keyword": "결사",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 625
+    },
+    {
+      "keyword": "운동을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 626
+    },
+    {
+      "keyword": "주도하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 627
+    },
+    {
+      "keyword": "수선사를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 628
+    },
+    {
+      "keyword": "결성하였다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 629
+    },
+    {
+      "keyword": "깨달음을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 630
+    },
+    {
+      "keyword": "얻은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 631
+    },
+    {
+      "keyword": "뒤에도",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 632
+    },
+    {
+      "keyword": "수행을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 633
+    },
+    {
+      "keyword": "게을리하지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 634
+    },
+    {
+      "keyword": "않아야",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 635
+    },
+    {
+      "keyword": "한다는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 636
+    },
+    {
+      "keyword": "돈오점수를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 637
+    },
+    {
+      "keyword": "내세웠다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 638
+    },
+    {
+      "keyword": "정책으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 639
+    },
+    {
+      "keyword": "국왕은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 640
+    },
+    {
+      "keyword": "성균관",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 641
+    },
+    {
+      "keyword": "앞에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 642
+    },
+    {
+      "keyword": "두루",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 643
+    },
+    {
+      "keyword": "사귀되",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 644
+    },
+    {
+      "keyword": "편당을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 645
+    },
+    {
+      "keyword": "짓지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 646
+    },
+    {
+      "keyword": "않는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 647
+    },
+    {
+      "keyword": "군자의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 648
+    },
+    {
+      "keyword": "공정한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 649
+    },
+    {
+      "keyword": "마음이요",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 650
+    },
+    {
+      "keyword": "짓고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 651
+    },
+    {
+      "keyword": "사귀지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 652
+    },
+    {
+      "keyword": "소인의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 653
+    },
+    {
+      "keyword": "사사로운",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 654
+    },
+    {
+      "keyword": "마음이다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 655
+    },
+    {
+      "keyword": "라는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 656
+    },
+    {
+      "keyword": "내용을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 657
+    },
+    {
+      "keyword": "새긴",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 658
+    },
+    {
+      "keyword": "탕평비를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 659
+    },
+    {
+      "keyword": "세웠다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 660
+    },
+    {
+      "keyword": "삼가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 661
+    },
+    {
+      "keyword": "절하고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 662
+    },
+    {
+      "keyword": "아뢰옵니다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 663
+    },
+    {
+      "keyword": "성학",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 664
+    },
+    {
+      "keyword": "에는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 665
+    },
+    {
+      "keyword": "강령이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 666
+    },
+    {
+      "keyword": "있고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 667
+    },
+    {
+      "keyword": "심법",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 668
+    },
+    {
+      "keyword": "지극히",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 669
+    },
+    {
+      "keyword": "요긴한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 670
+    },
+    {
+      "keyword": "있습니다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 671
+    },
+    {
+      "keyword": "합하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 672
+    },
+    {
+      "keyword": "성학십도",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 673
+    },
+    {
+      "keyword": "만들어서",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 674
+    },
+    {
+      "keyword": "그림",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 675
+    },
+    {
+      "keyword": "아래에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 676
+    },
+    {
+      "keyword": "외람되게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 677
+    },
+    {
+      "keyword": "덧붙여서",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 678
+    },
+    {
+      "keyword": "조심스럽게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 679
+    },
+    {
+      "keyword": "꾸며",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 680
+    },
+    {
+      "keyword": "올립니다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 681
+    },
+    {
+      "keyword": "체결된",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 682
+    },
+    {
+      "keyword": "아닌",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 683
+    },
+    {
+      "keyword": "한국",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 684
+    },
+    {
+      "keyword": "시정개선",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 685
+    },
+    {
+      "keyword": "관하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 686
+    },
+    {
+      "keyword": "통감의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 687
+    },
+    {
+      "keyword": "지도를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 688
+    },
+    {
+      "keyword": "받을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 689
+    },
+    {
+      "keyword": "고등관리의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 690
+    },
+    {
+      "keyword": "임면",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 691
+    },
+    {
+      "keyword": "동의를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 692
+    },
+    {
+      "keyword": "받아",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 693
+    },
+    {
+      "keyword": "집행할",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 694
+    },
+    {
+      "keyword": "통감이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 695
+    },
+    {
+      "keyword": "추천한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 696
+    },
+    {
+      "keyword": "일본인을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 697
+    },
+    {
+      "keyword": "관리로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 698
+    },
+    {
+      "keyword": "임명할",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 699
+    },
+    {
+      "keyword": "조약에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 700
+    },
+    {
+      "keyword": "수입",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 701
+    },
+    {
+      "keyword": "수출되는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 702
+    },
+    {
+      "keyword": "화물이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 703
+    },
+    {
+      "keyword": "해관을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 704
+    },
+    {
+      "keyword": "통과할",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 705
+    },
+    {
+      "keyword": "때는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 706
+    },
+    {
+      "keyword": "응당",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 707
+    },
+    {
+      "keyword": "첨부된",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 708
+    },
+    {
+      "keyword": "세칙에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 709
+    },
+    {
+      "keyword": "관세를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 710
+    },
+    {
+      "keyword": "납부해야",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 711
+    },
+    {
+      "keyword": "조선국에서",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 712
+    },
+    {
+      "keyword": "가뭄과",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 713
+    },
+    {
+      "keyword": "홍수",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 714
+    },
+    {
+      "keyword": "전쟁",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 715
+    },
+    {
+      "keyword": "등으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 716
+    },
+    {
+      "keyword": "인하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 717
+    },
+    {
+      "keyword": "국내에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 718
+    },
+    {
+      "keyword": "양식이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 719
+    },
+    {
+      "keyword": "결핍할",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 720
+    },
+    {
+      "keyword": "우려하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 721
+    },
+    {
+      "keyword": "일시",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 722
+    },
+    {
+      "keyword": "수출을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 723
+    },
+    {
+      "keyword": "금지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 724
+    },
+    {
+      "keyword": "하려고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 725
+    },
+    {
+      "keyword": "개월",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 726
+    },
+    {
+      "keyword": "전에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 727
+    },
+    {
+      "keyword": "지방관이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 728
+    },
+    {
+      "keyword": "영사관에게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 729
+    },
+    {
+      "keyword": "통지하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 730
+    },
+    {
+      "keyword": "미리",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 731
+    },
+    {
+      "keyword": "기간을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 732
+    },
+    {
+      "keyword": "항구에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 733
+    },
+    {
+      "keyword": "상인들에게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 734
+    },
+    {
+      "keyword": "전달하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 735
+    },
+    {
+      "keyword": "일률적으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 736
+    },
+    {
+      "keyword": "준수하는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 737
+    },
+    {
+      "keyword": "편리하게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 738
+    },
+    {
+      "keyword": "내가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 739
+    },
+    {
+      "keyword": "원하는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 740
+    },
+    {
+      "keyword": "민족의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 741
+    },
+    {
+      "keyword": "사업은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 742
+    },
+    {
+      "keyword": "결코",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 743
+    },
+    {
+      "keyword": "무력으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 744
+    },
+    {
+      "keyword": "정복",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 745
+    },
+    {
+      "keyword": "하거나",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 746
+    },
+    {
+      "keyword": "경제력으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 747
+    },
+    {
+      "keyword": "지배하려는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 748
+    },
+    {
+      "keyword": "아니다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 749
+    },
+    {
+      "keyword": "오직",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 750
+    },
+    {
+      "keyword": "사랑의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 751
+    },
+    {
+      "keyword": "문화",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 752
+    },
+    {
+      "keyword": "평화의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 753
+    },
+    {
+      "keyword": "문화로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 754
+    },
+    {
+      "keyword": "스스로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 755
+    },
+    {
+      "keyword": "살고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 756
+    },
+    {
+      "keyword": "전체가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 757
+    },
+    {
+      "keyword": "의좋게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 758
+    },
+    {
+      "keyword": "즐겁게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 759
+    },
+    {
+      "keyword": "살도록",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 760
+    },
+    {
+      "keyword": "하자는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 761
+    },
+    {
+      "keyword": "민족도",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 762
+    },
+    {
+      "keyword": "일찍이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 763
+    },
+    {
+      "keyword": "그러한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 764
+    },
+    {
+      "keyword": "이가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 765
+    },
+    {
+      "keyword": "없었으니",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 766
+    },
+    {
+      "keyword": "그것은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 767
+    },
+    {
+      "keyword": "공상이라고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 768
+    },
+    {
+      "keyword": "말라",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 769
+    },
+    {
+      "keyword": "임시정부",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 770
+    },
+    {
+      "keyword": "주석을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 771
+    },
+    {
+      "keyword": "지냈다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 772
+    },
+    {
+      "keyword": "상하이에서",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 773
+    },
+    {
+      "keyword": "한인",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 774
+    },
+    {
+      "keyword": "애국단을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 775
+    },
+    {
+      "keyword": "조직하였다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 776
+    },
+    {
+      "keyword": "조선",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 777
+    },
+    {
+      "keyword": "의용대를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 778
+    },
+    {
+      "keyword": "창설하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 779
+    },
+    {
+      "keyword": "항일",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 780
+    },
+    {
+      "keyword": "투쟁을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 781
+    },
+    {
+      "keyword": "전개하였다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 782
+    },
+    {
+      "keyword": "혁명군을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 783
+    },
+    {
+      "keyword": "지휘하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 784
+    },
+    {
+      "keyword": "영릉가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 785
+    },
+    {
+      "keyword": "전투를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 786
+    },
+    {
+      "keyword": "승리로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 787
+    },
+    {
+      "keyword": "이끌었다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 788
+    },
+    {
+      "keyword": "선언으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 789
+    },
+    {
+      "keyword": "시작된",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 790
+    },
+    {
+      "keyword": "운동에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 791
+    },
+    {
+      "keyword": "지금",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 792
+    },
+    {
+      "keyword": "조선이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 793
+    },
+    {
+      "keyword": "독립국이고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 794
+    },
+    {
+      "keyword": "조선인이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 795
+    },
+    {
+      "keyword": "자주민임을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 796
+    },
+    {
+      "keyword": "선언하노라",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 797
+    },
+    {
+      "keyword": "세계",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 798
+    },
+    {
+      "keyword": "알려",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 799
+    },
+    {
+      "keyword": "평등의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 800
+    },
+    {
+      "keyword": "대의를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 801
+    },
+    {
+      "keyword": "분명히",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 802
+    },
+    {
+      "keyword": "밝히고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 803
+    },
+    {
+      "keyword": "후손에게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 804
+    },
+    {
+      "keyword": "대대로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 805
+    },
+    {
+      "keyword": "전하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 806
+    },
+    {
+      "keyword": "자존의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 807
+    },
+    {
+      "keyword": "정당한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 808
+    },
+    {
+      "keyword": "영원히",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 809
+    },
+    {
+      "keyword": "누릴",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 810
+    },
+    {
+      "keyword": "있도록",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 811
+    },
+    {
+      "keyword": "하노라",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 812
+    },
+    {
+      "keyword": "세계문화유산으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 813
+    },
+    {
+      "keyword": "등재된",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 814
+    },
+    {
+      "keyword": "경복궁",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 815
+    },
+    {
+      "keyword": "남한산성",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 816
+    },
+    {
+      "keyword": "석촌동",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 817
+    },
+    {
+      "keyword": "고분군",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 818
+    },
+    {
+      "keyword": "가야",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 819
+    },
+    {
+      "keyword": "임시",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 820
+    },
+    {
+      "keyword": "원년에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 821
+    },
+    {
+      "keyword": "정부가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 822
+    },
+    {
+      "keyword": "공포한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 823
+    },
+    {
+      "keyword": "조직법에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 824
+    },
+    {
+      "keyword": "의거하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 825
+    },
+    {
+      "keyword": "조직하고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 826
+    },
+    {
+      "keyword": "공동의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 827
+    },
+    {
+      "keyword": "적인",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 828
+    },
+    {
+      "keyword": "제국주의자들을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 829
+    },
+    {
+      "keyword": "타도하기",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 830
+    },
+    {
+      "keyword": "연합군의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 831
+    },
+    {
+      "keyword": "일원으로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 832
+    },
+    {
+      "keyword": "항전을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 833
+    },
+    {
+      "keyword": "계속한다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 834
+    },
+    {
+      "keyword": "체결되고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 835
+    },
+    {
+      "keyword": "일은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 836
+    },
+    {
+      "keyword": "당사국",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 837
+    },
+    {
+      "keyword": "정치적",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 838
+    },
+    {
+      "keyword": "안전이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 839
+    },
+    {
+      "keyword": "외부로부터의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 840
+    },
+    {
+      "keyword": "무력",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 841
+    },
+    {
+      "keyword": "공격에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 842
+    },
+    {
+      "keyword": "의하여",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 843
+    },
+    {
+      "keyword": "위협을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 844
+    },
+    {
+      "keyword": "받고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 845
+    },
+    {
+      "keyword": "있다고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 846
+    },
+    {
+      "keyword": "당사국이든지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 847
+    },
+    {
+      "keyword": "인정할",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 848
+    },
+    {
+      "keyword": "언제든지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 849
+    },
+    {
+      "keyword": "당사국은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 850
+    },
+    {
+      "keyword": "협의한다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 851
+    },
+    {
+      "keyword": "상호적",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 852
+    },
+    {
+      "keyword": "합의에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 853
+    },
+    {
+      "keyword": "미합중국의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 854
+    },
+    {
+      "keyword": "육군",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 855
+    },
+    {
+      "keyword": "해군",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 856
+    },
+    {
+      "keyword": "공군을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 857
+    },
+    {
+      "keyword": "대한민국의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 858
+    },
+    {
+      "keyword": "영토",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 859
+    },
+    {
+      "keyword": "내와",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 860
+    },
+    {
+      "keyword": "부근에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 861
+    },
+    {
+      "keyword": "배치하는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 862
+    },
+    {
+      "keyword": "대한민국은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 863
+    },
+    {
+      "keyword": "허가하고",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 864
+    },
+    {
+      "keyword": "미합중국은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 865
+    },
+    {
+      "keyword": "수락한다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 866
+    },
+    {
+      "keyword": "국가에",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 867
+    },
+    {
+      "keyword": "지계아문은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 868
+    },
+    {
+      "keyword": "한성부와",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 869
+    },
+    {
+      "keyword": "군의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 870
+    },
+    {
+      "keyword": "산림",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 871
+    },
+    {
+      "keyword": "전답",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 872
+    },
+    {
+      "keyword": "가옥의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 873
+    },
+    {
+      "keyword": "계권",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 874
+    },
+    {
+      "keyword": "바로잡기",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 875
+    },
+    {
+      "keyword": "임시로",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 876
+    },
+    {
+      "keyword": "설치할",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 877
+    },
+    {
+      "keyword": "가옥은",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 878
+    },
+    {
+      "keyword": "이외에는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 879
+    },
+    {
+      "keyword": "소유주가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 880
+    },
+    {
+      "keyword": "없을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 881
+    },
+    {
+      "keyword": "것임",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 882
+    },
+    {
+      "keyword": "개항장",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 883
+    },
+    {
+      "keyword": "내에서는",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 884
+    },
+    {
+      "keyword": "이러한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 885
+    },
+    {
+      "keyword": "제한이",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 886
+    },
+    {
+      "keyword": "시기가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 887
+    },
+    {
+      "keyword": "이른",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 888
+    },
+    {
+      "keyword": "것부터",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 889
+    },
+    {
+      "keyword": "바르게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 890
+    },
+    {
+      "keyword": "나열한",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 891
+    },
+    {
+      "keyword": "어재연의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 892
+    },
+    {
+      "keyword": "부대가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 893
+    },
+    {
+      "keyword": "광성보에서",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 894
+    },
+    {
+      "keyword": "미국군에게",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 895
+    },
+    {
+      "keyword": "패하였다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 896
+    },
+    {
+      "keyword": "양헌수의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 897
+    },
+    {
+      "keyword": "정족산성에서",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 898
+    },
+    {
+      "keyword": "프랑스군을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 899
+    },
+    {
+      "keyword": "물리쳤다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 900
+    },
+    {
+      "keyword": "독일인",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 901
+    },
+    {
+      "keyword": "오페르트가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 902
+    },
+    {
+      "keyword": "남연군의",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 903
+    },
+    {
+      "keyword": "묘를",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 904
+    },
+    {
+      "keyword": "도굴하려다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 905
+    },
+    {
+      "keyword": "실패하였다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 906
+    },
+    {
+      "keyword": "미국",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 907
+    },
+    {
+      "keyword": "상선",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 908
+    },
+    {
+      "keyword": "제너럴셔먼호가",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 909
+    },
+    {
+      "keyword": "평양",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 910
+    },
+    {
+      "keyword": "부근까지",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 911
+    },
+    {
+      "keyword": "들어와",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 912
+    },
+    {
+      "keyword": "통상을",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 913
+    },
+    {
+      "keyword": "요구하였다",
+      "count": 0.88,
+      "grade": "A",
+      "rank": 914
+    }
+  ],
+  "questionStems": [
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 1,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "다음 설명에 해당하는 문화유산은? 고래 잡는 사람, 호랑이, 사슴, 물을 뿜고 있는 고래, 작살이 꽂혀 있는 고래 등이 바위에 묘사되어 있다. 당시 이 지역 사람들의 생활 모습과 신앙, 예술 세계를 이해하는 데 중요한 자료이며 국보로 지정되어 있다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 2,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "(가)에 해당하는 기구는? (가) 은/는 원래 여진족과 왜구의 침입에 대비하기 위해 만든 임시회의 기구였다. 임진왜란을 거치면서 전ㆍ현직 정승을 비롯한 주요 관원이 참여하였고, 군사 문제뿐 아니라 외교, 재정, 인사 등 국정 전반을 다루었다. 이로 인해 의정부와 6조의 기능이 축소되었다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 3,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "밑줄 친 ‘이 나라’에 대한 설명으로 옳은 것은? 이 나라는 고구려의 옛 땅이다. … (중략) … 곳곳에 촌락이 있는데 모두 말갈의 부락이다. 그 백성은 말갈이 많고 토인 (土人)이 적은데, 모두 토인을 촌장으로 삼는다. － 유취국사 －"
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 4,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "sameEra",
+      "stem": "다음 업적이 있는 왕의 재위 기간에 볼 수 있는 모습은? ○ 우리 풍토에 맞는 농서인 농사직설을 편찬하였다. ○ 최윤덕과 김종서를 파견하여 4군 6진을 개척하였다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 5,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "sameEra",
+      "stem": "밑줄 친 ‘왕’의 재위 기간에 있었던 사실로 옳은 것은? 왕이 신돈에게 국정을 맡겼다. 신돈은 힘있는 자들이 나라의 토지와 약한 자들의 토지를 모두 빼앗고 양민을 자신들의 노비로 삼고 있는 현실을 지적하였다. 그리고 관청을 만들어 그 문제를 개혁하려고 했다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 6,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "밑줄 친 ‘이곳’에 대한 설명으로 옳은 것은? ○ 이곳의 고인돌 유적은 유네스코 세계문화유산에 등재되었다. ○ 고려 정부는 이곳으로 천도하여 몽골의 침략에 대항하였다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 7,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "after",
+      "stem": "다음 설명에 해당하는 기구는? 개항 이후 정세 변화에 대응하여 개혁을 추진하기 위해 설립된 기구로 외교, 군사 등 개화와 관련된 정책을 총괄하였다. 또한 그 아래 12사를 두어 실무를 담당하게 하였다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 8,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "after",
+      "stem": "다음 사건 발생 이후에 있었던 사실로 옳은 것은? 노비 만적 등 6인이 개경의 북산에서 나무하다가 공노비와 사노비들을 불러 모의하기를, “정중부의 반란과 김보당의 반란 이후로 고관이 천민과 노비에서 많이 나왔다. 장상(將相)의 씨가 따로 있으랴!”라고 하였다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 9,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "밑줄 친 ‘그’에 대한 설명으로 옳은 것은? 그는 양반전을 지어 양반 사회의 허위의식을 고발하였다. 그는 상공업 진흥에도 관심을 기울여 수레와 선박의 이용 등에 대해서도 주목하였다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 10,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "다음 사실이 있었던 왕대의 설명으로 옳은 것은? ○ 김흠돌의 난을 계기로 진골 귀족 세력 등을 숙청하였다. ○ 녹읍을 폐지하여 귀족의 경제적 기반을 약화하고자 하였다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 11,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "between",
+      "stem": "(가), (나) 사이 시기에 있었던 사실로 옳은 것은? (가) 왕이 보병과 기병 5만 명을 보내 신라를 구원하게 하였고, 이에 왜군이 퇴각하였다. (나) 백제 왕이 가야와 함께 관산성을 공격하였다. 신주군주 김무력이 나아가 교전을 벌였고, 비장인 도도가 백제 왕을 죽였다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 12,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "다음 자료를 통해 알 수 있는 단체에 대한 설명으로 옳은 것은? 남만주로 집단 이주하려고 기도하고, 조선에서 상당한 재력이 있는 사람들을 그곳에 이주시켜 토지를 사들이고 촌락을 세워, … (중략) … 학교를 세워 민족 교육을 실시하고, 무관학교를 설립하여 문무를 겸하는 교육을 실시하면서, 기회를 엿보아 독립 전쟁을 일으켜 구한국의 국권을 회복하려고 하였다. － 105인 사건 판결문 －"
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 13,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "sameEra",
+      "stem": "밑줄 친 ‘왕’의 재위 기간에 있었던 사실로 옳은 것은? 영의정 이원익은 공물 제도가 방납인에 의한 폐단이 크며, 경기도가 특히 심하다고 생각하였다. 그래서 별도의 관청을 만들어 경기 지역 백성들에게 봄과 가을에 토지 1결마다 8두씩 쌀로 거두고, 이것을 방납인에게 주어 수시로 물품을 구입하여 납부하게 하자고 왕에게 건의하였다. 왕은 그 의견을 받아들였다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 14,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "밑줄 친 ‘이 개혁’의 내용으로 옳은 것은? 이 개혁에 따라 의정부를 내각으로, 8아문을 7부로 고쳤다. 또한 지방 8도는 23부로 개편하였다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 15,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "밑줄 친 ‘이 지역’에 있는 문화유산은? 백제는 5세기 고구려의 공격으로 한강 유역을 상실하면서 수도가 함락되어 이 지역으로 도읍을 옮겼다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 16,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "밑줄 친 ‘이 지역’에 대한 설명으로 옳은 것은? 이 지역에서 권업회라는 독립운동 단체가 조직되었고, 권업회는 국외 무장 독립 단체들을 모아 대한 광복군 정부라는 독립군 조직을 만들었다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 17,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "after",
+      "stem": "밑줄 친 ‘그’에 대한 설명으로 옳은 것은? 그는 문종의 넷째 아들인데, 출가하여 승려가 되었다. 송나라로 유학을 가서 화엄학과 천태학을 공부하였다. 이후 천태학을 부흥시켜 천태종을 창립하였다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 18,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "다음 글을 쓴 인물에 대한 설명으로 옳은 것은? 대저 우리나라가 아시아의 중립국이 된다면 러시아를 방어하는 큰 기틀이 될 것이고, 또 아시아의 여러 대국이 서로 보전하는 정략도 될 것이다. … (중략) … 이는 비단 우리나라만을 위한 것이 아니라 중국의 이익도 될 것이고, 여러 나라가 서로 보전 하는 계책도 될 것이니 무엇이 괴로워서 하지 않겠는가."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 19,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "다음 강령을 발표한 단체에 대한 설명으로 옳은 것은? 1. 부호의 의연금 및 일본인이 불법 징수하는 세금을 압수하여 무장을 준비한다. 6. 일본인 고관 및 한국인 반역자를 수시 수처에서 처단하는 행형부를 둔다. 7. 무력이 완비되는 대로 일본인 섬멸전을 단행하여 최후 목적의 달성을 기한다."
+    },
+    {
+      "sourceFile": "250405 국가 9급 한국사-나.pdf",
+      "sourceQuestionNo": 20,
+      "exam": "국가직",
+      "year": 2025,
+      "type": "after",
+      "stem": "밑줄 친 ‘이 헌법’ 공포 이후에 있었던 사실로 옳은 것은? 제헌 국회는 “유구한 역사와 전통에 빛나는 우리들 대한국민은 기미 삼일운동으로 대한민국을 건립하여 세계에 선포한 위대한 독립정신을 계승하여 이제 민주독립국가를 재건함에 있어서” 라고 명시한 이 헌법을 공포하였다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 1,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "신석기시대에 대한 설명으로 옳은 것만을 모두 고르면? ㄱ. 갈돌과 갈판을 사용하여 곡물이나 열매를 갈았다. ㄴ. 반달돌칼을 사용하여 농작물을 수확하였다. ㄷ. 뼈바늘을 사용하여 옷이나 그물을 만들었다. ㄹ. 벼농사를 널리 짓게 되었다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 2,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "(가) 나라에 대한 설명으로 옳은 것은? 옛 (가) 의 풍속에는 비가 오는 것이 고르지 않아 곡식이 익지 않으면, 문득 왕에게 그 잘못을 돌려 “마땅히 바꾸어야 한다.” 또는 “마땅히 죽여야 한다.”라고 말하였다. － 삼국지 위서 동이전 －"
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 3,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "다음 외교문서를 작성한 나라에 대한 설명으로 옳지 않은 것은? 무예가 알립니다. “고(구)려의 옛 터전을 회복하고, 부여의 유속(遺俗)을 가지게 되었습니다.”"
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 4,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "밑줄 친 ‘국왕’의 업적으로 옳지 않은 것은? 이차돈이 국왕에게 아뢰기를 “신이 거짓으로 왕명을 전하였다고 문책하여 신의 머리를 베시면 만민이 모두 굴복하고 감히 왕명을 어기지 못할 것입니다.”라고 하였다. … (중략) … 옥리(獄吏)가 이차돈의 머리를 베니 하얀 젖이 한 길이나 솟았다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 5,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "sameEra",
+      "stem": "(가) 시기에 일어난 고구려 관련 사건은?"
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 6,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "(가) 국왕의 업적으로 옳지 않은 것은? (가) 은/는 김부(金傅)를 경주의 사심관으로 임명하여 부호장 (副戶長) 이하의 관직 등에 관한 일을 맡게 하였다. 이에 여러 공신들 역시 이를 본받아 자기 주(州)의 사심이 되었으니, 사심관이 이로부터 비롯되었다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 7,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "sameEra",
+      "stem": "다음 대화가 오고 간 시기는? 소손녕: 그대 나라는 신라 땅에서 일어났고, 고구려 땅은 우리 땅인데 너희들이 쳐들어와 차지하였다. 서 희: 우리는 고구려를 계승하여 나라 이름을 고려라 하였다. 땅의 경계를 논한다면 그대 나라의 동경도 모두 우리 땅이다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 8,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "밑줄 친 ‘국왕’에 대한 설명으로 옳은 것은? 이달에 국왕이 친히 언문 28자를 지었는데, 그 글자는 옛 글자를 모방하였고, 초성ㆍ중성ㆍ종성으로 조합해야 한 음절이 이루어졌다. 무릇 문자로 기록한 것과 말로만 전해지는 것을 모두 쓸 수 있으며, 글자는 비록 쉽고 간단하지만 무궁무진한 표현이 가능하니, 이를 ‘훈민정음’이라고 한다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 9,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "after",
+      "stem": "(가) 인물에 대한 설명으로 옳은 것은? (가) 은/는 무신집권기 불교의 세속화를 비판하면서 불교 본연의 정신을 확립하자는 결사 운동을 주도하여 수선사를 결성하였다. 그는 깨달음을 얻은 뒤에도 수행을 게을리하지 않아야 한다는 돈오점수를 내세웠다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 10,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "밑줄 친 ‘국왕’의 정책으로 옳은 것은? 국왕은 성균관 앞에 “두루 사귀되 편당을 짓지 않는 것이 군자의 공정한 마음이요, 편당을 짓고 두루 사귀지 않는 것은 소인의 사사로운 마음이다.”라는 내용을 새긴 탕평비를 세웠다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 11,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "(가) 인물에 대한 설명으로 옳은 것은? (가) 은/는 삼가 두 번 절하고 아뢰옵니다. … (중략) … 성학 (聖學)에는 강령이 있고, 심법(心法)에는 지극히 요긴한 것이 있습니다. … (중략) … 이것을 합하여 성학십도를 만들어서 각 그림 아래에 또한 외람되게 신의 의견을 덧붙여서 조심스럽게 꾸며 올립니다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 12,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "after",
+      "stem": "다음 조약이 체결된 이후에 있었던 사실이 아닌 것은? 제1조 한국 정부는 시정개선(施政改善)에 관하여 통감의 지도를 받을 것. 제4조 한국 고등관리의 임면(任免)은 통감의 동의를 받아 이를 집행할 것. 제5조 한국 정부는 통감이 추천한 일본인을 한국 관리로 임명할 것."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 13,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "다음 조약에 대한 설명으로 옳은 것은? 제9관 수입 또는 수출되는 각 화물이 해관을 통과할 때는 응당 본 조약에 첨부된 세칙에 따라 관세를 납부해야 한다. 제37관 조선국에서 가뭄과 홍수, 전쟁 등으로 인하여 국내에 양식이 결핍할 것을 우려하여 일시 쌀 수출을 금지 하려고 할 때에는 1개월 전에 지방관이 일본 영사관에게 통지하여 미리 그 기간을 항구에 있는 일본 상인들에게 전달하여 일률적으로 준수하는 데 편리하게 한다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 14,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "밑줄 친 ‘내’에 대한 설명으로 옳은 것만을 모두 고르면? 내가 원하는 우리 민족의 사업은 결코 세계를 무력으로 정복 하거나 경제력으로 지배하려는 것이 아니다. 오직 사랑의 문화, 평화의 문화로 우리 스스로 잘 살고 인류 전체가 의좋게 즐겁게 살도록 하는 일을 하자는 것이다. 어느 민족도 일찍이 그러한 일을 한 이가 없었으니 그것은 공상이라고 하지 말라. ㄱ. 대한민국 임시정부 주석을 지냈다. ㄴ. 상하이에서 한인 애국단을 조직하였다. ㄷ. 조선 의용대를 창설하여 항일 무장 투쟁을 전개하였다. ㄹ. 조선 혁명군을 지휘하여 영릉가 전투를 승리로 이끌었다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 15,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "다음 선언으로 시작된 운동에 대한 설명으로 옳은 것은? 우리는 지금 우리 조선이 독립국이고 조선인이 자주민임을 선언하노라. 이를 세계 여러 나라에 알려 인류 평등의 대의를 분명히 밝히고, 이를 후손에게 대대로 전하여 민족 자존의 정당한 권리를 영원히 누릴 수 있도록 하노라."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 16,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "유네스코 세계문화유산으로 등재된 것만을 모두 고르면? ㄱ. 경복궁 ㄴ. 남한산성 ㄷ. 석촌동 고분군 ㄹ. 가야 고분군"
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 17,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "(가)에 대한 설명으로 옳지 않은 것은? 대한민국 임시 정부는 대한민국 원년에 정부가 공포한 군사 조직법에 의거하여 …(중략) … (가) 을/를 조직하고 …(중략) … 공동의 적인 일본 제국주의자들을 타도하기 위해 연합군의 일원으로 항전을 계속한다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 18,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "after",
+      "stem": "다음 조약이 체결되고 난 이후에 일어난 일은? 제2조 당사국 중 어느 한 나라의 정치적 독립 또는 안전이 외부로부터의 무력 공격에 의하여 위협을 받고 있다고 어느 당사국이든지 인정할 때에는 언제든지 당사국은 서로 협의한다. 제4조 상호적 합의에 의하여 미합중국의 육군, 해군, 공군을 대한민국의 영토 내와 그 부근에 배치하는 권리를 대한민국은 이를 허가하고 미합중국은 이를 수락한다."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 19,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "factual",
+      "stem": "(가) 국가에 대한 설명으로 옳지 않은 것은? 제1조 지계아문은 한성부와 13도 각 부ㆍ군의 산림, 토지, 전답, 가옥의 계권(契券)을 바로잡기 위해 임시로 설치할 것. 제10조 산림, 토지, 전답, 가옥은 (가) 인(人) 이외에는 소유주가 될 수 없을 것임. 단, 각 개항장 내에서는 이러한 제한이 없을 것임."
+    },
+    {
+      "sourceFile": "250621 지방 9급 한국사-B.pdf",
+      "sourceQuestionNo": 20,
+      "exam": "지방직",
+      "year": 2025,
+      "type": "sameEra",
+      "stem": "(가) ～ (라)를 시기가 이른 것부터 바르게 나열한 것은? (가) 어재연의 부대가 광성보에서 미국군에게 패하였다. (나) 양헌수의 부대가 정족산성에서 프랑스군을 물리쳤다. (다) 독일인 오페르트가 남연군의 묘를 도굴하려다 실패하였다. (라) 미국 상선 제너럴셔먼호가 평양 부근까지 들어와 통상을 요구하였다."
+    }
+  ]
+};
+
+if (typeof window !== 'undefined') {
+  window.HISTORY_SOURCE_SEEDS = HISTORY_SOURCE_SEEDS;
+}

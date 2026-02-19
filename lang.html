@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>국어·영어 압축 인출 앱</title>
+  <meta name="description" content="국가직 9급 국어·영어 기출 기반 시간압축 인출 훈련 앱">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-orbs"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-logo"><span class="logo-icon">🚀</span><span id="langHeaderTitle">국어 압축 인출</span></div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <label for="subjectSwitch" style="font-size:12px;color:var(--text-muted);font-weight:700;">과목</label>
+        <select id="subjectSwitch" class="filter-select" style="padding:6px 10px;border-radius:10px;font-size:12px;font-weight:700;width:auto;">
+          <option value="kor">국어</option>
+          <option value="eng">영어</option>
+          <option value="law">행정법</option>
+          <option value="admin">행정학</option>
+          <option value="his">한국사</option>
+        </select>
+      </div>
+      <a class="journal-link" id="journalLink" href="journal.html?subject=kor">📒 학습기록</a>
+      <div class="dday-badge" id="ddayBadge">D-0</div>
+      <nav class="nav-tabs" id="navTabs">
+        <button class="nav-tab active" data-page="dashboard">📊 대시보드</button>
+        <button class="nav-tab" data-page="study">📝 통합형</button>
+        <button class="nav-tab" data-page="ox">⭕ OX</button>
+        <button class="nav-tab" data-page="weak">📉 취약분석</button>
+        <button class="nav-tab" data-page="guide">📘 가이드</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="page active" id="page-dashboard">
+      <div class="dash-grid">
+        <div class="stat-card">
+          <div class="stat-label">총 학습 문항</div>
+          <div class="stat-value" id="statTotal">0</div>
+          <div class="stat-sub">현재 과목 기준</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">정답률</div>
+          <div class="stat-value" id="statAccuracy">--%</div>
+          <div class="stat-sub">자기채점 포함</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">오늘 학습</div>
+          <div class="stat-value" id="statToday">0</div>
+          <div class="stat-sub">오늘 푼 문항</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">연속 학습</div>
+          <div class="streak-display">🔥 <span id="statStreak">0</span>일 연속</div>
+        </div>
+      </div>
+
+      <div class="q-card" style="margin-top:12px;">
+        <h3 style="font-size:15px;font-weight:800;margin-bottom:8px;">🎯 약점 우선 과제</h3>
+        <div id="priorityTasks"></div>
+      </div>
+
+      <h3 style="font-size:16px;font-weight:800;margin:16px 0 12px;">📚 단원별 진도</h3>
+      <div class="chapter-grid" id="chapterGrid"></div>
+    </div>
+
+    <div class="page" id="page-study">
+      <div id="studySetup">
+        <h2 style="font-size:20px;font-weight:800;margin-bottom:20px;">📝 통합형 문제</h2>
+        <div class="filter-bar">
+          <span style="font-size:13px;font-weight:700;color:var(--text-muted);">중요도:</span>
+          <button class="filter-btn active" data-filter="imp" data-value="all">전체</button>
+          <button class="filter-btn" data-filter="imp" data-value="S">🔴 S급</button>
+          <button class="filter-btn" data-filter="imp" data-value="A">🟡 A급</button>
+          <button class="filter-btn" data-filter="imp" data-value="B">🔵 B급</button>
+        </div>
+        <div class="filter-bar">
+          <span style="font-size:13px;font-weight:700;color:var(--text-muted);">학습범위:</span>
+          <select class="filter-select" id="targetFilter">
+            <option value="national9">🎯 국가직9급 중심(추천)</option>
+            <option value="expanded">📚 확장(지방직·예시 포함)</option>
+            <option value="all">🌐 전체</option>
+          </select>
+          <span class="scope-note" id="targetScopeInfo"></span>
+        </div>
+        <div class="filter-bar">
+          <span style="font-size:13px;font-weight:700;color:var(--text-muted);">단원:</span>
+          <select class="filter-select" id="chapterFilter">
+            <option value="all">전체 단원</option>
+          </select>
+          <select class="filter-select" id="sortOrder">
+            <option value="random">🔀 랜덤</option>
+            <option value="importance">⭐ 중요도순</option>
+            <option value="weak">📉 취약순</option>
+            <option value="review">🎯 복습우선</option>
+            <option value="year-desc">📅 최신순</option>
+          </select>
+        </div>
+        <div class="filter-bar training-bar">
+          <span style="font-size:13px;font-weight:700;color:var(--text-muted);">압축옵션:</span>
+          <label class="training-option">
+            <input type="checkbox" id="recallModeToggle" checked>
+            <span>🧠 인출선행 5초</span>
+          </label>
+          <label class="training-option">
+            <input type="checkbox" id="speedModeToggle">
+            <span>⚡ 스피드모드</span>
+          </label>
+          <span class="scope-note">iPad 가로 / 손가락·펜슬 최적화</span>
+        </div>
+        <div style="margin-top:16px;">
+          <button class="btn btn-primary" id="startStudy">▶ 학습 시작</button>
+          <span class="q-counter" id="filteredCount" style="margin-left:12px;"></span>
+        </div>
+      </div>
+      <div id="studyArea" style="display:none;">
+        <div class="pressure-rope" id="studyRopeTimer" hidden>
+          <div class="pressure-head">
+            <span class="pressure-label">🔥 압박 타임라인</span>
+            <span class="pressure-time" id="studyRopeText">--.-초</span>
+          </div>
+          <div class="pressure-track">
+            <div class="pressure-ropeline" id="studyRopeFill"></div>
+            <div class="pressure-embers"></div>
+            <div class="pressure-ropeburn" id="studyRopeBurn"></div>
+          </div>
+        </div>
+        <div class="question-area" id="questionArea"></div>
+        <div class="q-nav">
+          <button class="btn btn-secondary" id="prevQ">← 이전</button>
+          <span class="q-counter" id="qCounter">1 / 20</span>
+          <button class="btn btn-primary" id="nextQ">다음 →</button>
+        </div>
+      </div>
+      <div id="studyResult" style="display:none;"></div>
+    </div>
+
+    <div class="page" id="page-ox">
+      <div id="oxSetup">
+        <h2 style="font-size:20px;font-weight:800;margin-bottom:20px;">⭕ OX 선지 훈련</h2>
+        <p style="color:var(--text-secondary);margin-bottom:20px;font-size:14px;">
+          정답키 연동 문항은 자동채점, 미연동 문항은 자기채점으로 즉시 복습 큐에 반영됩니다.
+        </p>
+        <div class="filter-bar">
+          <span style="font-size:13px;font-weight:700;color:var(--text-muted);">중요도:</span>
+          <button class="filter-btn active" data-filter="ox-imp" data-value="all">전체</button>
+          <button class="filter-btn" data-filter="ox-imp" data-value="S">🔴 S급</button>
+          <button class="filter-btn" data-filter="ox-imp" data-value="A">🟡 A급</button>
+        </div>
+        <div class="filter-bar">
+          <span style="font-size:13px;font-weight:700;color:var(--text-muted);">단원:</span>
+          <select class="filter-select" id="oxChapterFilter">
+            <option value="all">전체 단원</option>
+          </select>
+          <select class="filter-select" id="oxCount">
+            <option value="20">20문</option>
+            <option value="30">30문</option>
+            <option value="50">50문</option>
+            <option value="all">전체</option>
+          </select>
+        </div>
+        <div class="filter-bar">
+          <span style="font-size:13px;font-weight:700;color:var(--text-muted);">학습범위:</span>
+          <select class="filter-select" id="oxTargetFilter">
+            <option value="national9">🎯 국가직9급 중심(추천)</option>
+            <option value="expanded">📚 확장(지방직·예시 포함)</option>
+            <option value="all">🌐 전체</option>
+          </select>
+          <span class="scope-note" id="oxTargetScopeInfo"></span>
+        </div>
+        <button class="btn btn-primary" id="startOX" style="margin-top:16px;">▶ OX 시작</button>
+        <span class="q-counter" id="oxFilteredCount" style="margin-left:12px;"></span>
+      </div>
+      <div id="oxArea" style="display:none;">
+        <div class="pressure-rope" id="oxRopeTimer" hidden>
+          <div class="pressure-head">
+            <span class="pressure-label">🔥 압박 타임라인</span>
+            <span class="pressure-time" id="oxRopeText">--.-초</span>
+          </div>
+          <div class="pressure-track">
+            <div class="pressure-ropeline" id="oxRopeFill"></div>
+            <div class="pressure-embers"></div>
+            <div class="pressure-ropeburn" id="oxRopeBurn"></div>
+          </div>
+        </div>
+        <div id="oxQuestion"></div>
+        <div class="q-nav">
+          <button class="btn btn-secondary" id="prevOX">← 이전</button>
+          <span class="q-counter" id="oxCounter">1 / 20</span>
+          <button class="btn btn-primary" id="nextOX">다음 →</button>
+        </div>
+      </div>
+      <div id="oxResult" style="display:none;"></div>
+    </div>
+
+    <div class="page" id="page-weak">
+      <h2 style="font-size:20px;font-weight:800;margin-bottom:20px;">📉 취약 분석</h2>
+      <div id="weakAnalysis"></div>
+    </div>
+
+    <div class="page" id="page-guide">
+      <h2 style="font-size:20px;font-weight:800;margin-bottom:20px;">📘 시간압축 가이드</h2>
+      <div id="guideContent"></div>
+    </div>
+  </main>
+
+  <script src="lang-data.js"></script>
+  <script src="lang-data-supplement.js"></script>
+  <script src="study-journal.js"></script>
+  <script src="lang-app.js"></script>
+</body>
+</html>

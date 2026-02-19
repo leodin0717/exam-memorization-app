@@ -43,8 +43,8 @@ body {
 
 .title {
   color: #5fe18e;
-  font-weight: 800;
-  font-size: 1.35rem;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .plus {
@@ -58,7 +58,9 @@ body {
 .mindset-text {
   margin: 0;
   color: #d6def5;
-  font-size: 1.02rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.55;
 }
 
 main {
@@ -117,6 +119,21 @@ main {
   line-height: 1.5;
 }
 
+.keyword-highlight {
+  background: linear-gradient(180deg, rgba(255, 214, 84, 0.34), rgba(255, 134, 63, 0.28));
+  color: #fff2c7;
+  border-radius: 6px;
+  padding: 0 4px;
+}
+
+.memory-line {
+  margin: 14px 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #bce8ff;
+}
+
 .button-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(120px, 160px));
@@ -142,6 +159,39 @@ main {
   padding: 14px;
   font-size: 1.02rem;
   line-height: 1.55;
+}
+
+.feedback-title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.keyword-chip-row {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keyword-chip {
+  display: inline-block;
+  background: rgba(44, 117, 255, 0.26);
+  border: 1px solid rgba(121, 171, 255, 0.4);
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: #d9e8ff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.memory-scene {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(23, 54, 98, 0.35);
+  border: 1px solid rgba(103, 157, 255, 0.32);
+  color: #dbe8ff;
 }
 
 .feedback.correct {

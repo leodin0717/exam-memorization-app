@@ -10,17 +10,22 @@
     };
     const SLOW_THRESHOLD_SEC = 8;
 
+    // 초현실 호러 시나리오 스타일 기억 규칙
     const MEMORY_TIP_RULES = [
-        { re: /사정판결|취소판결/, tip: '⚖️ 위법이라도 공익 저울이 기울면 취소 대신 위법확인으로 남기는 재판 장면을 그리세요.' },
-        { re: /하자의 승계|선결문제/, tip: '🔗 앞처분·뒤처분을 쇠사슬로 묶어 위법이 같이 이동하는 그림으로 고정하세요.' },
-        { re: /신뢰보호|실권의 법리/, tip: '🛡️ 국가의 말에 기대어 움직인 국민을 방패로 감싸는 장면으로 외우세요.' },
-        { re: /무효|취소|철회/, tip: '💥 처음부터 없는 무효, 🧹 나중에 걷어내는 취소·철회를 세 칸 만화로 기억하세요.' },
-        { re: /재량권|일탈|남용/, tip: '🎯 재량은 과녁 안, 일탈·남용은 과녁 밖으로 빗나가는 화살로 떠올리세요.' },
-        { re: /행정입법|법규명령|행정규칙/, tip: '📚 대외구속 법규명령 vs 내부기준 행정규칙을 두 권 책 표지로 분리해 기억하세요.' },
-        { re: /행정계획|계획재량/, tip: '🗺️ 지도 위 여러 이익을 겹쳐보고 최종 경로를 고르는 장면이 계획재량입니다.' },
-        { re: /집행정지|가처분/, tip: '⏸️ 본안 전까지 잠시 멈춤 버튼을 누르는 화면으로 집행정지를 떠올리세요.' },
-        { re: /손실보상|손해배상/, tip: '🏗️ 적법공익은 보상, 위법침해는 배상으로 지갑 색을 두 개로 나눠 기억하세요.' },
-        { re: /당사자소송|항고소송/, tip: '🧭 공권력 다툼은 항고소송, 관계확인은 당사자소송으로 갈림길 표지판을 떠올리세요.' }
+        { re: /사정판결|취소판결/, scene: '💀 법정 한가운데서 판사 망치가 네 머리 위로 내려치려는 순간—"잠깐!" 공익이라는 거대한 방패가 쾅 튀어나와 망치를 막음. 망치 대신 "위법확인"이라 적힌 피 묻은 도장이 이마에 철컥 찍힘. "취소는 못 해, 확인만 해."', slogan: '"망치 멈추고(사정판결), 도장 철컥(위법확인)!"' },
+        { re: /하자의 승계|선결문제/, scene: '🔗 네 팔에 감긴 녹슨 쇠사슬이 앞의 처분 관에서 뒤의 처분 관까지 이어져 있어. 앞 관이 폭발하자 불꽃이 사슬을 타고 흘러와 뒤 관도 같이 "꽈앙!" 터져버림. 쇠사슬 타는 냄새, 살 타는 고통이 그대로 전달됨.', slogan: '"앞관 폭발(위법), 사슬 타고(승계), 뒤관 꽈앙!"' },
+        { re: /신뢰보호|실권의 법리/, scene: '🛡️ 국가가 "이리 와!" 손짓하며 달콤한 약속을 해서 네가 뛰어갔는데, 갑자기 바닥이 함정처럼 열림. 추락하려는 순간 "신뢰보호"라 새겨진 황금 방패가 빛을 내며 널 붙잡아줌. 방패 잡은 손에서 따뜻한 열기가 쫙.', slogan: '"달려갔다 함정(배신), 황금방패 번쩍(신뢰보호)!"' },
+        { re: /무효|취소|철회/, scene: '💥 세 개의 문이 있어. 첫째 문—열면 안에 아무것도 없는 텅 빈 어둠(무효, 처음부터 없음). 둘째 문—들어가면 뒤에서 누가 너를 확 잡아끌어 다시 밖으로 던짐(취소, 나중에 걷어냄). 셋째 문—들어간 뒤 문이 천천히 녹아 사라짐(철회, 앞으로 없앰).', slogan: '"텅 빈 문(무효), 끌어내기(취소), 녹아 사라짐(철회)!"' },
+        { re: /재량권|일탈|남용/, scene: '🎯 거대한 과녁판 앞에 활을 쏘는데, 과녁 안에 꽂히면 OK(재량). 과녁 밖으로 빗나가면 화살이 되돌아와 네 무릎을 꿰뚫음(일탈). 과녁에 맞긴 했는데 독이 묻어 있으면 남용—과녁이 시커멓게 썩어감.', slogan: '"과녁 안(재량), 밖 화살 귀환(일탈), 독화살(남용)!"' },
+        { re: /행정입법|법규명령|행정규칙/, scene: '📚 두 권의 책이 있어. 빨간 책(법규명령)은 밖에 있는 모든 사람을 쇠사슬로 묶는 힘이 있고, 파란 책(행정규칙)은 건물 안 사람만 조용히 명령함. 빨간 책을 열면 바깥에서 비명이, 파란 책은 안에서만 속삭임.', slogan: '"빨간 책 밖 비명(법규명령), 파란 책 안 속삭임(행정규칙)!"' },
+        { re: /행정계획|계획재량/, scene: '🗺️ 거대한 미로 위에서 지도를 펼치고 있어. 수백 개의 이익이 형광빛 선으로 겹쳐지고, 네 손가락이 최종 경로를 찍으면 그 길만 빛나고 나머지는 시커멓게 꺼짐. 경로를 정하는 순간의 전율—그게 계획재량.', slogan: '"미로 위 형광선(이익형량), 손가락 찍(계획재량)!"' },
+        { re: /집행정지|가처분/, scene: '⏸️ 거대한 불도저가 네 집을 향해 돌진하고 있어. 바로 그때 "집행정지!"라 외치면 공중에서 거대한 빨간 손이 나타나 불도저 앞을 쾅 막음. 불도저 엔진이 부르르 떨지만 한 발짝도 못 나감. 본안 판결 전까지!', slogan: '"불도저 돌진, 빨간 손 쾅(집행정지), 멈춤!"' },
+        { re: /손실보상|손해배상/, scene: '🏗️ 두 개의 지갑이 있어. 금색 지갑(보상)—정부가 합법적으로 네 땅을 가져가며 돈을 넣어줌. 검은색 지갑(배상)—공무원이 위법하게 네 팔을 부러뜨려서 피 값을 지불함. 금색은 고마운 돈, 검은색은 피 묻은 돈.', slogan: '"금 지갑 적법(보상), 검은 지갑 위법(배상)!"' },
+        { re: /당사자소송|항고소송/, scene: '🧭 갈림길에 서 있어. 오른쪽 화살표(항고소송)는 거대한 공권력 성을 향하고, 왼쪽 화살표(당사자소송)는 두 사람이 마주 앉은 탁자를 향해. 공권력에 맞서려면 오른쪽! 관계만 확인하면 왼쪽! 잘못 가면 벼랑.', slogan: '"성 향해(항고), 탁자 향해(당사자), 잘못 가면 벼랑!"' },
+        { re: /제소기간|고시/, scene: '⚡ 광화문 네거리에 서 있는데 하늘에서 거대한 관보가 벼락처럼 떨어져 발등을 쾅 찍어버림. 뼈 으스러지는 고통과 동시에 발등에서 빨간 초시계가 튀어나와 째깍째깍 소름 끼치게 돌아감. 고시 순간이 기산점!', slogan: '"발등 찧자마자(고시효력), 초시계 째깍(기산)!"' },
+        { re: /행정대집행|대집행|토지인도/, scene: '🏚️ 새벽에 눈 뜨면 불도저가 네 집 앞에 벌써 와 있어. "계고→통지→대집행" 스티커가 차례로 벽에 철컥 붙더니, 마지막 스티커 붙자마자 벽이 와르르 무너짐. 먼지, 파편, 비명—이게 대집행이다.', slogan: '"스티커 세 장(계고통지대집행), 벽 와르르!"' },
+        { re: /처분성|처분[이가]/, scene: '🚪 거대한 문 앞에 서 있는데, 문 위에 "처분"이라 적혀 있어. 이 문을 통과해야만 법원이라는 전쟁터에 입장 가능. 처분성 없으면? 문이 네 얼굴 앞에서 "퍽!" 닫혀버리고 코뼈가 으드득.', slogan: '"처분 문 통과해야 전쟁터(소송), 아니면 퍽!"' },
+        { re: /부관|조건|기한|부담/, scene: '🎁 선물 상자(허가)를 받았는데, 뚜껑 열자마자 안에서 뱀(부관)이 튀어나옴! 조건 뱀은 "이거 안 하면 선물 회수", 기한 뱀은 "시간 안에 안 열면 선물 녹음", 부담 뱀은 "대가를 내놔" 이를 드러냄.', slogan: '"선물 열면 뱀(부관), 조건·기한·부담 이빨!"' }
     ];
 
     const STATE = {
@@ -377,16 +382,24 @@
         const rule = MEMORY_TIP_RULES.find(r => r.re.test(bag));
         const k1 = (q.keywords || [])[0] || (q.topic || '핵심논점');
         const k2 = (q.keywords || [])[1] || '정답조건';
+        const k3 = (q.keywords || [])[2] || '';
         const mode = context.mode || pickTipMode(context.historyKey || '', context.responseSec || 0);
-        if (mode === 'ultra') {
-            return { mode, label: tipModeLabel(mode), text: `⚡ ${k1}→${k2}만 고정하고 5초 내 즉답으로 인출하세요.` };
+        if (rule) {
+            return { mode, label: '🎬 시나리오', text: rule.scene, slogan: rule.slogan };
         }
-        if (mode === 'chant') {
-            return { mode, label: tipModeLabel(mode), text: `🗣️ "${k1}면 ${k2}"를 3회 리듬 암송 후 바로 다시 풀어 고정하세요.` };
-        }
-        if (rule) return { mode, label: tipModeLabel(mode), text: rule.tip };
-        return { mode, label: tipModeLabel(mode), text: `🧠 ${k1}→${k2}를 하나의 장면으로 묶어 5초 안에 소리 내어 재생하세요.` };
+        // 매칭 규칙 없을 때 동적 생성
+        const actions = [
+            `네가 시험장 한복판에 서 있는데, 하늘에서 "${k1}"이라 적힌 거대한 돌판이 떨어져 바닥을 쾅 갈라버림. 균열 사이로 "${k2}"라는 빨간 글자가 용암처럼 솟아오름.`,
+            `칠흑같은 복도에서 "${k1}"이라는 형광 글씨가 벽에 번져가고, 끝에서 "${k2}"라는 비명이 메아리침. 그 소리가 네 뼈를 진동시킴.`,
+            `거대한 시계탑 앞에 서 있는데, 초침이 "${k1}"을 찍을 때마다 벼락이 내려치고, 분침이 "${k2}"를 가리키면 바닥이 갈라짐.`
+        ];
+        const pick = actions[Math.abs(hashSimple(k1 + k2)) % actions.length];
+        const dynamicSlogan = k3
+            ? `"${k1} 쾅(원인), ${k2} 솟아(결과), ${k3} 고정!"`
+            : `"${k1} 쾅(원인), ${k2} 솟아(결과)!"`;
+        return { mode, label: '🎬 시나리오', text: pick, slogan: dynamicSlogan };
     }
+    function hashSimple(str) { let h = 0; for (let i = 0; i < str.length; i++) { h = ((h << 5) - h + str.charCodeAt(i)) | 0; } return h; }
     function prepareQuestionAnalytics() {
         const keywordScore = {};
         const playable = getPlayableQuestions();
@@ -1118,67 +1131,85 @@
     };
 
     function renderAnswerPanel(q, isCorrect, responseSec) {
-        const allStamps = [...new Set(q.choices.flatMap(c => c.stamp))];
         const keywordProfile = q.keywordProfile && q.keywordProfile.length > 0
             ? q.keywordProfile
             : (q.keywords || []).map(kw => ({ keyword: kw, grade: getTermGrade(kw), stamp: guessStampFromTerm(kw) }));
-        const stampKeywordMap = collectStampKeywordMap(q.choices.map(c => c.text), allStamps, q.keywords);
         const memoryTip = buildMemoryTip(q, { historyKey: `q${q.id}`, responseSec });
+        const kwEmojis = buildKeywordMemoryLine(q.keywords || [], q);
         let html = `<div class="answer-panel ${isCorrect ? 'correct-panel' : 'incorrect-panel'}">
     <div class="answer-result ${isCorrect ? 'correct' : 'incorrect'}">
       ${isCorrect ? '✅ 정답!' : '❌ 오답'} 정답: ${q.answer}번
     </div>
-    <div class="answer-meta-line">
-      <span class="q-badge imp-${q.importance}">${q.importance}급</span>
-      <span class="q-badge fit-${q.targetGrade || 'B'}">국가9 적합 ${q.targetGrade || 'B'}</span>
-      <span class="q-badge chapter">${escapeHtml(q.subtopic || q.topic)}</span>
-    </div>
     <div class="answer-explain"><strong>⏱ 선택시간:</strong> ${responseSec.toFixed(1)}초 (${speedLabel(responseSec)})</div>
     <div class="answer-explain">
-      <strong>📌 핵심 키워드:</strong> ${(q.keywords || []).join(', ')}
+      <strong>📌 키워드:</strong> ${(q.keywords || []).join(', ')}
     </div>
-    <div class="memory-tip"><span class="memory-tip-mode">${escapeHtml(memoryTip.label)}</span>${escapeHtml(memoryTip.text)}</div>
+    <div class="memory-scenario">
+      <div class="scenario-label">${escapeHtml(memoryTip.label)}</div>
+      <div class="scenario-text">${escapeHtml(memoryTip.text)}</div>
+      ${memoryTip.slogan ? `<div class="scenario-slogan">🗣️ ${escapeHtml(memoryTip.slogan)}</div>` : ''}
+    </div>
+    ${kwEmojis ? `<div class="keyword-memory-line">
+      <div class="kml-title">💡 한 줄 기억</div>
+      <div class="kml-chips">${kwEmojis}</div>
+    </div>` : ''}
     <div class="keyword-grade-list">
       ${renderKeywordGradeChips(keywordProfile)}
+    </div>
     </div>`;
-        if (stampKeywordMap.length > 0) {
-            html += `<div class="answer-keyword-map">
-      <div class="answer-map-title">STAMP 핵심키워드 맵</div>
-      <div class="stamp-keyword-grid">
-        ${renderStampKeywordChips(stampKeywordMap)}
-      </div>
-    </div>`;
-        }
-        if (allStamps.length > 0) {
-            html += `<div class="stamp-tags">
-      <span style="font-size:11px;font-weight:700;color:var(--text-muted);">STAMP 함정:</span>
-      ${allStamps.map(s => `<span class="stamp-tag ${s}">${s} ${STAMP_NAMES[s] || ''}</span>`).join('')}
-    </div>`;
-        }
-        html += `</div>`;
         return html;
     }
 
-    // 핵심 키워드 자동 하이라이트 시스템 (STAMP 전체 + 문제별 키워드)
+    // 키워드별 이모지 매핑으로 한 줄 기억 생성
+    function buildKeywordMemoryLine(keywords, q) {
+        if (!keywords || keywords.length === 0) return '';
+        const KEYWORD_EMOJI_MAP = {
+            '행정청': '🏛️', '법원': '⚖️', '대법원': '🏛️', '헌법재판소': '📜',
+            '처분': '📋', '처분성': '🚪', '허가': '✅', '인가': '🔑',
+            '취소': '🧹', '철회': '✂️', '무효': '💀', '유효': '💚',
+            '재량': '🎯', '기속': '🔒', '일탈': '💥', '남용': '🐍',
+            '신뢰보호': '🛡️', '소급': '⏪', '제소기간': '⏰', '제척기간': '⏳',
+            '고시': '📰', '공고': '📢', '통지': '📩', '송달': '📬',
+            '기간': '📅', '기한': '⌛', '효력': '⚡', '발생': '🌟',
+            '소멸시효': '💨', '집행정지': '🛑', '가처분': '✋',
+            '손실보상': '💰', '손해배상': '🩸', '부관': '🐍', '조건': '⚠️',
+            '부담': '⛓️', '행정입법': '📚', '법규명령': '📕', '행정규칙': '📘',
+            '행정계획': '🗺️', '계획재량': '🧭', '변경': '🔄',
+            '항고소송': '⚔️', '당사자소송': '🤝', '취소소송': '🧹⚖️',
+            '사정판결': '⚖️🛡️', '하자의승계': '🔗', '대집행': '🏗️',
+            '행정대집행': '🚜', '토지인도': '🏠', '건물철거': '🏚️', '퇴거': '🚪💨',
+            '원고적격': '🎫', '소의이익': '🎟️', '위법': '🚨', '적법': '✅',
+            '잘못통지': '📩❌', '소변경': '🔄📋',
+            '제기': '📤', '청구': '🙏', '인정': '👍', '부정': '👎',
+            '확대': '📈', '축소': '📉', '제한': '🚧', '금지': '🚫'
+        };
+        const chips = keywords.map(kw => {
+            // 키워드에서 가장 가까운 매핑 찾기
+            let emoji = '🔑';
+            for (const [key, val] of Object.entries(KEYWORD_EMOJI_MAP)) {
+                if (kw.includes(key) || key.includes(kw)) {
+                    emoji = val;
+                    break;
+                }
+            }
+            return `<span class="kml-chip">${emoji} <strong>${escapeHtml(kw)}</strong></span>`;
+        });
+        return chips.join('<span class="kml-arrow">→</span>');
+    }
+
+    // 핵심 키워드 자동 하이라이트 시스템 (키워드+조사 자연스러운 연결)
     function highlightStamp(text, stamps, keywords) {
         let result = escapeHtml(text);
-        const priorityStamps = Array.isArray(stamps) ? stamps : [];
-        const orderedKeys = [...priorityStamps, ...STAMP_ORDER.filter(k => !priorityStamps.includes(k))];
+        // 조사 패턴: 키워드 뒤에 자연스럽게 붙는 한국어 조사들
+        const JOSA_PATTERN = '(?:[이가은는을를의에서도와과로부터만뿐까지조차마저라도에서의에서는]|으로|에게|한테|에는|이나|까지|뿐만|뿐이|아니라|에까지)*';
 
-        orderedKeys.forEach(s => {
-            STAMP_PATTERNS[s].forEach(pattern => {
-                const regex = createGlobalRegex(pattern);
-                const isPrimary = priorityStamps.includes(s);
-                result = wrapTextNodes(result, regex, match =>
-                    `<span class="stamp-highlight stamp-${s}${isPrimary ? ' stamp-primary' : ''}">${match}</span>`
-                );
-            });
-        });
-
+        // 1단계: 정답 키워드를 우선 하이라이트 (조사 포함)
         if (keywords && keywords.length > 0) {
-            keywords.forEach(kw => {
+            // 긴 키워드부터 처리 (겹침 방지)
+            const sortedKw = [...keywords].sort((a, b) => b.length - a.length);
+            sortedKw.forEach(kw => {
                 const escaped = escapeRegExp(kw);
-                const kwRegex = new RegExp(escaped, 'g');
+                const kwRegex = new RegExp(escaped + JOSA_PATTERN, 'g');
                 result = wrapTextNodes(result, kwRegex, match =>
                     `<span class="keyword-highlight">${match}</span>`
                 );
@@ -1302,24 +1333,24 @@
             const keywordProfile = item.keywordProfile && item.keywordProfile.length > 0
                 ? item.keywordProfile
                 : (item.keywords || []).map(kw => ({ keyword: kw, grade: getTermGrade(kw), stamp: guessStampFromTerm(kw) }));
-            const stampKeywordMap = collectStampKeywordMap([item.text], item.stamp, item.keywords);
             const memoryTip = buildMemoryTip(item, { historyKey: `ox_${item.questionId}_${STATE.oxIndex}`, responseSec: STATE.oxResponseSec[key] || 0 });
+            const kwEmojis = buildKeywordMemoryLine(item.keywords || [], item);
             html += `<div class="answer-panel ${isCorrect ? 'correct-panel' : 'incorrect-panel'}" style="margin-top:16px;">
       <div class="answer-result ${isCorrect ? 'correct' : 'incorrect'}">
         ${isCorrect ? '✅ 정답!' : '❌ 오답'} 이 선지는 ${item.answer ? '⭕ O (맞는 내용)' : '❌ X (틀린 내용)'}
       </div>
       <div class="answer-explain"><strong>⏱ 선택시간:</strong> ${(STATE.oxResponseSec[key] || 0).toFixed(1)}초 (${speedLabel(STATE.oxResponseSec[key] || 0)})</div>
       <div class="answer-explain"><strong>📌 키워드:</strong> ${(item.keywords || []).join(', ')}</div>
-      <div class="memory-tip"><span class="memory-tip-mode">${escapeHtml(memoryTip.label)}</span>${escapeHtml(memoryTip.text)}</div>
+      <div class="memory-scenario">
+        <div class="scenario-label">${escapeHtml(memoryTip.label)}</div>
+        <div class="scenario-text">${escapeHtml(memoryTip.text)}</div>
+        ${memoryTip.slogan ? `<div class="scenario-slogan">🗣️ ${escapeHtml(memoryTip.slogan)}</div>` : ''}
+      </div>
+      ${kwEmojis ? `<div class="keyword-memory-line">
+        <div class="kml-title">💡 한 줄 기억</div>
+        <div class="kml-chips">${kwEmojis}</div>
+      </div>` : ''}
       <div class="keyword-grade-list">${renderKeywordGradeChips(keywordProfile)}</div>
-      ${stampKeywordMap.length > 0 ? `<div class="answer-keyword-map">
-        <div class="answer-map-title">STAMP 핵심키워드 맵</div>
-        <div class="stamp-keyword-grid">${renderStampKeywordChips(stampKeywordMap)}</div>
-      </div>` : ''}
-      ${item.stamp.length > 0 ? `<div class="stamp-tags">
-        <span style="font-size:11px;font-weight:700;color:var(--text-muted);">STAMP:</span>
-        ${item.stamp.map(s => `<span class="stamp-tag ${s}">${s} ${STAMP_NAMES[s] || ''}</span>`).join('')}
-      </div>` : ''}
     </div>`;
         }
         html += `</div>`;

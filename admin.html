@@ -179,6 +179,15 @@
                     </div>
                 </div>
                 <div class="filter-group">
+                    <label>데이터셋</label>
+                    <select id="oxSourceFilter">
+                        <option value="mix" selected>혼합(추천) · 선지 OX + 반응카드 OX</option>
+                        <option value="choice">선지 OX(객관식 기반)</option>
+                        <option value="tsv">반응카드 OX(TSV)</option>
+                    </select>
+                    <div class="touch-note">시간이 부족하면 <strong>S/A</strong> + <strong>반응카드 OX</strong>부터.</div>
+                </div>
+                <div class="filter-group">
                     <label>학습범위</label>
                     <select id="oxTargetFilter">
                         <option value="national9" selected>국가직9급 중심(추천)</option>
@@ -231,6 +240,37 @@
             <div class="what-grid" id="whatGrid"></div>
             <h3 class="section-title" style="margin-top:2rem;">⚠️ 빈출 함정 패턴 TOP 7</h3>
             <div class="trap-list" id="trapList"></div>
+
+            <h3 class="section-title" style="margin-top:2rem;">🧬 쌍둥이 최소대조 프레임</h3>
+            <p class="section-desc">자주 헷갈리는 2개념을 <strong>3축</strong>으로 10초 안에 변별하는 훈련 (TSV 전체 반영)</p>
+            <div class="twin-panel">
+                <div class="twin-controls">
+                    <div class="twin-control">
+                        <label>중요도</label>
+                        <select id="twinImpFilter">
+                            <option value="all" selected>전체</option>
+                            <option value="S">S급</option>
+                            <option value="A">A급</option>
+                        </select>
+                    </div>
+                    <div class="twin-control">
+                        <label>범위</label>
+                        <select id="twinScopeFilter">
+                            <option value="core" selected>국가직9급 중심</option>
+                            <option value="all">전체</option>
+                        </select>
+                    </div>
+                    <button class="btn-start" id="startTwin">🧬 훈련 시작</button>
+                </div>
+                <div class="twin-area" id="twinArea" style="display:none;">
+                    <div class="study-nav" style="margin-top:.2rem;">
+                        <button class="nav-arrow" id="prevTwin">◀</button>
+                        <span class="q-counter" id="twinCounter">0 / 0</span>
+                        <button class="nav-arrow" id="nextTwin">▶</button>
+                    </div>
+                    <div id="twinCardArea"></div>
+                </div>
+            </div>
         </div>
 
         <!-- Weak Analysis -->
@@ -269,6 +309,7 @@
 
     <script src="admin-data.js"></script>
     <script src="admin-data-supplement.js"></script>
+    <script src="admin-tsv-bank.js"></script>
     <script src="study-journal.js"></script>
     <script src="admin-app.js"></script>
 </body>

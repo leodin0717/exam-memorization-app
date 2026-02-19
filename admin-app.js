@@ -9,6 +9,10 @@
     const BASE_QUESTIONS = Array.isArray(ADMIN_QUESTIONS) ? ADMIN_QUESTIONS : [];
     const SUPPLEMENT_QUESTIONS = Array.isArray(window.ADMIN_QUESTIONS_SUPPLEMENT) ? window.ADMIN_QUESTIONS_SUPPLEMENT : [];
 
+    // TSV 기반 실전 반응카드/쌍둥이(최소대조) 데이터 (Anki export → JS bank)
+    const TSV_OX_CARDS_RAW = Array.isArray(window.ADMIN_TSV_OX_CARDS) ? window.ADMIN_TSV_OX_CARDS : [];
+    const TSV_COMPARE_CARDS_RAW = Array.isArray(window.ADMIN_TSV_COMPARE_CARDS) ? window.ADMIN_TSV_COMPARE_CARDS : [];
+
     const SLOW_THRESHOLD_SEC = 8;
     const REVIEW_TRIGGER_SCORE = 1.35;
     const CHALLENGE_TARGET_SCORE = 90;
@@ -19,7 +23,8 @@
         history: 'admin_history_v2',
         streak: 'admin_streak_v2',
         meta: 'admin_meta_v2',
-        training: 'admin_training_v1'
+        training: 'admin_training_v1',
+        cardHistory: 'admin_card_history_v1'
     };
 
     const WHAT_LABELS = {
@@ -71,6 +76,9 @@
         oxResponseSec: {},
         activeOxQid: null,
         oxStartTs: 0,
+        twinItems: [],
+        twinIndex: 0,
+        twinRevealed: false,
         challenge: {
             enabled: false,
             startedAtTs: 0,
@@ -88,7 +96,8 @@
             recallFirst: true
         },
         filters: { imp: 'all', chapter: 'all', sort: 'random', target: 'national9' },
-        oxFilters: { imp: 'all', chapter: 'all', count: '20', target: 'national9' },
+        oxFilters: { imp: 'all', chapter: 'all', count: '20', target: 'national9', source: 'mix' },
+        twinFilters: { imp: 'all', scope: 'core' },
         pendingMeta: null
     };
 
@@ -126,6 +135,8 @@
     function saveJSON(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
     function loadHistory() { return loadJSON(STORAGE.history, {}); }
     function saveHistory(v) { saveJSON(STORAGE.history, v); }
+    function loadCardHistory() { return loadJSON(STORAGE.cardHistory, {}); }
+    function saveCardHistory(v) { saveJSON(STORAGE.cardHistory, v); }
     function loadStreak() { return loadJSON(STORAGE.streak, { count: 0, lastDate: '' }); }
     function saveStreak(v) { saveJSON(STORAGE.streak, v); }
     function loadMeta() { return loadJSON(STORAGE.meta, {}); }
@@ -166,6 +177,61 @@
     const QUESTIONS = mergeQuestions();
     const QUESTION_MAP = new Map(QUESTIONS.map(q => [q.id, q]));
 
+    const TSV_DECK_RANK = {
+        '반응카드v2': 5,
+        '90점기출분석': 4,
+        '확장카드1': 3,
+        '확장카드2': 3,
+        '갭보완': 2,
+        '반응카드': 1
+    };
+
+    function normalizeSentenceKey(value) {
+        return String(value || '')
+            .replace(/\s+/g, ' ')
+            .replace(/[“”]/g, '"')
+            .replace(/[’]/g, "'")
+            .trim();
+    }
+
+    function getTSVCardsByScope(scope) {
+        const wantAll = scope === 'all';
+        const list = TSV_OX_CARDS_RAW.filter(c => {
+            if (!c || !c.sentence) return false;
+            if (wantAll) return true;
+            return c.scope === 'core';
+        });
+
+        // 중복 문장(반응카드 v1/v2/확장/90점) 제거: 기본은 '가장 품질 높은 덱' 우선
+        const dedup = new Map();
+        list.forEach(card => {
+            const key = normalizeSentenceKey(card.sentence);
+            if (!key) return;
+            const prev = dedup.get(key);
+            if (!prev) {
+                dedup.set(key, card);
+                return;
+            }
+            const prevRank = TSV_DECK_RANK[prev.deck] || 0;
+            const nextRank = TSV_DECK_RANK[card.deck] || 0;
+            const prevTip = String(prev.tip || '');
+            const nextTip = String(card.tip || '');
+            if (nextRank > prevRank || (nextRank === prevRank && nextTip.length > prevTip.length)) {
+                dedup.set(key, card);
+            }
+        });
+
+        return [...dedup.values()];
+    }
+
+    const TSV_OX_CARDS_CORE = getTSVCardsByScope('core');
+    const TSV_OX_CARDS_ALL = getTSVCardsByScope('all');
+    const TSV_CARD_MAP = new Map(TSV_OX_CARDS_ALL.map(c => [String(c.id), c]));
+
+    const TSV_COMPARE_CARDS_CORE = TSV_COMPARE_CARDS_RAW.filter(c => c && c.scope === 'core');
+    const TSV_COMPARE_CARDS_ALL = TSV_COMPARE_CARDS_RAW.filter(c => !!c);
+    const TSV_TWIN_MAP = new Map(TSV_COMPARE_CARDS_ALL.map(c => [String(c.id), c]));
+
     function updateStreak() {
         const streak = loadStreak();
         const today = new Date().toISOString().slice(0, 10);
@@ -191,8 +257,22 @@
         saveHistory(h);
     }
 
-    function getTodayCount() {
-        const h = loadHistory();
+    function recordCardAnswer(key, correct, responseSec) {
+        const h = loadCardHistory();
+        if (!h[key]) h[key] = { attempts: 0, correct: 0, lastDate: '' };
+        h[key].attempts += 1;
+        if (correct) h[key].correct += 1;
+        h[key].lastDate = new Date().toISOString().slice(0, 10);
+        if (typeof responseSec === 'number' && Number.isFinite(responseSec)) {
+            h[key].lastResponseSec = Number(responseSec.toFixed(1));
+            h[key].totalResponseSec = Number(((h[key].totalResponseSec || 0) + responseSec).toFixed(1));
+            h[key].avgResponseSec = Number((h[key].totalResponseSec / h[key].attempts).toFixed(1));
+        }
+        saveCardHistory(h);
+    }
+
+    function getTodayCount(history = null) {
+        const h = history || loadHistory();
         const today = new Date().toISOString().slice(0, 10);
         return Object.values(h).filter(v => v.lastDate === today).length;
     }
@@ -231,6 +311,31 @@
         return Number((score * impWeight).toFixed(3));
     }
 
+    function calcCardReviewPriority(card, history) {
+        const row = history[String(card.id)];
+        const attempts = row?.attempts || 0;
+        const accuracy = attempts > 0 ? row.correct / attempts : 0;
+        const avgSec = row?.avgResponseSec || 0;
+        const impWeight = card.importance === 'S' ? 1.18 : (card.importance === 'A' ? 1.0 : 0.88);
+
+        let score = 0;
+        if (attempts === 0) {
+            score += 2.2;
+        } else {
+            score += (1 - accuracy) * 2.1;
+            if (row.correct === 0 && attempts >= 1) score += 0.65;
+        }
+        if (avgSec >= SLOW_THRESHOLD_SEC) {
+            score += 0.5 + ((avgSec - SLOW_THRESHOLD_SEC) / 4);
+        }
+        // 쌍둥이/문장트릭은 실점 직결 → 자동 가중
+        const tag = String(card.tagsRaw || '');
+        if (tag.includes('오답::쌍둥이혼동') || tag.includes('유형::비교카드')) score += 0.25;
+        if (tag.includes('오답::문장트릭')) score += 0.2;
+        if (String(card.deck || '').includes('90점')) score += 0.15;
+        return Number((score * impWeight).toFixed(3));
+    }
+
     function calcDday() {
         const exam = new Date(EXAM_DATE);
         const now = new Date();
@@ -247,6 +352,14 @@
     function getScopeQuestions(target) {
         if (target === 'all') return QUESTIONS;
         return QUESTIONS.filter(isNational9);
+    }
+
+    function getScopeTSVCards(target) {
+        return target === 'all' ? TSV_OX_CARDS_ALL : TSV_OX_CARDS_CORE;
+    }
+
+    function getScopeTwinCards(scope) {
+        return scope === 'all' ? TSV_COMPARE_CARDS_ALL : TSV_COMPARE_CARDS_CORE;
     }
 
     function getChallengePreset() {
@@ -402,8 +515,10 @@
 
         document.addEventListener('click', e => {
             const reviewBtn = e.target.closest('[data-action="start-review-queue"]');
-            if (!reviewBtn) return;
-            startReviewQueue();
+            if (reviewBtn) startReviewQueue();
+
+            const cardReviewBtn = e.target.closest('[data-action="start-card-review-queue"]');
+            if (cardReviewBtn) startCardReviewQueue();
         });
 
         document.getElementById('chapterFilter').addEventListener('change', e => {
@@ -425,6 +540,14 @@
             STATE.oxFilters.chapter = e.target.value;
             updateFilteredCounts();
         });
+
+        const oxSourceFilter = document.getElementById('oxSourceFilter');
+        if (oxSourceFilter) {
+            oxSourceFilter.addEventListener('change', e => {
+                STATE.oxFilters.source = e.target.value;
+                updateFilteredCounts();
+            });
+        }
 
         document.getElementById('oxCount').addEventListener('change', e => {
             STATE.oxFilters.count = e.target.value;
@@ -456,6 +579,19 @@
         document.getElementById('nextQ').addEventListener('click', () => navStudy(1));
         document.getElementById('prevOX').addEventListener('click', () => navOX(-1));
         document.getElementById('nextOX').addEventListener('click', () => navOX(1));
+
+        // Twin trainer (WHAT page)
+        const twinImp = document.getElementById('twinImpFilter');
+        const twinScope = document.getElementById('twinScopeFilter');
+        const startTwinBtn = document.getElementById('startTwin');
+        const prevTwin = document.getElementById('prevTwin');
+        const nextTwin = document.getElementById('nextTwin');
+
+        if (twinImp) twinImp.addEventListener('change', e => { STATE.twinFilters.imp = e.target.value; });
+        if (twinScope) twinScope.addEventListener('change', e => { STATE.twinFilters.scope = e.target.value; });
+        if (startTwinBtn) startTwinBtn.addEventListener('click', startTwinTrainer);
+        if (prevTwin) prevTwin.addEventListener('click', () => navTwin(-1));
+        if (nextTwin) nextTwin.addEventListener('click', () => navTwin(1));
     }
 
     function setupKeyboardShortcuts() {
@@ -475,11 +611,27 @@
                 if (e.key === 'ArrowLeft') navOX(-1);
                 if (e.key === 'ArrowRight') navOX(1);
             }
+
+            if (STATE.currentPage === 'what') {
+                const twinArea = document.getElementById('twinArea');
+                if (twinArea && twinArea.style.display !== 'none' && STATE.twinItems.length) {
+                    if (e.key === 'ArrowLeft') navTwin(-1);
+                    if (e.key === 'ArrowRight') navTwin(1);
+                    if (e.key === ' ' || e.key === 'Enter') {
+                        e.preventDefault();
+                        toggleTwinReveal();
+                    }
+                }
+            }
         });
     }
 
     function populateChapterSelects() {
-        const used = Object.keys(CHAPTERS).filter(ch => QUESTIONS.some(q => q.chapter === ch));
+        const used = Object.keys(CHAPTERS).filter(ch =>
+            QUESTIONS.some(q => q.chapter === ch)
+            || TSV_OX_CARDS_ALL.some(c => c.chapter === ch)
+            || TSV_COMPARE_CARDS_ALL.some(t => t.chapter === ch)
+        );
         [document.getElementById('chapterFilter'), document.getElementById('oxChapterFilter')].forEach(sel => {
             used.forEach(ch => {
                 const opt = document.createElement('option');
@@ -510,6 +662,7 @@
         const ox = generateAdminOXFromChoice(q, i);
         return {
             qid: `${ox.questionId}_${ox.choiceNum}`,
+            bank: 'choice',
             sourceQ: q,
             statement: ox.text,
             answer: ox.answer,
@@ -525,13 +678,47 @@
         };
     }
 
+    function toTSVOXItem(card) {
+        return {
+            qid: String(card.id),
+            bank: 'tsv',
+            card,
+            statement: card.sentence,
+            answer: !!card.answer,
+            chapter: card.chapter || 'CH01',
+            importance: card.importance || 'A',
+            topic: card.theme || 'TSV',
+            what: [card.stamp || 'H'],
+            stamp: [card.stamp || 'H'],
+            keywords: card.keywords || [],
+            year: card.year || '',
+            exam: card.exam || 'TSV',
+            sourceCategory: card.deck || 'TSV'
+        };
+    }
+
     function getFilteredOX() {
+        const source = STATE.oxFilters.source || 'mix';
         let items = [];
-        getScopeQuestions(STATE.oxFilters.target).forEach(q => {
-            if (STATE.oxFilters.imp !== 'all' && q.importance !== STATE.oxFilters.imp) return;
-            if (STATE.oxFilters.chapter !== 'all' && q.chapter !== STATE.oxFilters.chapter) return;
-            q.choices.forEach((_, i) => items.push(toOXItem(q, i)));
-        });
+
+        const wantChoice = source === 'choice' || source === 'mix';
+        const wantTSV = source === 'tsv' || source === 'mix';
+
+        if (wantChoice) {
+            getScopeQuestions(STATE.oxFilters.target).forEach(q => {
+                if (STATE.oxFilters.imp !== 'all' && q.importance !== STATE.oxFilters.imp) return;
+                if (STATE.oxFilters.chapter !== 'all' && q.chapter !== STATE.oxFilters.chapter) return;
+                q.choices.forEach((_, i) => items.push(toOXItem(q, i)));
+            });
+        }
+
+        if (wantTSV) {
+            getScopeTSVCards(STATE.oxFilters.target).forEach(card => {
+                if (STATE.oxFilters.imp !== 'all' && card.importance !== STATE.oxFilters.imp) return;
+                if (STATE.oxFilters.chapter !== 'all' && card.chapter !== STATE.oxFilters.chapter) return;
+                items.push(toTSVOXItem(card));
+            });
+        }
 
         items = shuffle(items);
         const max = STATE.oxFilters.count === 'all' ? items.length : parseInt(STATE.oxFilters.count, 10);
@@ -563,30 +750,61 @@
         return { unseenS, weakCore, slowCore, dueReview };
     }
 
+    function buildCardReviewStats(target = 'national9') {
+        const history = loadCardHistory();
+        const core = getScopeTSVCards(target);
+
+        let unseenS = 0;
+        let weakCore = 0;
+        let slowCore = 0;
+        let dueReview = 0;
+
+        core.forEach(card => {
+            const row = history[String(card.id)];
+            if (card.importance === 'S' && !row) unseenS += 1;
+            if (row && row.attempts >= 2 && (row.correct / row.attempts) < 0.7) weakCore += 1;
+            if (row && row.avgResponseSec >= SLOW_THRESHOLD_SEC) slowCore += 1;
+            if (calcCardReviewPriority(card, history) >= REVIEW_TRIGGER_SCORE) dueReview += 1;
+        });
+
+        return { unseenS, weakCore, slowCore, dueReview, total: core.length };
+    }
+
     function renderReviewBoard() {
         const el = document.getElementById('reviewBoard');
         if (!el) return;
         const stats = buildReviewStats();
+        const cardStats = buildCardReviewStats('national9');
+        const combined = {
+            unseenS: stats.unseenS + cardStats.unseenS,
+            weakCore: stats.weakCore + cardStats.weakCore,
+            slowCore: stats.slowCore + cardStats.slowCore,
+            dueReview: stats.dueReview + cardStats.dueReview
+        };
         el.innerHTML = `
             <div class="review-card">
                 <div class="review-label">S급 미학습</div>
-                <div class="review-value">${stats.unseenS}문항</div>
-                <div class="review-sub">핵심 빈출인데 아직 미풀이</div>
+                <div class="review-value">${combined.unseenS}문항</div>
+                <div class="review-sub">객관식 ${stats.unseenS} · 카드 ${cardStats.unseenS}</div>
             </div>
             <div class="review-card">
                 <div class="review-label">오답 누적</div>
-                <div class="review-value">${stats.weakCore}문항</div>
-                <div class="review-sub">2회 이상 풀이 + 정확도 70% 미만</div>
+                <div class="review-value">${combined.weakCore}문항</div>
+                <div class="review-sub">객관식 ${stats.weakCore} · 카드 ${cardStats.weakCore} (정확도 70% 미만)</div>
             </div>
             <div class="review-card">
                 <div class="review-label">느린 문항</div>
-                <div class="review-value">${stats.slowCore}문항</div>
-                <div class="review-sub">평균 선택시간 ${SLOW_THRESHOLD_SEC}초 이상</div>
+                <div class="review-value">${combined.slowCore}문항</div>
+                <div class="review-sub">객관식 ${stats.slowCore} · 카드 ${cardStats.slowCore} (평균 ${SLOW_THRESHOLD_SEC}초↑)</div>
             </div>
             <div class="review-card">
                 <div class="review-label">오늘 복습 큐</div>
-                <div class="review-value">${stats.dueReview}문항</div>
-                <button class="review-btn" data-action="start-review-queue">복습 큐 바로 시작</button>
+                <div class="review-value">${combined.dueReview}문항</div>
+                <div class="review-sub">객관식 ${stats.dueReview} · 카드 ${cardStats.dueReview}</div>
+                <div class="review-actions">
+                    <button class="review-btn" data-action="start-review-queue">객관식</button>
+                    <button class="review-btn" data-action="start-card-review-queue">카드</button>
+                </div>
             </div>
         `;
     }
@@ -614,10 +832,20 @@
         const preset = getChallengePreset();
 
         const stats = buildReviewStats();
+        const cardStats = buildCardReviewStats('national9');
+        const cardHistory = loadCardHistory();
+        const coreCards = getScopeTSVCards('national9');
+        const sCards = coreCards.filter(c => c.importance === 'S');
+        const sDone = sCards.filter(c => !!cardHistory[String(c.id)]).length;
+        const sPct = sCards.length ? Math.round((sDone / sCards.length) * 100) : 0;
+        const twinCount = getScopeTwinCards('core').length;
         const chips = [
             `목표까지 ${gap}문항`,
             `복습 큐 ${stats.dueReview}문항`,
             `느린 문항 ${stats.slowCore}문항`,
+            `카드 S급 ${sPct}% (${sDone}/${sCards.length || 0})`,
+            `카드 큐 ${cardStats.dueReview}문항`,
+            `쌍둥이 ${twinCount}세트`,
             `압축훈련 ${preset.label}`
         ];
 
@@ -638,7 +866,35 @@
         const el = document.getElementById('sourceAudit');
         if (!el) return;
 
-        const bank = QUESTIONS.map(q => [q.topic, q.question, ...(q.keywords || []), ...q.choices.map(c => c.text), ...q.choices.flatMap(c => c.keywords || [])].join(' ')).join(' ');
+        const bankQ = QUESTIONS.map(q => [
+            q.topic,
+            q.question,
+            ...(q.keywords || []),
+            ...q.choices.map(c => c.text),
+            ...q.choices.flatMap(c => c.keywords || [])
+        ].join(' ')).join(' ');
+
+        const bankCards = TSV_OX_CARDS_RAW.map(c => [
+            c.theme,
+            c.sentence,
+            c.trigger,
+            c.rule,
+            c.confusion,
+            c.conclusion,
+            c.tip,
+            c.source,
+            ...(c.keywords || [])
+        ].join(' ')).join(' ');
+
+        const bankTwins = TSV_COMPARE_CARDS_RAW.map(t => [
+            t.conceptA,
+            t.conceptB,
+            ...(t.axes || []),
+            t.tip,
+            t.source
+        ].join(' ')).join(' ');
+
+        const bank = `${bankQ} ${bankCards} ${bankTwins}`;
         const lowCoverage = FOCUS_TOPIC_KEYWORDS.map(k => ({ key: k, count: (bank.match(new RegExp(escapeRegExp(k), 'g')) || []).length }))
             .filter(x => x.count <= 1)
             .sort((a, b) => a.count - b.count)
@@ -650,7 +906,21 @@
             return acc;
         }, {});
 
-        const sourceRows = Object.entries(bySource)
+        const byDeck = TSV_OX_CARDS_RAW.reduce((acc, c) => {
+            const key = `카드·${(c.deck || 'TSV').replace(/\s+/g, ' ')}`;
+            acc[key] = (acc[key] || 0) + 1;
+            return acc;
+        }, {});
+
+        const byTwin = TSV_COMPARE_CARDS_RAW.reduce((acc, t) => {
+            const key = `쌍둥이·${(t.deck || '비교프레임').replace(/\s+/g, ' ')}`;
+            acc[key] = (acc[key] || 0) + 1;
+            return acc;
+        }, {});
+
+        const mergedSources = { ...bySource, ...byDeck, ...byTwin };
+
+        const sourceRows = Object.entries(mergedSources)
             .sort((a, b) => b[1] - a[1])
             .map(([name, cnt]) => `<div class="audit-row"><span>${escapeHtml(name)}</span><strong>${cnt}문항</strong></div>`)
             .join('');
@@ -659,9 +929,16 @@
             ? lowCoverage.map(x => `<div class="audit-row"><span>핵심키워드: ${escapeHtml(x.key)}</span><strong>${x.count}회</strong></div>`).join('')
             : '<div class="audit-row"><span>핵심키워드 최소빈도</span><strong>모두 2회 이상</strong></div>';
 
+        const totalMCQ = QUESTIONS.length;
+        const totalCards = TSV_OX_CARDS_RAW.length;
+        const totalTwins = TSV_COMPARE_CARDS_RAW.length;
+        const totalAll = totalMCQ + totalCards + totalTwins;
         el.innerHTML = `
-            <div class="audit-row"><span>총 문항수</span><strong>${QUESTIONS.length}문항</strong></div>
-            <div class="audit-row"><span>국가직 문항수</span><strong>${getScopeQuestions('national9').length}문항</strong></div>
+            <div class="audit-row"><span>총 데이터 (객관식+반응카드+쌍둥이)</span><strong>${totalAll}개</strong></div>
+            <div class="audit-row"><span>객관식</span><strong>${totalMCQ}문항</strong></div>
+            <div class="audit-row"><span>반응카드 OX (TSV)</span><strong>${totalCards}문장</strong></div>
+            <div class="audit-row"><span>쌍둥이 프레임</span><strong>${totalTwins}세트</strong></div>
+            <div class="audit-row"><span>국가직(객관식)</span><strong>${getScopeQuestions('national9').length}문항</strong></div>
             ${sourceRows}
             ${lowRows}
         `;
@@ -669,6 +946,7 @@
 
     function renderDashboard() {
         const h = loadHistory();
+        const ch = loadCardHistory();
         const answeredSet = new Set();
         Object.keys(h).forEach(key => {
             const qid = parseQuestionIdFromHistoryKey(key);
@@ -679,9 +957,29 @@
         const totalAttempts = Object.values(h).reduce((sum, row) => sum + row.attempts, 0);
         const acc = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
 
-        document.getElementById('statTotal').textContent = `${totalAnswered} / ${QUESTIONS.length}`;
-        document.getElementById('statAccuracy').textContent = totalAttempts > 0 ? `${acc}%` : '--%';
-        document.getElementById('statToday').textContent = getTodayCount();
+        const cardAnsweredSet = new Set(Object.keys(ch).filter(k => TSV_CARD_MAP.has(String(k))));
+        const cardAnswered = cardAnsweredSet.size;
+        const cardCorrect = Object.values(ch).reduce((sum, row) => sum + (row.correct || 0), 0);
+        const cardAttempts = Object.values(ch).reduce((sum, row) => sum + (row.attempts || 0), 0);
+        const cardAcc = cardAttempts > 0 ? Math.round((cardCorrect / cardAttempts) * 100) : 0;
+
+        const totalBank = QUESTIONS.length + getScopeTSVCards('national9').length;
+        const totalDone = totalAnswered + cardAnswered;
+
+        const statTotalEl = document.getElementById('statTotal');
+        const statAccEl = document.getElementById('statAccuracy');
+        const statTodayEl = document.getElementById('statToday');
+
+        statTotalEl.textContent = `${totalDone} / ${totalBank}`;
+        statTotalEl.title = `객관식 ${totalAnswered}/${QUESTIONS.length} · 카드 ${cardAnswered}/${getScopeTSVCards('national9').length}`;
+
+        statAccEl.textContent = totalAttempts > 0 ? `${acc}%` : '--%';
+        statAccEl.title = `카드 정답률: ${cardAttempts > 0 ? cardAcc + '%' : '--%'}`;
+
+        const todayQ = getTodayCount(h);
+        const todayC = getTodayCount(ch);
+        statTodayEl.textContent = todayQ + todayC;
+        statTodayEl.title = `객관식 ${todayQ} · 카드 ${todayC}`;
         document.getElementById('statStreak').textContent = loadStreak().count;
 
         renderReviewBoard();
@@ -692,19 +990,34 @@
 
     function renderChapterGrid() {
         const h = loadHistory();
+        const ch = loadCardHistory();
         const grid = document.getElementById('chapterGrid');
         const chapterData = {};
         const doneIds = new Set();
+        const doneCardIds = new Set();
 
         Object.keys(h).forEach(key => {
             const qid = parseQuestionIdFromHistoryKey(key);
             if (qid && QUESTION_MAP.has(qid)) doneIds.add(qid);
         });
 
+        Object.keys(ch).forEach(key => {
+            const id = String(key);
+            if (TSV_CARD_MAP.has(id)) doneCardIds.add(id);
+        });
+
         QUESTIONS.forEach(q => {
             if (!chapterData[q.chapter]) chapterData[q.chapter] = { total: 0, done: 0 };
             chapterData[q.chapter].total += 1;
             if (doneIds.has(q.id)) chapterData[q.chapter].done += 1;
+        });
+
+        // TSV 반응카드(국가직9급 중심)도 챕터 진행률에 포함
+        getScopeTSVCards('national9').forEach(card => {
+            const chKey = card.chapter || 'CH01';
+            if (!chapterData[chKey]) chapterData[chKey] = { total: 0, done: 0 };
+            chapterData[chKey].total += 1;
+            if (doneCardIds.has(String(card.id))) chapterData[chKey].done += 1;
         });
 
         const html = Object.keys(CHAPTERS).map(ch => {
@@ -1035,6 +1348,55 @@
         startStudy();
     }
 
+    function buildCardReviewQueueItems({ target = 'national9', limit = 30 } = {}) {
+        const history = loadCardHistory();
+        const cards = getScopeTSVCards(target);
+
+        // 우선순위: S/A 위주 → 부족하면 B까지 확장
+        const scored = cards
+            .map(card => ({ card, score: calcCardReviewPriority(card, history) }))
+            .sort((a, b) => b.score - a.score);
+
+        const due = scored.filter(x => x.score >= REVIEW_TRIGGER_SCORE);
+        const pickPool = due.length ? due : scored;
+
+        const sa = pickPool.filter(x => x.card.importance === 'S' || x.card.importance === 'A');
+        const b = pickPool.filter(x => x.card.importance === 'B');
+        const ordered = [...sa, ...b];
+
+        return ordered.slice(0, limit).map(x => toTSVOXItem(x.card));
+    }
+
+    function startCardReviewQueue() {
+        clearChallengeTicker();
+        STATE.challenge.enabled = false;
+        STATE.challenge.startedAtTs = 0;
+        hidePressureTimer('study');
+
+        // OX 화면으로 이동 후, 카드 전용 큐를 즉시 시작
+        switchPage('ox');
+        STATE.oxFilters.target = 'national9';
+        STATE.oxFilters.source = 'tsv';
+        STATE.oxFilters.chapter = 'all';
+        STATE.oxFilters.imp = 'all';
+        STATE.oxFilters.count = '30';
+
+        const src = document.getElementById('oxSourceFilter');
+        const tgt = document.getElementById('oxTargetFilter');
+        const ch = document.getElementById('oxChapterFilter');
+        const cnt = document.getElementById('oxCount');
+        if (src) src.value = 'tsv';
+        if (tgt) tgt.value = 'national9';
+        if (ch) ch.value = 'all';
+        if (cnt) cnt.value = '30';
+        document.querySelectorAll('.filter-btn[data-filter="ox-imp"]').forEach(b => {
+            b.classList.toggle('active', b.dataset.value === 'all');
+        });
+
+        updateFilteredCounts();
+        startOXWithItems(buildCardReviewQueueItems({ target: 'national9', limit: 30 }));
+    }
+
     function renderQuestion() {
         if (STATE.challenge.enabled && getChallengeElapsedSec() >= STATE.challenge.limitSec) {
             showStudyResult({ timedOut: true });
@@ -1223,7 +1585,7 @@
         </div>`;
     }
 
-    function startOX() {
+    function startOXWithItems(items) {
         clearAutoNext();
         clearChallengeTicker();
         clearPressureTicker();
@@ -1232,7 +1594,7 @@
         renderChallengeStatus();
         hidePressureTimer('study');
 
-        STATE.oxItems = getFilteredOX();
+        STATE.oxItems = Array.isArray(items) ? items : [];
         STATE.oxIndex = 0;
         STATE.oxAnswers = {};
         STATE.oxResponseSec = {};
@@ -1245,6 +1607,10 @@
         document.querySelector('#page-ox .filter-panel').style.display = 'none';
         document.getElementById('oxArea').style.display = 'block';
         renderOX();
+    }
+
+    function startOX() {
+        startOXWithItems(getFilteredOX());
     }
 
     function renderOXKeywordChips(item) {
@@ -1276,9 +1642,13 @@
             ? highlightByKeywords(item.statement, item.stamp || item.what, item.keywords)
             : escapeHtml(item.statement);
 
+        const yearExamLabel = String(item.year || '').trim()
+            ? `${escapeHtml(String(item.year))} ${escapeHtml(item.exam)}`
+            : escapeHtml(item.exam || '');
+
         let html = `<div class="ox-card">
             <div class="q-meta" style="justify-content:center;">
-                <span class="q-badge year">${item.year} ${escapeHtml(item.exam)}</span>
+                <span class="q-badge year">${yearExamLabel}</span>
                 <span class="q-badge chapter">${escapeHtml(CHAPTERS[item.chapter] || item.chapter)}</span>
                 <span class="q-badge imp-${item.importance}">${item.importance}급</span>
             </div>
@@ -1291,17 +1661,40 @@
         if (answered !== undefined) {
             const isCorrect = answered === item.answer;
             const keywords = renderOXKeywordChips(item);
-            const memoryTip = buildMemoryTip(item.sourceQ, { historyKey: item.qid, responseSec: STATE.oxResponseSec[item.qid] || 0 });
+
+            let memoryTip = null;
+            let originLine = '';
+            let extra = '';
+
+            if (item.bank === 'tsv' && item.card) {
+                const tipText = String(item.card.tip || '').trim();
+                const conclusionText = String(item.card.conclusion || '').trim();
+                const ruleText = String(item.card.rule || '').trim();
+                memoryTip = {
+                    label: tipText ? '카드 기억팁' : (conclusionText ? '한줄결론' : '판단규칙'),
+                    text: tipText || conclusionText || ruleText || '핵심 근거를 한 문장으로 정리하세요.'
+                };
+                originLine = `📌 ${escapeHtml(item.topic)} | 출처: ${escapeHtml(item.card.source || item.sourceCategory || 'TSV')}`;
+                if (item.card.trigger) extra += `<div class="answer-explain">🎯 트리거: ${escapeHtml(item.card.trigger)}</div>`;
+                if (item.card.rule) extra += `<div class="answer-explain">🧭 판단규칙: ${escapeHtml(item.card.rule)}</div>`;
+                if (item.card.confusion) extra += `<div class="answer-explain">⚠️ 혼동방지: ${escapeHtml(item.card.confusion)}</div>`;
+                if (item.card.conclusion) extra += `<div class="answer-explain">✅ 한줄결론: ${escapeHtml(item.card.conclusion)}</div>`;
+            } else {
+                memoryTip = buildMemoryTip(item.sourceQ, { historyKey: item.qid, responseSec: STATE.oxResponseSec[item.qid] || 0 });
+                originLine = `📌 ${escapeHtml(item.topic)} | 원본: Q${item.sourceQ.id}`;
+            }
+
             html += `<div class="answer-panel ${isCorrect ? 'correct' : 'incorrect'}" style="text-align:left;">
                 <div class="answer-result">${isCorrect ? '✅ 정답!' : '❌ 오답'}</div>
                 <div class="answer-explain">⏱ 선택시간 ${(STATE.oxResponseSec[item.qid] || 0).toFixed(1)}초 (${speedLabel(STATE.oxResponseSec[item.qid] || 0)})</div>
-                <div class="answer-explain">📌 ${escapeHtml(item.topic)} | 원본: Q${item.sourceQ.id}</div>
+                <div class="answer-explain">${originLine}</div>
+                ${extra}
                 <div class="memory-tip"><span class="memory-tip-mode">${escapeHtml(memoryTip.label)}</span>${escapeHtml(memoryTip.text)}</div>
                 ${keywords ? `<div class="what-tags">${keywords}</div>` : ''}
             </div>`;
         }
 
-        html += `<div class="ox-source">${item.year} ${escapeHtml(item.exam)} | ${escapeHtml(item.sourceCategory || '국가직 기출/선별')}</div></div>`;
+        html += `<div class="ox-source">${yearExamLabel} | ${escapeHtml(item.sourceCategory || '국가직 기출/선별')}</div></div>`;
 
         document.getElementById('oxQuestionArea').innerHTML = html;
         document.getElementById('oxCounter').textContent = `${STATE.oxIndex + 1} / ${STATE.oxItems.length}`;
@@ -1322,10 +1715,14 @@
         lockPressureTimer('ox', elapsed);
 
         const correct = ans === item.answer;
-        recordAnswer(String(qid), correct, elapsed);
+        if (item.bank === 'tsv') {
+            recordCardAnswer(String(qid), correct, elapsed);
+        } else {
+            recordAnswer(String(qid), correct, elapsed);
+        }
         const journalEventId = logJournalAttempt({
             subject: 'admin',
-            mode: 'ox',
+            mode: item.bank === 'tsv' ? 'ox-card' : 'ox',
             qid: String(qid),
             chapter: item.chapter,
             topic: item.topic,
@@ -1333,7 +1730,7 @@
             correct,
             sec: elapsed,
             tags: (item.keywords || []).slice(0, 3),
-            source: 'admin-ox'
+            source: item.bank === 'tsv' ? 'admin-ox-card' : 'admin-ox'
         });
         updateStreak();
         renderOX();
@@ -1392,6 +1789,91 @@
                 <div class="trap-desc">${escapeHtml(t.desc)}</div>
             </div>
         </div>`).join('');
+    }
+
+    function getFilteredTwinCards() {
+        const scope = STATE.twinFilters.scope === 'all' ? 'all' : 'core';
+        const imp = STATE.twinFilters.imp || 'all';
+        return getScopeTwinCards(scope).filter(card => {
+            if (imp !== 'all' && card.importance !== imp) return false;
+            return true;
+        });
+    }
+
+    function startTwinTrainer() {
+        const area = document.getElementById('twinArea');
+        if (!area) return;
+        const list = shuffle(getFilteredTwinCards());
+        STATE.twinItems = list;
+        STATE.twinIndex = 0;
+        STATE.twinRevealed = false;
+        area.style.display = 'block';
+        renderTwinTrainer();
+    }
+
+    function navTwin(delta) {
+        if (!STATE.twinItems.length) return;
+        const next = (STATE.twinIndex + delta + STATE.twinItems.length) % STATE.twinItems.length;
+        STATE.twinIndex = next;
+        STATE.twinRevealed = false;
+        renderTwinTrainer();
+    }
+
+    function toggleTwinReveal() {
+        if (!STATE.twinItems.length) return;
+        STATE.twinRevealed = !STATE.twinRevealed;
+        renderTwinTrainer();
+    }
+
+    function renderTwinTrainer() {
+        const counter = document.getElementById('twinCounter');
+        const cardArea = document.getElementById('twinCardArea');
+        if (!counter || !cardArea) return;
+
+        const total = STATE.twinItems.length;
+        if (!total) {
+            counter.textContent = '0 / 0';
+            cardArea.innerHTML = `<div class="twin-card">필터 조건에 맞는 쌍둥이 프레임이 없습니다.</div>`;
+            return;
+        }
+
+        const card = STATE.twinItems[STATE.twinIndex];
+        const yearExamLabel = String(card.year || '').trim()
+            ? `${escapeHtml(String(card.year))} ${escapeHtml(card.exam)}`
+            : escapeHtml(card.exam || '');
+
+        counter.textContent = `${STATE.twinIndex + 1} / ${total}`;
+
+        const axes = (card.axes || []).filter(Boolean);
+        const axesHtml = axes.map(ax => `
+            <div class="twin-axis ${STATE.twinRevealed ? '' : 'hidden'}">${escapeHtml(ax)}</div>
+        `).join('');
+
+        window._toggleTwinReveal = () => toggleTwinReveal();
+
+        cardArea.innerHTML = `
+            <div class="twin-card">
+                <div class="twin-meta">
+                    <span class="q-badge year">${yearExamLabel}</span>
+                    <span class="q-badge chapter">${escapeHtml(CHAPTERS[card.chapter] || card.chapter)}</span>
+                    <span class="q-badge imp-${card.importance}">${card.importance}급</span>
+                </div>
+
+                <div class="twin-concepts">
+                    <span class="twin-pill">${escapeHtml(card.conceptA)}</span>
+                    <span class="twin-vs">vs</span>
+                    <span class="twin-pill">${escapeHtml(card.conceptB)}</span>
+                </div>
+
+                <button class="review-btn twin-reveal" onclick="window._toggleTwinReveal()">
+                    ${STATE.twinRevealed ? '🙈 다시 가리기' : '👀 비교축 보기'}
+                </button>
+
+                <div class="twin-axes">${axesHtml}</div>
+                ${card.tip ? `<div class="twin-tip">💡 ${escapeHtml(card.tip)}</div>` : ''}
+                <div class="twin-source">${escapeHtml(card.source || '')}</div>
+            </div>
+        `;
     }
 
     function renderMetaInsights() {
@@ -1474,18 +1956,27 @@
         const coreCount = core.length;
         const rawNationalCount = QUESTIONS.filter(q => String(q.exam || '').includes('국가직')).length;
         const oxCount = core.reduce((s, q) => s + (q.choices?.length || 0), 0);
+        const cardCore = getScopeTSVCards('national9');
+        const cardCount = cardCore.length;
+        const twinCount = getScopeTwinCards('core').length;
         const saCount = core.filter(q => q.importance === 'S' || q.importance === 'A').length;
         const saPct = coreCount ? Math.round((saCount / coreCount) * 100) : 0;
+        const cardSaCount = cardCore.filter(c => c.importance === 'S' || c.importance === 'A').length;
+        const cardSaPct = cardCount ? Math.round((cardSaCount / cardCount) * 100) : 0;
         const days = Math.max(1, calcDday());
         const cycleGoal = days >= 35 ? 3 : (days >= 18 ? 2 : 1.5);
         const dailyStem = Math.max(20, Math.ceil((coreCount * cycleGoal) / days));
-        const dailyOx = Math.max(40, Math.ceil((oxCount * Math.min(cycleGoal, 1.4)) / days));
+        const dailyOxChoice = Math.max(40, Math.ceil((oxCount * Math.min(cycleGoal, 1.4)) / days));
+        const dailyOxCard = Math.max(25, Math.ceil((cardCount * Math.min(cycleGoal, 1.4)) / days));
+        const dailyTwin = Math.max(5, Math.ceil((twinCount * Math.min(cycleGoal, 1.2)) / days));
+        const dailyOx = dailyOxChoice + dailyOxCard;
         const coverageGrade = coreCount >= 100 ? '충분(상)'
             : coreCount >= 75 ? '충분(중)'
                 : coreCount >= 55 ? '준수(보강권장)'
                     : '보강 필요';
 
         const h = loadHistory();
+        const ch = loadCardHistory();
         let red = 0;
         let amber = 0;
         let yellow = 0;
@@ -1499,28 +1990,49 @@
             else if (avgSec >= SLOW_THRESHOLD_SEC) amber += 1;
             else if (wrong === 1) yellow += 1;
         });
+        let redC = 0;
+        let amberC = 0;
+        let yellowC = 0;
+        cardCore.forEach(c => {
+            const row = ch[String(c.id)];
+            if (!row || !row.attempts) return;
+            const wrong = Math.max(0, row.attempts - row.correct);
+            const acc = row.correct / row.attempts;
+            const avgSec = row.avgResponseSec || 0;
+            if (wrong >= 2 || acc < 0.6) redC += 1;
+            else if (avgSec >= SLOW_THRESHOLD_SEC) amberC += 1;
+            else if (wrong === 1) yellowC += 1;
+        });
         const dueReview = core.filter(q => calcReviewPriority(q, h) >= REVIEW_TRIGGER_SCORE).length;
+        const dueReviewC = cardCore.filter(c => calcCardReviewPriority(c, ch) >= REVIEW_TRIGGER_SCORE).length;
+        const dueReviewAll = dueReview + dueReviewC;
 
         el.innerHTML = `
             <div class="guide-grid">
                 <div class="guide-card">
                     <div class="guide-title">문제은행 충분성</div>
                     <div class="guide-value">${coverageGrade}</div>
-                    <div class="guide-desc">핵심범위 ${coreCount}문항 · OX 변환 ${oxCount}문항 · S/A ${saPct}%</div>
+                    <div class="guide-desc">객관식 핵심 ${coreCount}문항 · 선지 OX ${oxCount}문항 · S/A ${saPct}%</div>
+                    <div class="guide-desc">반응카드 OX ${cardCount}문장 · 카드 S/A ${cardSaPct}% · 쌍둥이 ${twinCount}세트</div>
                     <div class="guide-desc">원자료 기준: 국가직 계열 직기출 ${rawNationalCount}문항</div>
                     <div class="guide-desc">국가직 9급 실전 20문 기준 반복 인출용 데이터는 현재 ${coverageGrade} 수준입니다.</div>
                 </div>
                 <div class="guide-card">
                     <div class="guide-title">시간 부족 대응(자동 산출)</div>
                     <div class="guide-value">D-${days}</div>
-                    <div class="guide-desc">하루 목표: 통합 ${dailyStem}문 + OX ${dailyOx}문</div>
+                    <div class="guide-desc">하루 목표: 통합 ${dailyStem}문 + OX ${dailyOx}문 + 쌍둥이 ${dailyTwin}세트</div>
+                    <div class="guide-desc">OX 구성: 선지 ${dailyOxChoice} + 카드 ${dailyOxCard}</div>
                     <div class="guide-desc">권장 회전수: 핵심범위 ${cycleGoal.toFixed(1)}회독</div>
                 </div>
                 <div class="guide-card">
                     <div class="guide-title">불완전 반응 문항 처리</div>
-                    <div class="guide-desc">🔴 반복오답 ${red}문항 · 🟠 지연 ${amber}문항 · 🟡 단발오답 ${yellow}문항</div>
-                    <div class="guide-desc">즉시 복습 큐: ${dueReview}문항</div>
-                    <button class="review-btn" data-action="start-review-queue" style="margin-top:.6rem;">취약 큐 바로 시작</button>
+                    <div class="guide-desc">객관식: 🔴 ${red} · 🟠 ${amber} · 🟡 ${yellow}</div>
+                    <div class="guide-desc">카드: 🔴 ${redC} · 🟠 ${amberC} · 🟡 ${yellowC}</div>
+                    <div class="guide-desc">즉시 복습 큐: 총 ${dueReviewAll}문항 (객관식 ${dueReview} + 카드 ${dueReviewC})</div>
+                    <div class="review-actions" style="margin-top:.6rem;">
+                        <button class="review-btn" data-action="start-review-queue">객관식 큐</button>
+                        <button class="review-btn" data-action="start-card-review-queue">카드 큐</button>
+                    </div>
                 </div>
             </div>
             <div class="guide-card" style="margin-top:.8rem;">
@@ -1536,9 +2048,10 @@
                 <div class="guide-title">90점 압축 루틴</div>
                 <div class="guide-list">
                     <div>1. 오전: 통합 20문(정확도 우선, 인출선행 ON)</div>
-                    <div>2. 오후: 복습 큐 20문(오답·지연만)</div>
-                    <div>3. 밤: OX 40문(속도 우선, 스피드모드 ON)</div>
-                    <div>4. 종료 전: 오늘 틀린 문항 정답근거 1줄 암송 5분</div>
+                    <div>2. 오후: 복습 큐 30문(객관식 15 + 카드 15, 오답·지연만)</div>
+                    <div>3. 밤: OX ${Math.max(40, dailyOx)}문(속도 우선, 혼합 추천)</div>
+                    <div>4. 종료 전: 쌍둥이 ${dailyTwin}세트(비교축 인출 → 공개)</div>
+                    <div>5. 마무리: 오늘 틀린 문항 정답근거 1줄 암송 5분</div>
                 </div>
             </div>
         `;

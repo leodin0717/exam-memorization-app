@@ -288,6 +288,129 @@ body {
     margin-bottom: 1.2rem;
 }
 
+/* Twin (최소대조) Trainer */
+.twin-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+.twin-controls {
+    display: flex;
+    gap: .7rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.twin-control {
+    min-width: 180px;
+    flex: 1;
+}
+
+.twin-control label {
+    display: block;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: .3rem;
+    text-transform: uppercase;
+}
+
+.twin-control select {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: .5rem .8rem;
+    border-radius: var(--radius-sm);
+    font-family: var(--font);
+    font-size: .85rem;
+    width: 100%;
+}
+
+.twin-area {
+    margin-top: .9rem;
+}
+
+.twin-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+.twin-meta {
+    display: flex;
+    justify-content: center;
+    gap: .4rem;
+    flex-wrap: wrap;
+    margin-bottom: .7rem;
+}
+
+.twin-concepts {
+    display: flex;
+    gap: .55rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .7rem;
+    flex-wrap: wrap;
+}
+
+.twin-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: .4rem .75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.04);
+    font-weight: 800;
+}
+
+.twin-vs {
+    color: var(--text-dim);
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.twin-axes {
+    margin-top: .7rem;
+    display: grid;
+    gap: .55rem;
+}
+
+.twin-axis {
+    padding: .65rem .75rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.06);
+    background: rgba(0,0,0,.15);
+    font-size: .9rem;
+    line-height: 1.6;
+}
+
+.twin-axis.hidden {
+    color: transparent;
+    text-shadow: 0 0 10px rgba(255,255,255,.35);
+    user-select: none;
+}
+
+.twin-reveal {
+    margin-top: .65rem;
+}
+
+.twin-tip {
+    margin-top: .7rem;
+    color: var(--text-dim);
+    font-size: .85rem;
+    line-height: 1.6;
+}
+
+.twin-source {
+    margin-top: .55rem;
+    font-size: .72rem;
+    color: rgba(255,255,255,.45);
+    text-align: center;
+}
+
 /* Chapter Grid */
 .chapter-grid {
     display: grid;
@@ -342,6 +465,19 @@ body {
 .review-btn:hover {
     background: rgba(108, 92, 231, .24);
     border-color: rgba(108, 92, 231, .6);
+}
+
+.review-actions {
+    display: flex;
+    gap: .5rem;
+    margin-top: .55rem;
+}
+
+.review-actions .review-btn {
+    margin-top: 0;
+    width: auto;
+    flex: 1;
+    padding: .5rem .6rem;
 }
 
 .coach-panel {

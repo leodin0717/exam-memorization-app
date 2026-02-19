@@ -1,4 +1,5 @@
 const ROTATION_INTERVAL_MS = 5 * 60 * 1000;
+const APP_SIGNATURE = "sync-check-2026-02-19-v2";
 
 const mindsetMessages = [
   "세상엔 그냥 되는 게 절대 없다. 먹는 것, 자는 것, 집중한 것, 내가 어떻게 했느냐에 따라 결과가 달라질 수 있다.",
@@ -79,6 +80,7 @@ const statementLabelEl = document.getElementById("statement-label");
 const statementTextEl = document.getElementById("statement-text");
 const memoryLineEl = document.getElementById("memory-line");
 const feedbackEl = document.getElementById("feedback");
+const appSignatureEl = document.getElementById("app-signature");
 
 const btnO = document.getElementById("btn-o");
 const btnX = document.getElementById("btn-x");
@@ -177,5 +179,8 @@ nextBtn.addEventListener("click", () => {
 });
 
 setInitialMindset();
+if (appSignatureEl) {
+  appSignatureEl.textContent = `앱 반영 확인 코드: ${APP_SIGNATURE}`;
+}
 setInterval(rotateMindsetMessage, ROTATION_INTERVAL_MS);
 renderQuestion();

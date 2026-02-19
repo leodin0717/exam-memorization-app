@@ -237,3 +237,10 @@ main {
     grid-template-columns: repeat(2, minmax(100px, 1fr));
   }
 }
+
+.app-signature {
+  margin: 14px 0 0;
+  color: #8aa0d8;
+  font-size: 0.82rem;
+  text-align: right;
+}

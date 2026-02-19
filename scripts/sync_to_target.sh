@@ -32,4 +32,26 @@ else
   find "$TARGET_DIR" -name '.DS_Store' -delete
 fi
 
+if [[ -f "$SOURCE_DIR/index.html" && -f "$TARGET_DIR/index.html" ]]; then
+  SRC_HASH="$(sha256sum "$SOURCE_DIR/index.html" | awk '{print $1}')"
+  DST_HASH="$(sha256sum "$TARGET_DIR/index.html" | awk '{print $1}')"
+  if [[ "$SRC_HASH" != "$DST_HASH" ]]; then
+    echo "[ERROR] index.html hash mismatch after sync" >&2
+    echo "  source: $SRC_HASH" >&2
+    echo "  target: $DST_HASH" >&2
+    exit 2
+  fi
+fi
+
+COMMIT_SHA="$(git -C "$SOURCE_DIR" rev-parse --short HEAD 2>/dev/null || echo 'no-git')"
+SYNC_TIME="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+cat > "$TARGET_DIR/.sync-meta.txt" <<META
+source_dir=$SOURCE_DIR
+target_dir=$TARGET_DIR
+commit=$COMMIT_SHA
+synced_at_utc=$SYNC_TIME
+META
+
 echo "Sync complete: $SOURCE_DIR -> $TARGET_DIR"
+echo "Verification: index.html hash matched"
+echo "Meta file: $TARGET_DIR/.sync-meta.txt"

@@ -126,6 +126,74 @@ body {
     }
 }
 
+/* === MOTIVATION BANNER === */
+.motivation-banner {
+    position: sticky;
+    top: 56px;
+    z-index: 99;
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(245, 158, 11, 0.10), rgba(139, 92, 246, 0.10));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(244, 63, 94, 0.18);
+    padding: 0;
+    overflow: hidden;
+}
+
+.motivation-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 24px;
+    min-height: 44px;
+}
+
+.motivation-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    animation: motivation-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes motivation-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.15); opacity: 1; }
+}
+
+.motivation-text {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #fcd9b8;
+    line-height: 1.6;
+    letter-spacing: -0.2px;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.motivation-text.fade-out {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+.motivation-text.fade-in {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+@media (max-width: 768px) {
+    .motivation-banner {
+        top: 48px;
+    }
+    .motivation-inner {
+        padding: 8px 16px;
+        gap: 8px;
+    }
+    .motivation-text {
+        font-size: 12.5px;
+    }
+}
+
 /* === HEADER === */
 .app-header {
     position: sticky;

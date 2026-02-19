@@ -642,6 +642,66 @@
         return Math.ceil((exam - now) / 86400000);
     }
 
+    // ===== MOTIVATION BANNER =====
+    const MOTIVATION_QUOTES = [
+        "세상엔 그냥 되는게 절대 없다. 먹는 것, 자는 것, 집중한 것, 내가 어떻게 했느냐에 따라 결과가 달라질 수 있다.",
+        "놀거 다 놀고, 자기 하고싶은거 다 하면서 내가 원하는 것을 얻을거라 생각하지 않는다. 지금 그런 투자가 없으면 절대 미래는 없다.",
+        "준비가 잘 됐을때의 공부과정과 조금이라도 소홀했던 공부 준비과정에서 학습력은 엄청난 차이가 난다.",
+        "공부를 할 수 있는 지금이 가장 행복할 때다. 누군가는 이 공부를 하고 싶어도 기회조차 주어지지 않았을 것이다.",
+        "하루하루를 살얼음판 걷듯, 돌다리 두들기듯, 정말 집중해서 살아가자 하늘이 주신 기적같은 기회다. 항상 감사하자.",
+        "나는 프로다. 공부할때 있어서 만큼은 한치의 양보도 없다. 프로의 자세로 공부에 임하자.",
+        "인무원여 필유근우 – 멀리 보지 않으면 가까이 근심이 있다.",
+        "지금 이 시간, 순간은 내 인생에서 다시 돌아오지 않는다. 정말 소중하고 귀한 시간이다.",
+        "\"더 이상 남들이 너를 뒷바라지 하느라 고생하지 않게 해라\" – 전효진",
+        "기간이 길어질 수록 부모님은 덥고 추운 환경에서 힘들게 일하게 된다.",
+        "지금 이 순간의 집중이 합격의 차이를 만든다. 1초도 허투루 쓰지 마라.",
+        "합격한 사람들도 처음엔 막막했다. 차이는 포기하지 않았다는 것뿐이다.",
+        "오늘 외운 한 줄이 시험장에서 1점을 만든다. 그 1점이 합격과 불합격을 가른다.",
+        "힘들 때 그만두면 영원히 이 자리다. 힘들 때 한 발 더 나가면 합격이다.",
+        "시험장에서 '아, 그때 더 할걸' 후회하지 않도록, 지금 이 순간 최선을 다하자.",
+        "나를 믿는 사람들을 위해, 나 자신을 위해, 오늘도 한 문제라도 더 풀자."
+    ];
+
+    let motivationIndex = 0;
+    let motivationTimerId = null;
+
+    function initMotivationBanner() {
+        const textEl = document.getElementById('motivationText');
+        if (!textEl) return;
+
+        // 랜덤 시작
+        motivationIndex = Math.floor(Math.random() * MOTIVATION_QUOTES.length);
+        textEl.textContent = MOTIVATION_QUOTES[motivationIndex];
+
+        // 5분(300000ms)마다 전환
+        motivationTimerId = setInterval(() => {
+            cycleMotivation();
+        }, 300000);
+    }
+
+    function cycleMotivation() {
+        const textEl = document.getElementById('motivationText');
+        if (!textEl) return;
+
+        // fade out
+        textEl.classList.add('fade-out');
+        textEl.classList.remove('fade-in');
+
+        setTimeout(() => {
+            motivationIndex = (motivationIndex + 1) % MOTIVATION_QUOTES.length;
+            textEl.textContent = MOTIVATION_QUOTES[motivationIndex];
+
+            // fade in
+            textEl.classList.remove('fade-out');
+            textEl.classList.add('fade-in');
+
+            // 애니메이션 후 클래스 제거
+            setTimeout(() => {
+                textEl.classList.remove('fade-in');
+            }, 800);
+        }, 800);
+    }
+
     // ===== INIT =====
     function init() {
         applySupplementData();
@@ -658,6 +718,7 @@
         renderStampPage();
         updateFilteredCounts();
         applyAutoActionFromQuery();
+        initMotivationBanner();
     }
 
     function renderDday() {
